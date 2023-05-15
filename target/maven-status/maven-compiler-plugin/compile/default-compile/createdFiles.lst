@@ -1,0 +1,11 @@
+com\backend\Application.class
+com\backend\model\dao\ContactDao.class
+com\backend\model\Contact.class
+com\backend\model\dto\dtomapper\ContactMapper.class
+com\backend\controller\ContactsController.class
+com\backend\auth\SecurityConfig.class
+com\backend\api\IContactService.class
+com\backend\model\User.class
+com\backend\service\ContactService.class
+com\backend\model\dto\dtomapper\ContactMapperImpl.class
+com\backend\model\dto\ContactDTO.class
