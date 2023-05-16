@@ -1,45 +1,15 @@
-package com.volvoreta.model;
+package com.volvoreta.model.dto;
 
-import javax.persistence.*;
+public class UserDTO {
 
-@Entity
-@Table(name = "USERS", schema = "public")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column
     private String nif;
-
-    @Column
     private String name;
-
-    @Column
     private String surname1;
-
-    @Column
     private String surname2;
-
-    @Column
     private String login;
-
-    @Column
     private String password;
 
-    public User() {
-    }
-
-    public User(int id, String nif, String name, String surname1, String surname2, String login, String password) {
-        this.id = id;
-        this.nif = nif;
-        this.name = name;
-        this.surname1 = surname1;
-        this.surname2 = surname2;
-        this.login = login;
-        this.password = password;
-    }
 
     public int getId() {
         return id;
