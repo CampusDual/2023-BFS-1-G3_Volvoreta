@@ -4,10 +4,10 @@ spring:
   banner:
     location: classpath:banner.txt
   datasource:
-    driver-class-name: org.hsqldb.jdbcDriver
-    url: jdbc:hsqldb:hsql://localhost:9013/templateDB
-    username: SA
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://45.84.210.174:65432/2023-BFS-1-G3
+    username: Fullstack_2023_1_G3
+    password: 1qaz2wsx
   jpa:
     hibernate:
       ddl-auto: none
@@ -16,7 +16,7 @@ spring:
     properties:
       hibernate:
         format_sql: false
-        dialect: org.hibernate.dialect.HSQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 logging:
   level:
     org:
