@@ -1,13 +1,13 @@
 package com.volvoreta.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "USERS", schema = "public")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -27,6 +27,9 @@ public class User {
 
     @Column
     private String password;
+
+    public User() {
+    }
 
     public User(int id, String nif, String name, String surname1, String surname2, String login, String password) {
         this.id = id;
