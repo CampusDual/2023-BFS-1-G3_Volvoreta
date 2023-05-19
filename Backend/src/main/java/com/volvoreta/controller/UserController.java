@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController()
 @RequestMapping("/users")
 public class UserController {
@@ -24,11 +23,6 @@ public class UserController {
     @PostMapping(value = "/get")
     public UserDTO queryUser(@RequestBody UserDTO userDTO) {
         return userService.queryUser(userDTO);
-    }
-
-    @PostMapping(value = "/login")
-    public UserDTO queryUser(@RequestBody String nif) {
-        return userService.queryUser(nif);
     }
 
     @GetMapping(value = "/getAll")

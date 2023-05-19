@@ -9,7 +9,6 @@ public interface IUserService {
 
     //CRUD Operations
     UserDTO queryUser(UserDTO userDTO);
-    UserDTO queryUser(String nif);
     List<UserDTO> queryAllUser();
     int insertUser(UserDTO userDTO);
     int updateUser(UserDTO userDTO);
