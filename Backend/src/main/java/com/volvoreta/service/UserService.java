@@ -23,7 +23,17 @@ public class UserService implements IUserService {
         User user = UserMapper.INSTANCE.toEntity(userDTO);
         return UserMapper.INSTANCE.toDTO(userDao.getReferenceById(user.getId()));
     }
-
+    @Override
+    public UserDTO queryUser(String nif) {
+        List<UserDTO> userDTOList = queryAllUser();
+        for (UserDTO userDTO : userDTOList){
+            if(nif.equals(userDTO.getNif())){
+                User user = UserMapper.INSTANCE.toEntity(userDTO);
+                return UserMapper.INSTANCE.toDTO(userDao.getReferenceById(user.getId()));
+            }
+        }
+        return null;
+    }
     @Override
     public List<UserDTO> queryAllUser() {
         return UserMapper.INSTANCE.toDTOList(userDao.findAll());

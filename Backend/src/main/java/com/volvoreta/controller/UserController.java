@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController()
 @RequestMapping("/users")
 public class UserController {
@@ -30,6 +31,10 @@ public class UserController {
         return userService.queryAllUser();
     }
 
+    @PostMapping(value = "/login")
+    public UserDTO queryUser(@RequestBody String nif) {
+        return userService.queryUser(nif);
+    }
     @PostMapping(value = "/add")
     public int addUser(@RequestBody UserDTO userDTO) {
         return userService.insertUser(userDTO);
