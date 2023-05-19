@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/test/**", "/public/**").permitAll()
+                .antMatchers("/test/**", "/public/**", "/users/**").permitAll()
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
