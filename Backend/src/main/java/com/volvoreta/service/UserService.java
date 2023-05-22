@@ -34,6 +34,15 @@ public class UserService implements IUserService {
         }
         return null;
     }
+
+    @Override
+    public boolean verifyPassword(UserDTO userDTO, String password) {
+        if(userDTO.getPassword().equals(password)){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public List<UserDTO> queryAllUser() {
         return UserMapper.INSTANCE.toDTOList(userDao.findAll());
