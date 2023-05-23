@@ -1,40 +1,22 @@
-<!-- <form method="post"> 
-    <mat-form-field appearance="fill">
-      <mat-label>Fill form field</mat-label>
-      <input name="nif" matInput placeholder="Placeholder">
-      <mat-hint>Nif</mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input name= "password" matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-    <button type="submit" (click)="login()" mat-flat-button color="primary">
-        <mat-icon>save</mat-icon>
-        Login
-    </button>
-</form>
- -->
-<div class="login">
-  <form class="custom-form" method="post">
-    <h1>Login</h1>
-    <input
-      type="text"
-      [(ngModel)]="nif"
-      name="nif"
-      placeholder="nif"
-      required="required"
-    />
-    <input
-      type="password"
-      [(ngModel)]="password"
-      name="password"
-      placeholder="Password"
-      required="required"
-    />
-    <button type="submit" (click)="login()">Log in</button>
-  </form>
-</div>
+<form #userForm="ngForm">
+    <div>
+        <span>
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" name="nif" id="nif" required="required"/>
+            </mat-form-field>
+        </span>
+        <span>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" id="password" required="required"/>
+            </mat-form-field>
+        </span>
+        <span>
+            <button type="submit" mat-flat-button color="primary" (click)="login()">
+                <mat-icon>save</mat-icon>
+                Enviar
+            </button>
+        </span>
+    </div>
+ </form>
