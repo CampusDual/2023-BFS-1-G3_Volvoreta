@@ -1,8 +1,6 @@
 package com.volvoreta.model.dto.dtomapper;
 
-import com.volvoreta.model.User;
 import com.volvoreta.model.UserRoles;
-import com.volvoreta.model.dto.UserDTO;
 import com.volvoreta.model.dto.UserRolesDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

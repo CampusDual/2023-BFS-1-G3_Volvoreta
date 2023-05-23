@@ -2,9 +2,6 @@ package com.volvoreta.controller;
 
 
 import com.volvoreta.api.IUserRolesService;
-import com.volvoreta.api.IUserService;
-import com.volvoreta.model.UserRoles;
-import com.volvoreta.model.dto.UserDTO;
 import com.volvoreta.model.dto.UserRolesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController()
-@RequestMapping("/users/usersroles")
+@RequestMapping("users/roles")
 public class UserRolesController {
 
     @Autowired
@@ -32,6 +29,7 @@ public class UserRolesController {
     public UserRolesDTO queryUserRoles(@RequestBody int idUser) {
         return userRolesService.queryUserRoles(idUser);
     }
+
     @GetMapping(value = "/getAll")
     public List<UserRolesDTO> queryAllUserRoles() {
         return userRolesService.queryAllUserRoles();

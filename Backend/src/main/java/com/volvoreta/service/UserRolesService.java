@@ -1,12 +1,9 @@
 package com.volvoreta.service;
 
 import com.volvoreta.api.IUserRolesService;
-import com.volvoreta.model.User;
 import com.volvoreta.model.UserRoles;
 import com.volvoreta.model.dao.UserRolesDao;
-import com.volvoreta.model.dto.UserDTO;
 import com.volvoreta.model.dto.UserRolesDTO;
-import com.volvoreta.model.dto.dtomapper.UserMapper;
 import com.volvoreta.model.dto.dtomapper.UserRolesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
