@@ -1,13 +1,5 @@
-<div><p>Bienvenido 
-  <span>
-    <mat-form-field appearance="fill">
-        <input matInput type="text" [(ngModel)]="user.name" name="name" #name="ngModel"/>
-    </mat-form-field>
-  </span>
-  <span>
-    Usuario de seguridad
-  </span>
-</p>
+<div id="bienvenida">
+  <p [(ngModel)]="user">Bienvenido, {{user.name}} {{user.surname1}}, maestro de la seguridad</p>
 </div>
 
 <table mat-table [dataSource]="users" class="mat-elevation-z8">

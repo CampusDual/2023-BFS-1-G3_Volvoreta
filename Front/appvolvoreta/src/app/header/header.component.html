@@ -1,9 +1,9 @@
 <p>
     <mat-toolbar color="primary">
         <span class="fill-remaining-space">
-                  <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
+                  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
                <mat-icon>menu</mat-icon>
-               </button>
+               </button> -->
                <mat-menu #menu="matMenu" [overlapTrigger]="false">
                <span (mouseleave)="menuTrigger.closeMenu()">
                   <button mat-menu-item [routerLink]="['/users']">
@@ -26,5 +26,5 @@
             </mat-menu>
         </span>
         <span class="fill-remaining-space">Header</span>
-       </mat-toolbar>
+      </mat-toolbar>
 </p>
