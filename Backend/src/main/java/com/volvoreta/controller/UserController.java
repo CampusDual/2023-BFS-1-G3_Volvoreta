@@ -32,11 +32,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    public UserDTO queryUser(@RequestBody String nif, @RequestBody String password) {
-        UserDTO userDTO = userService.queryUser(nif);
+    public UserDTO queryUserLogin(@RequestBody UserDTO login) {
+        UserDTO userDTO = userService.queryUser(login.getNif());
         if(userDTO != null){
-            if(userService.verifyPassword(userDTO, password)){
-                return userService.queryUser(nif);
+            if(userService.verifyPassword(userDTO, login.getPassword())){
+                return userDTO;
             }
         }
         return null;
