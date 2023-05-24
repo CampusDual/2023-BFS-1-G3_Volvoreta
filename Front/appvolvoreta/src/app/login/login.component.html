@@ -1,0 +1,22 @@
+<form #userForm="ngForm">
+    <div>
+        <span>
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" name="nif" id="nif" required="required"/>
+            </mat-form-field>
+        </span>
+        <span>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" id="password" required="required"/>
+            </mat-form-field>
+        </span>
+        <span>
+            <button type="submit" mat-flat-button color="primary" (click)="login()">
+                <mat-icon>save</mat-icon>
+                Enviar
+            </button>
+        </span>
+    </div>
+ </form>
