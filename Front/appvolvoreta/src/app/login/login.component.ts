@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
       if(data){
         localStorage.setItem('user', JSON.stringify(data));
         alert('Login correcto');
-        // this.userRolesService.userType().subscribe((data1 => {
-        //   console.log('role' +  data1.id);
-        // }));
-        if(data.nif == "62551833K"){
-          this.router.navigate(['/users']);
-        }
+        this.userRolesService.userType().subscribe((data1 => {
+          console.log('role' +  data1.id);
+        }));
+        // if(data.nif == "62551833K"){
+        //   this.router.navigate(['/users']);
+        // }
       } else {
         alert('Login incorrecto');
       }

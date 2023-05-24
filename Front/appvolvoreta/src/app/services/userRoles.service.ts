@@ -7,7 +7,7 @@ import { User } from "../model/user";
 
 @Injectable({providedIn : 'root'})
 export class UserRolesService{
-    private urlEndpoint: string = 'http://localhost:30030/users/roles';
+    private urlEndpoint: string = 'http://localhost:30030/roles';
     private header = new HttpHeaders ({'Content-Type': 'application/json', 'authorization': 'Basic Auth'}); 
     private user : User = new User;
 
@@ -17,7 +17,8 @@ export class UserRolesService{
         this.user = JSON.parse(localStorage.getItem('user'));
         let idUser = +this.user.id;
         console.log(this.urlEndpoint.concat('/getuserid'));
-        return this.http.post<UserRoles>(this.urlEndpoint.concat('/getuserid'), {headers: this.header, idUser}).pipe(
+        //return this.http.post<UserRoles>(this.urlEndpoint.concat('/getuserid'), {headers: this.header, idUser}).pipe(
+        return this.http.post<UserRoles>(this.urlEndpoint.concat('/getuserid'), idUser, {headers: this.header}).pipe(
             tap(
                 response => {
                     console.log(response);
