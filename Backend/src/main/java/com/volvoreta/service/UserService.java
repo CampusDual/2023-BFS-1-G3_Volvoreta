@@ -7,6 +7,7 @@ import com.volvoreta.model.dto.UserDTO;
 import com.volvoreta.model.dto.dtomapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,25 @@ public class UserService implements IUserService {
         User user = UserMapper.INSTANCE.toEntity(userDTO);
         return UserMapper.INSTANCE.toDTO(userDao.getReferenceById(user.getId()));
     }
-
+    @Override
+    public UserDTO queryUser(String nif) {
+        List<UserDTO> userDTOList = queryAllUser();
+        for (UserDTO userDTO : userDTOList){
+            if(nif.equals(userDTO.getNif())){
+                User user = UserMapper.INSTANCE.toEntity(userDTO);
+                return UserMapper.INSTANCE.toDTO(userDao.getReferenceById(user.getId()));
+            }
+        }
+        return null;
+    }
+    @Override
+    public boolean verifyPassword(UserDTO userDTO, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if(encoder.matches(password, userDTO.getPassword())){
+            return true;
+        }
+        return false;
+    }
     @Override
     public List<UserDTO> queryAllUser() {
         return UserMapper.INSTANCE.toDTOList(userDao.findAll());

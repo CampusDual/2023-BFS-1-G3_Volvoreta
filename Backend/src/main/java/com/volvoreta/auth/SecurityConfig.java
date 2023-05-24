@@ -26,6 +26,7 @@ public class SecurityConfig {
     protected AuthenticationManager configureAuthenticationManager (HttpSecurity http) throws Exception {
 
         return http
+                .cors().disable()
                 .getSharedObject(AuthenticationManagerBuilder.class)
                 .jdbcAuthentication()
                 .dataSource(dataSource)
@@ -38,12 +39,13 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
+                .cors().disable()
                 .formLogin().disable()
                 .csrf().disable()
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/test/**", "/public/**", "/users/**").permitAll()
+                .antMatchers("/test/**", "/public/**", "/users/**", "/roles/**").permitAll()
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
