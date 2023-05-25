@@ -8,7 +8,7 @@ import { User } from "../model/user";
 @Injectable({providedIn : 'root'})
 export class UserService{
     private urlEndpoint: string = 'http://localhost:30030/users';
-    private header = new HttpHeaders ({'Content-Type': 'application/json', 'authorization': 'Basic Auth'}); 
+    private header = new HttpHeaders ({'Content-Type': 'application/json', 'authorization': 'Access-Control-Allow-Origin'}); 
     
     constructor(private http:HttpClient, private router: Router){}
     getUsers(): Observable<User[]>{

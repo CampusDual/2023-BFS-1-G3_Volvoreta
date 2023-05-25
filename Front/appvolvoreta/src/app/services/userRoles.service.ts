@@ -8,7 +8,7 @@ import { User } from "../model/user";
 @Injectable({providedIn : 'root'})
 export class UserRolesService{
     private urlEndpoint: string = 'http://localhost:30030/roles';
-    private header = new HttpHeaders ({'Content-Type': 'application/json', 'authorization': 'Basic Auth'}); 
+    private header = new HttpHeaders ({'Content-Type': 'application/json', 'authorization': 'Access-Control-Allow-Origin'}); 
     private user : User = new User;
 
     constructor(private http:HttpClient){}
@@ -16,8 +16,6 @@ export class UserRolesService{
     userType(): Observable<UserRoles> {
         this.user = JSON.parse(localStorage.getItem('user'));
         let idUser = +this.user.id;
-        console.log(this.urlEndpoint.concat('/getuserid'));
-        //return this.http.post<UserRoles>(this.urlEndpoint.concat('/getuserid'), {headers: this.header, idUser}).pipe(
         return this.http.post<UserRoles>(this.urlEndpoint.concat('/getuserid'), idUser, {headers: this.header}).pipe(
             tap(
                 response => {

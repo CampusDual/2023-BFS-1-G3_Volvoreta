@@ -1,8 +1,8 @@
 <div id="bienvenida">
   <p>Bienvenido, {{user.name}} {{user.surname1}}, maestro de la seguridad</p>
 </div>
-
-<table mat-table [dataSource]="users" class="mat-elevation-z8">
+<div class="user-list-container">
+  <table mat-table [dataSource]="users" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -50,3 +50,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>
