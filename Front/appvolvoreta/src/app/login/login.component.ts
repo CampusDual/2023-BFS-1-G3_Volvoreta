@@ -36,18 +36,19 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.nif, this.password).subscribe((data => {
       if(data){
         localStorage.setItem('user', JSON.stringify(data));
-        alert('Login correcto');
         this.userRolesService.userType().subscribe((data1 => {
           console.log('role' +  data1.id);
           if(data1.roleId == 2){
             this.router.navigate(['/users']);
+          }else{
+            alert('Login correcto. Todavía no tiene permisos, póngase en contacto con el administrador de sistemas.');
           }
         }));
         // if(data.nif == "62551833K"){
         //   this.router.navigate(['/users']);
         // }
       } else {
-        alert('Login incorrecto');
+        alert('Login incorrecto. No pertenece usted a nuestra empresa.');
       }
     }));
     // this.userRolesService.userType().subscribe((data => {
