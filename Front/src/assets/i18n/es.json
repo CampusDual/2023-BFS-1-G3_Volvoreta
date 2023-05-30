@@ -25,5 +25,7 @@
   "SURNAME1": "Apellido 1",
   "SURNAME2": "Apellido 2",
   "NIF": "NIF",
-  "EMAIL": "Email"
+  "EMAIL": "Email",
+  "ROLENAME": "Rol",
+  "ID_ROLENAME": "Id rol"
 }
