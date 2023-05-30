@@ -9,7 +9,10 @@ import { AuthService, OntimizeService } from 'ontimize-web-ngx';
 })
 export class HomeComponent implements OnInit {
   user: any;
-  nombre: any;
+  name: any;
+  role: any;
+
+  nameUser : string = this.authService.getSessionInfo().user;
 
   constructor(
     private router: Router,
@@ -18,16 +21,14 @@ export class HomeComponent implements OnInit {
     public injector: Injector,
     private ontimizeService: OntimizeService
   ) {
+
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
-    this.ontimizeService.query(undefined, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user').subscribe(
+    this.ontimizeService.query({'USER_': this.nameUser}, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user').subscribe(
       res => {
         console.log(res.data)
-        if (res.data && res.data.length) {
-          this.user = res.data.filter((e: any) => e['USER_'] === this.authService.getSessionInfo().user)[0];
-        }else{
-          this.user = undefined;
-        }
-        console.log(this.user)
+        this.user = res.data.pop()
+        this.name = this.user['NAME']
+        this.role = this.user['ROLENAME']
       },
       err => console.log(err)
 
