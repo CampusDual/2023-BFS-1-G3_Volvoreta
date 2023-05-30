@@ -13,6 +13,10 @@
     </UpdateKeys>
     <Queries>
         <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="USER_" prefix="tu" />
+                <AmbiguousColumn name="ID_ROLENAME" prefix="tr" />
+            </AmbiguousColumns>
             <ValidColumns>
                 <Column>USER_</Column>
                 <Column>PASSWORD</Column>
