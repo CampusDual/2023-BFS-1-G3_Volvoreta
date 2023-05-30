@@ -18,5 +18,12 @@
   "REMEMBER_ME": "Remember me",
   "FORGOT_PWD": "Forgot your password?",
   "FOOTER_CREATED_BY": "Created by Imatia Innovation",
-  "FOOTER_RIGHTS": "All rights reserved"
+  "FOOTER_RIGHTS": "All rights reserved",
+  "USERS": "Users",
+  "USERS_": "Id",
+  "NAME": "Name",
+  "SURNAME1": "Surname 1",
+  "SURNAME2": "Surname 2",
+  "NIF": "NIF",
+  "EMAIL": "Email"
 }
