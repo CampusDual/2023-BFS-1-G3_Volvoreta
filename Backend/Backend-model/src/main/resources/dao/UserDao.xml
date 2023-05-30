@@ -36,7 +36,6 @@
                     SELECT
                         #COLUMNS#
                     FROM
-<!--                        ${mainschema}.TUSER-->
                         ${mainschema}.TUSER tu
                         LEFT JOIN ${mainschema}.TUSER_ROLE tur ON tu.USER_ = tur.USER_
                         LEFT JOIN ${mainschema}.TROLE tr ON tur.ID_ROLENAME = tr.ID_ROLENAME
