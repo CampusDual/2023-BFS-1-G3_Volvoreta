@@ -25,12 +25,11 @@ export class HomeComponent implements OnInit {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
     this.ontimizeService.query({'USER_': this.nameUser}, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user').subscribe(
       res => {
-        console.log(res.data)
-        this.user = res.data.pop()
-        this.name = this.user['NAME']
-        this.role = this.user['ROLENAME']
+        this.user = res.data.pop();
+        this.name = this.user['NAME'] + " " + this.user['SURNAME1'];
+        this.role = this.user['ROLENAME'];
       },
-      err => console.log(err)
+      err => console.log(err);
 
     );
   }
