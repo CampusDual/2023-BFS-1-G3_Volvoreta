@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
         this.name = this.user['NAME'] + " " + this.user['SURNAME1'];
         this.role = this.user['ROLENAME'];
       },
-      err => console.log(err);
+      err => console.log(err)
 
     );
   }
