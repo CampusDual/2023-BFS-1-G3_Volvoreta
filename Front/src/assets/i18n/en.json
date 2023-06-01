@@ -27,5 +27,7 @@
   "NIF": "NIF",
   "EMAIL": "Email",
   "ROLENAME": "Role name",
-  "ID_ROLENAME": "Id role"
+  "ID_ROLENAME": "Id role",
+  "CUSTOMER_PERSONAL_INFORMATION": "Personal Information",
+  "USER_": "Customer Id."
 }
