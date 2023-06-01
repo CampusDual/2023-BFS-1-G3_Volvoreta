@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class PermissionService implements IPermissionService {
 
-	public static final String PLANNER_PERMISSION = "{\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }]}";
+	public static final String PLANNER_PERMISSION_SECURITY = "{\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }]}";
 
 	@Override
 	public EntityResult permissionQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -34,7 +34,7 @@ public class PermissionService implements IPermissionService {
 		Map<String, String> map = new HashMap<>();
 		String role = authentication.getAuthorities().toArray()[0].toString();
 		if (!role.equals("security")) {
-			map.put("permission", PermissionService.PLANNER_PERMISSION);
+			map.put("permission", PermissionService.PLANNER_PERMISSION_SECURITY);
 		}
 		e.addRecord(map);
 		return e;
