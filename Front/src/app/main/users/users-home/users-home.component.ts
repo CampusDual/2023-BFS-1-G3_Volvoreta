@@ -29,7 +29,7 @@ export class UsersHomeComponent implements OnInit {
 
     }
     static show(){
-      console.log('Algo');
+      console.log('hola');
     }
     show(){
       UsersHomeComponent.show();
