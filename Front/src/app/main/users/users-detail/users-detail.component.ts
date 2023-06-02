@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { UsersHomeComponent } from '../users-home/users-home.component';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-users-detail',
@@ -8,11 +9,12 @@ import { UsersHomeComponent } from '../users-home/users-home.component';
 })
 export class UsersDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
-  show(){
-    UsersHomeComponent.show();
+  pass(user_){
+    console.log('user_ :>> ', user_);
+    this.userService.genPass(user_).subscribe()
   }
 }
