@@ -14,7 +14,6 @@ export class UsersDetailComponent implements OnInit {
   ngOnInit() {
   }
   pass(user_){
-    console.log('user_ :>> ', user_);
-    this.userService.genPass(user_).subscribe()
+     this.userService.genPass(user_).subscribe()
   }
 }

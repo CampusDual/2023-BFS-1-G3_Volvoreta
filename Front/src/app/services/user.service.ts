@@ -1,5 +1,5 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
@@ -18,6 +18,10 @@ export class UserService {
 
     genPass(user_: string) {
         return this.http.post(this.urlEndpoint.concat('/genPass'), user_,{headers:this.httpHeader})
+    }
+
+    userData(): Observable<any>{
+        return this.http.get(this.urlEndpoint.concat('/data'),{headers:this.httpHeader})
     }
     
 }

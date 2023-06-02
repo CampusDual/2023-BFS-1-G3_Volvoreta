@@ -14,5 +14,6 @@ public interface IUserService {
 	public EntityResult userUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
 	public EntityResult userDelete(Map<?, ?> keyMap);
 	public EntityResult newRandomPass(String username);
+	public EntityResult userData();
 
 }

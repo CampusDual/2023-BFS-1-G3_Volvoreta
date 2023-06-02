@@ -44,4 +44,12 @@ public class UserRestController extends ORestController<IUserService> {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@RequestMapping(
+			value = "/data",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<EntityResult> userData() {
+				return new ResponseEntity<>(this.userSrv.userData(),HttpStatus.OK);
+	}
+
 }

@@ -4,8 +4,11 @@ package com.volvoreta.Backend.model.core.service;
 import java.sql.Timestamp;
 import java.util.*;
 
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.volvoreta.Backend.api.core.service.IUserService;
@@ -52,8 +55,7 @@ public class UserService implements IUserService {
 		attrMap.put("PASSWORD",pass);
 		Map<String, Object> keyMap = new HashMap<>();
 		keyMap.put("USER_",username);
-		EntityResult e = this.daoHelper.update(this.userDao,attrMap ,keyMap);
-		return e;
+		return this.daoHelper.update(this.userDao,attrMap ,keyMap);
 	}
 
 	private String genPass(){
@@ -63,4 +65,23 @@ public class UserService implements IUserService {
 		return password;
 	}
 
+
+	@Override
+	public EntityResult userData() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		EntityResult e = new EntityResultMapImpl();
+		Map<String, String> map = new HashMap<>();
+
+		Map<String, Object> keyMap = new HashMap<>();
+		keyMap.put("USER_",username);
+
+		List<String> attributes = new ArrayList<>();
+		attributes.add("NAME");
+		attributes.add("SURNAME1");
+		attributes.add("SURNAME2");
+		attributes.add("ROLENAME");
+
+		return this.daoHelper.query(this.userDao,keyMap,attributes);
+	}
 }
