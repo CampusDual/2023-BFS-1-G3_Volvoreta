@@ -28,6 +28,12 @@ export class UsersHomeComponent implements OnInit {
       );
 
     }
+    static show(){
+      console.log('Algo');
+    }
+    show(){
+      UsersHomeComponent.show();
+    }
 
   ngOnInit() { }
 }

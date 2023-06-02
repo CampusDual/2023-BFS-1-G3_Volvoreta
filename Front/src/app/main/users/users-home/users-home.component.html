@@ -1,7 +1,8 @@
 <div fxFill fxLayout="column" fxLayoutAlign="start">
     <o-table attr="usersTable" service="users" entity="user" keys="USER_"
-        columns="ID;NAME;SURNAME1;SURNAME2;NIF"
-        visible-columns="NAME;SURNAME1;SURNAME2;NIF" query-rows="20">
-        <o-table-column title="PASSWORD" width="100px"></o-table-column>
+        columns="ID;NAME;SURNAME1;SURNAME2;NIF;"
+        visible-columns="NAME;SURNAME1;SURNAME2;NIF;" query-rows="20">
+        <!-- <o-table-column title="PASSWORD" width="100px"></o-table-column> -->
+        <o-table-column attr="PASSWORD" title="PASSWORD" type="action" icon="key lock" (onClick)="show()"></o-table-column>
     </o-table>
 </div>
