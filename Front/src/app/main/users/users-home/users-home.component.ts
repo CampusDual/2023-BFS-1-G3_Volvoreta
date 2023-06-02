@@ -28,7 +28,7 @@ export class UsersHomeComponent implements OnInit {
       );
 
     }
-    show(){
+    static show(){
       console.log('Algo');
     }
 
