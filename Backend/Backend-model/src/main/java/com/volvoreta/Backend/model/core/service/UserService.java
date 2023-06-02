@@ -2,10 +2,7 @@ package com.volvoreta.Backend.model.core.service;
 
 
 import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -46,6 +43,24 @@ public class UserService implements IUserService {
 
 	public EntityResult userDelete(Map<?, ?> keyMap) {
 		return this.daoHelper.delete(this.userDao, keyMap);
+	}
+
+	@Override
+	public EntityResult newRandomPass(String username) {
+		String pass = genPass();
+		Map<String, Object> attrMap = new HashMap<>();
+		attrMap.put("PASSWORD",pass);
+		Map<String, Object> keyMap = new HashMap<>();
+		keyMap.put("USER_",username);
+		EntityResult e = this.daoHelper.update(this.userDao,attrMap ,keyMap);
+		return e;
+	}
+
+	private String genPass(){
+		String password = new Random().ints(16, 33, 122).collect(StringBuilder::new,
+						StringBuilder::appendCodePoint, StringBuilder::append)
+				.toString();
+		return password;
 	}
 
 }
