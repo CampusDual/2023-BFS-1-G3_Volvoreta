@@ -39,9 +39,8 @@ public class UserRestController extends ORestController<IUserService> {
 			value = "/genPass",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<EntityResult> genPass(@RequestBody String user_) {
-		this.userSrv.newRandomPass(user_);
-		return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity genPass(@RequestBody String user_) {
+		return this.userSrv.newRandomPass(user_);
 	}
 
 }

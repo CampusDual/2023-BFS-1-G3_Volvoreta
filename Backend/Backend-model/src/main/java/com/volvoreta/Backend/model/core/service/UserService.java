@@ -1,11 +1,12 @@
 package com.volvoreta.Backend.model.core.service;
 
 
-import java.sql.Timestamp;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.volvoreta.Backend.api.core.service.IUserService;
@@ -46,21 +47,29 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public EntityResult newRandomPass(String username) {
+	public ResponseEntity newRandomPass(String username) {
 		String pass = genPass();
 		Map<String, Object> attrMap = new HashMap<>();
 		attrMap.put("PASSWORD",pass);
 		Map<String, Object> keyMap = new HashMap<>();
 		keyMap.put("USER_",username);
-		EntityResult e = this.daoHelper.update(this.userDao,attrMap ,keyMap);
-		return e;
+
+		EntityResult resEntityUpdatePasss = this.daoHelper.update(this.userDao,attrMap ,keyMap);
+
+		if (resEntityUpdatePasss.getCode() == 1) {
+			return ResponseEntity.badRequest()
+					.body("No ha sido posible cambiar la contraseña");
+		}
+
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("{\"password\": "+ "\"" + pass + "\"" + "}");
+
 	}
 
 	private String genPass(){
-		String password = new Random().ints(16, 33, 122).collect(StringBuilder::new,
+		return new Random().ints(16, 33, 122).collect(StringBuilder::new,
 						StringBuilder::appendCodePoint, StringBuilder::append)
 				.toString();
-		return password;
 	}
 
 }
