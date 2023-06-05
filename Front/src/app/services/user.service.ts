@@ -1,12 +1,7 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable, throwError } from "rxjs";
-import { tap, map, catchError } from "rxjs/operators";
-import { formatDate, registerLocaleData } from "@angular/common";
-import localerES from "@angular/common/locales/es";
-import { AuthService, OntimizeService } from 'ontimize-web-ngx';
+import { AuthService } from 'ontimize-web-ngx';
 
 
 @Injectable({ providedIn: 'root' })
