@@ -67,7 +67,7 @@ public class UserService implements IUserService {
 	}
 
 	private String genPass(){
-		return new Random().ints(16, 33, 122).collect(StringBuilder::new,
+		return new Random().ints(16, 40, 129).collect(StringBuilder::new,
 						StringBuilder::appendCodePoint, StringBuilder::append)
 				.toString();
 	}
