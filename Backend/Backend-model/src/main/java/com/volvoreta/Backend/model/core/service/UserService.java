@@ -67,9 +67,15 @@ public class UserService implements IUserService {
 	}
 
 	private String genPass(){
-		return new Random().ints(16, 40, 129).collect(StringBuilder::new,
+		String pass = new Random().ints(16, 40, 129).collect(StringBuilder::new,
 						StringBuilder::appendCodePoint, StringBuilder::append)
 				.toString();
+		while(pass.contains("/") || pass.contains("\\")){
+			pass = new Random().ints(16, 40, 129).collect(StringBuilder::new,
+							StringBuilder::appendCodePoint, StringBuilder::append)
+					.toString();
+		}
+		return pass;
 	}
 
 }
