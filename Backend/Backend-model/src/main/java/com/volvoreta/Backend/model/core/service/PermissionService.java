@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class PermissionService implements IPermissionService {
 
-	public static final String PLANNER_PERMISSION_SECURITY = "{\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }]}";
-
+	public static final String PLANNER_PERMISSION_SECURITY = "{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }]," +
+			"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }]}";
 	@Override
 	public EntityResult permissionQuery(Map<String, Object> keyMap, List<String> attrList)
 			throws OntimizeJEERuntimeException {
