@@ -1,6 +1,7 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, OntimizeService } from 'ontimize-web-ngx';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'home',
@@ -8,26 +9,39 @@ import { AuthService, OntimizeService } from 'ontimize-web-ngx';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  user: any;
-  name: any;
-  role: any;
-
+  wellcome: string;
   nameUser : string = this.authService.getSessionInfo().user;
-
+  
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
     @Inject(AuthService) private authService: AuthService,
     public injector: Injector,
-    private ontimizeService: OntimizeService
+    private ontimizeService: OntimizeService,
+    private userService: UserService
   ) {
 
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
     this.ontimizeService.query({'USER_': this.nameUser}, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user').subscribe(
       res => {
-        this.user = res.data.pop();
-        this.name = this.user['NAME'] + " " + this.user['SURNAME1'];
-        this.role = this.user['ROLENAME'];
+        let user: any = res.data.pop();
+        //console.log(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'])
+        if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
+          let role: string;
+          if(user['ROLENAME'] == 'security'){
+            role = 'seguridad';
+          } else if(user['ROLENAME'] == 'maintenance'){
+            role = 'mantenimiento';
+          } else if(user['ROLENAME'] == 'user'){
+            role = 'usuario';
+          }
+          this.wellcome = "Bienvenid@ " + user['NAME'] + " " + user['SURNAME1'] + ",  con acceso de " + role; 
+          this.userService.setUserBD(this.wellcome);
+        
+        } else {
+          this.wellcome = "Welcome " + user['NAME'] + " " + user['SURNAME1'] + ", your access type is " + user['ROLENAME'];
+          this.userService.setUserBD(this.wellcome);
+        }
       },
       err => console.log(err)
 

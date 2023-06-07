@@ -54,6 +54,9 @@ public class UserService implements IUserService {
 		Map<String, Object> keyMap = new HashMap<>();
 		keyMap.put("USER_",username);
 
+		Map<String, Object> body = new HashMap<>();
+		body.put("password", pass);
+
 		EntityResult resEntityUpdatePasss = this.daoHelper.update(this.userDao,attrMap ,keyMap);
 
 		if (resEntityUpdatePasss.getCode() == 1) {
@@ -62,19 +65,20 @@ public class UserService implements IUserService {
 		}
 
 		return ResponseEntity.status(HttpStatus.OK)
-				.body("{\"password\": "+ "\"" + pass + "\"" + "}");
+				.body(body);
+		//"{\"password\": "+ "\"" + pass + "\"" + "}"
 
 	}
 
 	private String genPass(){
-		String pass = new Random().ints(16, 40, 129).collect(StringBuilder::new,
+		String pass = new Random().ints(16, 33, 122).collect(StringBuilder::new,
 						StringBuilder::appendCodePoint, StringBuilder::append)
 				.toString();
-		while(pass.contains("/") || pass.contains("\\")){
-			pass = new Random().ints(16, 40, 129).collect(StringBuilder::new,
-							StringBuilder::appendCodePoint, StringBuilder::append)
-					.toString();
-		}
+//		while(pass.contains("/") || pass.contains("\\")){
+//			pass = new Random().ints(16, 48, 122).collect(StringBuilder::new,
+//							StringBuilder::appendCodePoint, StringBuilder::append)
+//					.toString();
+//		}
 		return pass;
 	}
 

@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: #14148A !important;
 .input-padding{
     padding-right: 6px;
-  }
+}
+.navMenu, .sidenav-toggle-container, .footer-container, .mat-drawer-inner-container{
+  background-color: #14148A !important;
+}
+.mat-raised-button.mat-button-base.mat-primary{
+  background-color: #14148A !important;
+}
+

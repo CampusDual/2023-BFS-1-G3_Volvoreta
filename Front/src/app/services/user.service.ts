@@ -12,10 +12,18 @@ export class UserService {
     private passwordBD: BehaviorSubject<PasswordInput> = new BehaviorSubject<PasswordInput>({password:""});
     private id = this.authService.getSessionInfo().id;
     private urlEndpoint: string = 'http://localhost:33333/users';
-    private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id})
+    private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id});
+    private userBD: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
     
     constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService) { }
 
+    getUserBD():Observable<any>{
+        return this.userBD.asObservable();
+    }
+    setUserBD(wellcome: any){
+        return this.userBD.next(wellcome);
+    }
+    
     getPasswordBD():Observable<PasswordInput>{
         return this.passwordBD.asObservable();
     }

@@ -1,12 +1,12 @@
 <o-form service="users" entity="user" keys="USER_" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-text-input #user attr="USER_" sql-type="VARCHAR" enabled="yes" required="yes"></o-text-input>
+  <o-text-input #user attr="USER_" sql-type="VARCHAR" enabled="no" required="yes"></o-text-input>
   <o-row>
 
     <o-column title-label="USER_PERSONAL_INFORMATION" fxFlex>
       <o-row>
-        <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
-        <o-text-input class="input-padding" attr="SURNAME1" fxFlex="40" required="yes"></o-text-input>
-        <o-text-input class="input-padding" attr="SURNAME2" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="NAME" enabled="no" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="SURNAME1" enabled="no" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="SURNAME2" enabled="no" fxFlex="40" required="yes"></o-text-input>
       </o-row>
       <o-row>
         <o-nif-input attr="NIF" class="input-padding" fxFlex="40" enabled="no"></o-nif-input>
