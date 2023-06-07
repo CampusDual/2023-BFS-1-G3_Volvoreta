@@ -13,15 +13,16 @@ export class UserService {
     private id = this.authService.getSessionInfo().id;
     private urlEndpoint: string = 'http://localhost:33333/users';
     private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id});
-    private userBD: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
+    private wellcome: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
     
     constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService) { }
 
-    getUserBD():Observable<any>{
-        return this.userBD.asObservable();
+    getWellcome():Observable<any>{
+        // console.log(this.wellcome.asObservable())
+        return this.wellcome.asObservable();
     }
-    setUserBD(wellcome: any){
-        return this.userBD.next(wellcome);
+    setWellcome(wellcome: any){
+        return this.wellcome.next(wellcome);
     }
     
     getPasswordBD():Observable<PasswordInput>{

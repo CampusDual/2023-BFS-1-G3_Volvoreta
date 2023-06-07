@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
           } else if(user['ROLENAME'] == 'user'){
             role = 'usuario';
           }
-          this.wellcome = "Bienvenid@ " + user['NAME'] + " " + user['SURNAME1'] + ",  con acceso de " + role; 
-          this.userService.setUserBD(this.wellcome);
+          this.wellcome = "Bienvenid@, " + user['NAME'] + " " + user['SURNAME1'] + ";  acceso: " + role; 
+          this.userService.setWellcome(this.wellcome);
         
         } else {
-          this.wellcome = "Welcome " + user['NAME'] + " " + user['SURNAME1'] + ", your access type is " + user['ROLENAME'];
-          this.userService.setUserBD(this.wellcome);
+          this.wellcome = "Welcome, " + user['NAME'] + " " + user['SURNAME1'] + "; access type: " + user['ROLENAME'];
+          this.userService.setWellcome(this.wellcome);
         }
       },
       err => console.log(err)

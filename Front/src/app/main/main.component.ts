@@ -10,7 +10,6 @@ export class MainComponent {
   wellcome: string;
 
   constructor(private userService: UserService){ 
-    userService.getUserBD().subscribe(data => this.wellcome = data);
-    console.log(this.wellcome);
+    userService.getWellcome().subscribe(data => this.wellcome = data);
   }
 }
