@@ -21,7 +21,9 @@ export const routes: Routes = [
               // restrictedPermissionsRedirect: '403',
             }
           } 
-      }
+      },
+      { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)},
+
     ]
   }
 ];

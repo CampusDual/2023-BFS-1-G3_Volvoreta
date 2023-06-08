@@ -1,6 +1,7 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, OntimizeService } from 'ontimize-web-ngx';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     @Inject(AuthService) private authService: AuthService,
     public injector: Injector,
     private ontimizeService: OntimizeService,
-    private userService: UserService
+    private userService: UserService,
   ) {
 
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
@@ -46,10 +47,12 @@ export class HomeComponent implements OnInit {
       err => console.log(err)
 
     );
-  }
+
+   }
 
   ngOnInit() {
     // nothing to do
+
   }
 
   navigate() {
