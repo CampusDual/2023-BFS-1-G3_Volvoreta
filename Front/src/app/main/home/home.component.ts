@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
             role = 'seguridad';
           } else if(user['ROLENAME'] == 'maintenance'){
             role = 'mantenimiento';
-          } else if(user['ROLENAME'] == 'user'){
+          } else {
             role = 'usuario';
           }
           this.wellcome = "Bienvenid@, " + user['NAME'] + " " + user['SURNAME1'] + ";  acceso: " + role; 

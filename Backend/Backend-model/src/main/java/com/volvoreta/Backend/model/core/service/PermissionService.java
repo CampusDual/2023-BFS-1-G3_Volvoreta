@@ -19,8 +19,22 @@ import java.util.Map;
 @Lazy
 public class PermissionService implements IPermissionService {
 
-	public static final String PLANNER_PERMISSION_SECURITY = "{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }]," +
-			"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }]}";
+	public static final String PLANNER_PERMISSION_USER =
+			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
+			"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
+	public static final String PLANNER_PERMISSION_SECURITY =
+			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": true }," +
+					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
+					"\"menu\": [{ \"attr\": \"users\", \"visible\": true, \"enabled\": true }, " +
+					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
+	public static final String PLANNER_PERMISSION_MAINTENANCE =
+			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"products-permissions\", \"enabled\": true }]," +
+					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"products\", \"visible\": true, \"enabled\": true }]}";
+
 	@Override
 	public EntityResult permissionQuery(Map<String, Object> keyMap, List<String> attrList)
 			throws OntimizeJEERuntimeException {
@@ -28,9 +42,21 @@ public class PermissionService implements IPermissionService {
 		EntityResult e = new EntityResultMapImpl();
 		Map<String, String> map = new HashMap<>();
 		String role = authentication.getAuthorities().toArray()[0].toString();
-		if (!role.equals("security")) {
+
+		if (role.equals("user")) {
+			map.put("permission", PermissionService.PLANNER_PERMISSION_USER);
+		} else if(role.equals("security")){
 			map.put("permission", PermissionService.PLANNER_PERMISSION_SECURITY);
+		} else if(role.equals("maintenance")){
+			map.put("permission", PermissionService.PLANNER_PERMISSION_MAINTENANCE);
 		}
+
+//		if (!role.equals("security")) {
+//			map.put("permission", PermissionService.PLANNER_PERMISSION_SECURITY);
+//		}
+//		else if (!role.equals("maintenance")){
+//			map.put("permission", PermissionService.PLANNER_PERMISSION_MAINTENANCE);
+//		}
 		e.addRecord(map);
 		return e;
 	}
