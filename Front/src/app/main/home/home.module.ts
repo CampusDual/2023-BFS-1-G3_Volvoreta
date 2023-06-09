@@ -4,7 +4,6 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { SharedModule } from '../../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { ProductsHomeComponent } from '../products/products-home/products-home.component';
 
 @NgModule({
   imports: [
@@ -13,8 +12,7 @@ import { ProductsHomeComponent } from '../products/products-home/products-home.c
     HomeRoutingModule
   ],
   declarations: [
-    HomeComponent,
-    ProductsHomeComponent
+    HomeComponent
   ]
 })
 export class HomeModule { }

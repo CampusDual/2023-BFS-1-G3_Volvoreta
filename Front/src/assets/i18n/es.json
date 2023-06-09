@@ -29,5 +29,6 @@
   "ROLENAME": "Rol",
   "ID_ROLENAME": "Id rol",
   "CUSTOMER_PERSONAL_INFORMATION": "Información personal",
-  "USER_": "Id. usuario"
+  "USER_": "Id. usuario",
+  "PRODUCTS": "Productos"
 }

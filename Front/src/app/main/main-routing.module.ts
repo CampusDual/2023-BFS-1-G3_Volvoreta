@@ -22,8 +22,15 @@ export const routes: Routes = [
             }
           } 
       },
-      { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)},
-
+      { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule), 
+          data: {
+            oPermission: {
+              permissionId: 'products-permissions',
+              restrictedPermissionsRedirect: '/main/home',
+              // restrictedPermissionsRedirect: '403',
+            }
+          } 
+      }
     ]
   }
 ];
