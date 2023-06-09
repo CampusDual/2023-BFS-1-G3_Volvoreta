@@ -47,9 +47,14 @@
     .wrapp-login {
       width: 640px;
       min-height: 100%;
-
+      
       .login-inner-container {
         width: 100%;
+        
+        .logo-img {
+          width: 40%;
+          // height: 150%;
+        }
 
         form {
           padding: 16px;
@@ -70,7 +75,7 @@
         .session-expired {
           text-align: center;
         }
-
+        
         .login-title-container {
           margin-top: 64px;
         }
