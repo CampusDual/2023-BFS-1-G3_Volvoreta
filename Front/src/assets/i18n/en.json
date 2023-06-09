@@ -30,5 +30,10 @@
   "ID_ROLENAME": "Id role",
   "CUSTOMER_PERSONAL_INFORMATION": "Personal Information",
   "USER_": "User id",
-  "PRODUCTS": "Products"
+  "PRODUCTS": "Products",
+  "STOCK": "Stock",
+  "PRICE": "Price",
+  "ACTIVE": "Active",
+  "STATE": "State",
+  "DATE_ADDED": "Date added"
 }

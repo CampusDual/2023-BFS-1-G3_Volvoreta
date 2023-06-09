@@ -30,5 +30,10 @@
   "ID_ROLENAME": "Id rol",
   "CUSTOMER_PERSONAL_INFORMATION": "Información personal",
   "USER_": "Id. usuario",
-  "PRODUCTS": "Productos"
+  "PRODUCTS": "Productos",
+  "STOCK": "Stock",
+  "PRICE": "Precio",
+  "ACTIVE": "Activo",
+  "STATE": "Estado",
+  "DATE_ADDED": "Agregado con fecha "
 }
