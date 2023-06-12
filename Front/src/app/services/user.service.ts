@@ -1,9 +1,11 @@
 import { Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { AuthService, Observable } from 'ontimize-web-ngx';
+import { AuthService, Observable, OntimizeService } from 'ontimize-web-ngx';
 import { PasswordInput } from '../main/users/users-detail/users-detail.component';
 import { BehaviorSubject } from 'rxjs';
+import { User } from '../models/user';
+import { OResponse } from '../models/response';
 
 
 @Injectable({ providedIn: 'root' })
@@ -14,8 +16,16 @@ export class UserService {
     private urlEndpoint: string = 'http://localhost:33333/users';
     private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id});
     private wellcome: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
-    
-    constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService) { }
+    nameUser : string = this.authService.getSessionInfo().user;
+
+    constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService,
+    private ontimizeService: OntimizeService,) { }
+
+
+    getUser():Observable<OResponse>{
+        this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
+        return this.ontimizeService.query({'USER_': this.nameUser}, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user');
+    }
 
     getWellcome():Observable<any>{
         // console.log(this.wellcome.asObservable())
