@@ -35,5 +35,6 @@
   "PRICE": "Precio",
   "ACTIVE": "Activo",
   "STATE": "Estado",
-  "DATE_ADDED": "Agregado con fecha "
+  "DATE_ADDED": "Agregado con fecha ",
+  "BODY": "Descripción"
 }

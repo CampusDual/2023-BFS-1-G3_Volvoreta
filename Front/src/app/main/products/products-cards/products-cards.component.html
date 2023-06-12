@@ -9,7 +9,7 @@ insert-table="yes" refresh-button="true" insert-button="false"
   quick-filter="no" row-height="small" detail-mode="none"> 
 
   <o-list-item *ngFor="let row of list.dataArray">
-    <o-list-item-card-image title="{{ row.NAME }}" subtitle="{{ row.PRICE }}" content="{{ row.BODY }}" 
+    <o-list-item-card-image title="{{ row.NAME }}" subtitle="{{ row.PRICE }} €" content="{{ row.BODY }}" 
     image="data:image/png;base64,{{ row.PHOTO }}" collapsible="false" collapsed="true" sql-type="varchar"> 
     </o-list-item-card-image>
   </o-list-item>

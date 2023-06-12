@@ -35,5 +35,6 @@
   "PRICE": "Price",
   "ACTIVE": "Active",
   "STATE": "State",
-  "DATE_ADDED": "Date added"
+  "DATE_ADDED": "Date added",
+  "BODY": "Description"
 }
