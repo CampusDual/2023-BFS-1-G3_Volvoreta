@@ -1,15 +1,15 @@
-<o-form service="products" entity="product" keys="ID" header-actions="R;I;U;D" show-header-navigation="no">
+<o-form #detailProduct service="products" entity="product" keys="ID" header-actions="R;I;U;D" show-header-navigation="no">
     <!-- <o-text-input attr="ID" sql-type="INTEGER" enabled="no"></o-text-input> -->
     <o-row>
       <o-column>
-        <o-image id="PRODUCT_PHOTO" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="OTHER"></o-image>
+        <o-image attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
       </o-column>
       <o-column title-label="PRODUCT_INFORMATION" fxFlex>
         <o-row>
           <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
         </o-row>
         <o-row>
-          <o-integer-input attr="ID" class="input-padding" fxFlex="40" required="yes"></o-integer-input>
+          <o-integer-input attr="ID" class="input-padding" fxFlex="40" required="yes" enabled="no"></o-integer-input>
           <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
           <o-date-input attr="DATE_ADDED" fxFlex></o-date-input>
         </o-row>

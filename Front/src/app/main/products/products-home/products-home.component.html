@@ -1,37 +1,11 @@
-<!-- <o-table attr="products" id="gridProducts" service="products" entity="product"
-columns="ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE"
-  visible-columns="ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE"
-  editable-columns="ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE"
-  sort-columns="NAME" keys="ID" parent-keys="n:NAME;ID"
-  query-on-init="true" query-rows="6" quick-filter="yes" insert-table="yes">
-
-  <o-table-column attr="IMAGE" orderable="no" searchable="no" type="image"
-    image-type="base64" empty-image="assets/images/login_bg.jpg" avatar="yes">
-  </o-table-column>
-  <o-table-column attr="NAME" title="NAME"></o-table-column>
-  <o-table-column attr="STARTDATE" title="STARTDATE" type="date"
-    format="MM/DD/YYYY HH:mm:ss">
-  </o-table-column>
-  <o-table-column attr="ID" title="TYPE" editable="true">
-    <o-table-cell-renderer-service entity="ECustomerTypes"
-      value-column="ID"
-      columns="ID;STOCK" visible-columns="STOCK">
-    </o-table-cell-renderer-service>
-  </o-table-column>
-  <o-table-column attr="PRICE" title="PRICE" type="price"
-    currency-symbol="€" currency-symbol-position="right" grouping="yes"
-    thousand-separator="." decimal-separator="," max-decimal-digits="2">
-  </o-table-column>
-</o-table> -->
-
-
-
 <o-table attr="products" service="products" entity="product" keys="ID" sort-columns="NAME:DESC"
-columns="ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE" columns="IMAGE;ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE" query-on-init="true"
-query-rows="20" quick-filter="yes" insert-table="yes">
-<o-table-column attr="NAME" orderable="yes" searchable="no" type="string">
-</o-table-column>
-<o-table-column attr="IMAGE" orderable="no" searchable="no" type="image"
-image-type="base64" empty-image="assets/images/login_bg.jpg" avatar="yes">
-</o-table-column>
+  columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE" columns="PHOTO;ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE"
+  query-on-init="true" query-rows="20" quick-filter="yes" insert-table="yes">
+  <o-table-column attr="NAME" orderable="yes" searchable="no" type="string">
+  </o-table-column>
+  <o-table-column attr="PHOTO" orderable="no" searchable="no" type="image" image-type="base64"
+    empty-image="assets/images/login_bg.jpg" avatar="yes">
+  </o-table-column>
+  <o-table-column attr="DATE_ADDED" orderable="yes" searchable="no" type="date">
+  </o-table-column>
 </o-table>
