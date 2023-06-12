@@ -1,0 +1,42 @@
+<!-- <o-list #list #list attr="list" title="List" service="products" entity="product" keys="ID" sort-columns="NAME:DESC"
+columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE"
+columns="PHOTO;ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE" query-on-init="true"
+insert-table="yes" refresh-button="true" insert-button="false"
+  quick-filter="no" row-height="medium" detail-mode="none"> -->
+
+<!-- <o-list #list attr="list" title="List" service="products" entity="product" columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE" keys="ID"
+  refresh-button="false" insert-button="false"
+  > 
+
+  <o-list-item *ngFor="let row of list.dataArray">
+    <o-list-item-card-image title="{{ row.NAME }}" subtitle="{{ row.PRICE }}" content="{{ row.BODY }}" 
+      collapsible="false" collapsed="true" >
+      <o-row>
+        <o-image attr="{{ PHOTO }}" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
+      </o-row>      
+    </o-list-item-card-image>
+  </o-list-item>
+
+</o-list>
+
+<p>hola</p> -->
+
+<o-list #list attr="productList" title="List" service="products" entity="product"  keys="ID" columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE">  
+    <mat-card *ngFor="let rowData of list.dataArray" [o-list-item]="rowData">    
+        <mat-card-header>      
+            <div mat-card-avatar>        
+                <o-image attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="varchar" show-controls="false" height="50%" width="30%"></o-image>
+                </div>      
+                <mat-card-title>
+
+                </mat-card-title>      
+                <mat-card-subtitle>
+
+                </mat-card-subtitle>    
+            </mat-card-header>    
+            <mat-card-content>      
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>    
+</mat-card-content>  
+</mat-card>
+</o-list>

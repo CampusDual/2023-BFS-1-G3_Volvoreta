@@ -6,4 +6,5 @@ export class Products {
     active: boolean;
     state: string;
     date_add?: Date;
+    body?: string;
 }

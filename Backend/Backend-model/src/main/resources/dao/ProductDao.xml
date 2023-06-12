@@ -22,6 +22,7 @@
                 <Column>ACTIVE</Column>
                 <Column>STATE</Column>
                 <Column>DATE_ADDED</Column>
+                <Column>BODY</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
