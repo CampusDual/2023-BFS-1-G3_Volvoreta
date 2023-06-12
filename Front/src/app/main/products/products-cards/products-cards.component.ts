@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-products-cards',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsCardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
+
+  ngAfterContentChecked() {
+    this.cd.detectChanges();
+  }
 
   ngOnInit() {
   }
