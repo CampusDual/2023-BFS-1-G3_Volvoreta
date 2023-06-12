@@ -1,6 +1,7 @@
-<o-table attr="products" service="products" entity="product" keys="ID" sort-columns="NAME:DESC"
-  columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE;BODY"
-  columns="PHOTO;ID;NAME;STOCK;PRICE;ACTIVE;DATE_ADDED;STATE;BODY" query-on-init="true" query-rows="20" quick-filter="yes"
+<o-table attr="product" service="products" entity="product" keys="ID" sort-columns="NAME:DESC"
+  columns="PHOTO;ID;NAME;STATE;PRICE;STOCK;DATE_ADDED;ACTIVE;BODY" 
+  visible-columns="PHOTO;ID;NAME;STATE;PRICE;STOCK;DATE_ADDED;ACTIVE" query-on-init="true"
+  query-on-init="true" query-rows="20" quick-filter="yes"
   insert-table="yes">
   <o-table-column attr="NAME" orderable="yes" searchable="no" type="string">
   </o-table-column>
