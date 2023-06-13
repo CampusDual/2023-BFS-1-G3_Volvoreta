@@ -18,7 +18,8 @@
           <o-integer-input attr="PRICE" class="input-padding" step="0" grouping="no" fxFlex="60"></o-integer-input>
         </o-row>
         <o-row>
-          <o-integer-input attr="ACTIVE" required="yes" fxFlex="60"></o-integer-input>
+          <!-- <o-integer-input attr="ACTIVE" required="yes" fxFlex="60"></o-integer-input> -->
+          <o-slide-toggle attr="ACTIVE" label="ACTIVE" [data]="1" boolean-type="number" read-only="no"></o-slide-toggle>
         </o-row>
       </o-column>
     </o-row>

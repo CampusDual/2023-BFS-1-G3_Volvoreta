@@ -7,20 +7,27 @@
       <o-column class="productInformation" title-label="PRODUCT_INFORMATION" fxFlex>
         <o-row>
           <o-integer-input attr="ID" class="input-padding" fxFlex="40" required="yes" enabled="no"></o-integer-input>
-          <o-date-input attr="DATE_ADDED" fxFlex="40"></o-date-input>
+          <o-slide-toggle attr="ACTIVE" label="ACTIVE" [data]="1" boolean-type="number" read-only="no"></o-slide-toggle>
         </o-row>
         <o-row>
           <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
-          <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="20"></o-integer-input>
-          <o-text-input attr="STATE" class="input-padding" step="0" grouping="no" fxFlex="20"></o-text-input>
+          <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
         </o-row>
         <o-row>
+            <o-textbonocultura-input attr="STATE_NAME" class="input-padding" step="0" grouping="no" fxFlex="40"></o-textbonocultura-input>
+            
+            
+            
             <o-integer-input attr="PRICE" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
-            <o-text-input attr="ACTIVE" fxFlex="40"></o-text-input>
+            <!-- <o-text-input attr="ACTIVE" fxFlex="40"></o-text-input> -->
         </o-row>
         <o-row>
-          <o-text-input attr="BODY" class="input-padding" step="0" grouping="no" fxFlex></o-text-input>
+            <o-date-input attr="DATE_ADDED" fxFlex="40"></o-date-input>
+        </o-row>
+        <o-row>
+            <o-text-input attr="BODY" class="input-padding" step="0" grouping="no" fxFlex></o-text-input>
         </o-row>
       </o-column>
     </o-row>
   </o-form>
+  

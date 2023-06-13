@@ -21,6 +21,7 @@ public class PermissionService implements IPermissionService {
 
 	public static final String PLANNER_PERMISSION_USER =
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"home-permissions\", \"enabled\": true }," +
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
 			"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
@@ -34,6 +35,12 @@ public class PermissionService implements IPermissionService {
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": true }]," +
 					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"products\", \"visible\": true, \"enabled\": true }]}";
+	public static final String PLANNER_PERMISSION_DEFAULT =
+			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"home-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
+					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
 
 	@Override
 	public EntityResult permissionQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -41,14 +48,19 @@ public class PermissionService implements IPermissionService {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		EntityResult e = new EntityResultMapImpl();
 		Map<String, String> map = new HashMap<>();
-		String role = authentication.getAuthorities().toArray()[0].toString();
+		String role = null;
+		if (authentication.getAuthorities().toArray().length > 0){
+			role = authentication.getAuthorities().toArray()[0].toString();
+		}
 
-		if (role.equals("user")) {
-			map.put("permission", PermissionService.PLANNER_PERMISSION_USER);
-		} else if(role.equals("security")){
+		if("security".equals(role)){
 			map.put("permission", PermissionService.PLANNER_PERMISSION_SECURITY);
-		} else if(role.equals("maintenance")){
+		} else if("maintenance".equals(role)){
 			map.put("permission", PermissionService.PLANNER_PERMISSION_MAINTENANCE);
+		} else if("user".equals(role)){
+			map.put("permission", PermissionService.PLANNER_PERMISSION_USER);
+		} else {
+			map.put("permission", PermissionService.PLANNER_PERMISSION_DEFAULT);
 		}
 
 //		if (!role.equals("security")) {

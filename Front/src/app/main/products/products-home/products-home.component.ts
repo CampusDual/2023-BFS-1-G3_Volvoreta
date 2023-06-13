@@ -8,16 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsHomeComponent implements OnInit {
 
-  // products: Products[]
-
   constructor() {
-
-    // this.productService.getAll().subscribe(({ data }: OResponse) => {
-    //   this.products = data
-    //   console.log(data)
-    // }
-    // )
-
   }
 
   ngOnInit() {

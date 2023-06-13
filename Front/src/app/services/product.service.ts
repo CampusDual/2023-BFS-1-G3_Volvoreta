@@ -6,7 +6,7 @@ import { OResponse } from "../models/response";
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-    constructor(@Inject(AuthService) private authService: AuthService,     private ontimizeService: OntimizeService){
+    constructor(@Inject(AuthService) private authService: AuthService, private ontimizeService: OntimizeService){
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
     }
 

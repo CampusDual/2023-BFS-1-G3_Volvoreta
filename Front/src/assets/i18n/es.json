@@ -32,9 +32,15 @@
   "USER_": "Id. usuario",
   "PRODUCTS": "Productos",
   "STOCK": "Stock",
-  "PRICE": "Precio",
+  "PRICE": "Precio €",
   "ACTIVE": "Activo",
   "STATE": "Estado",
   "DATE_ADDED": "Agregado con fecha ",
-  "BODY": "Descripción"
+  "BODY": "Descripción",
+  "STATE_NAME": "Estado",
+  "ID_STATE": "Id estado",
+  "semi-new": "Seminuevo",
+  "good condition": "Bueno",
+  "repaired": "Reparado",
+  "in repair": "En reparación"
 }
