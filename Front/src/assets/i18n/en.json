@@ -32,7 +32,7 @@
   "USER_": "User id",
   "PRODUCTS": "Products",
   "STOCK": "Stock",
-  "PRICE": "Price €",
+  "PRICE": "Price",
   "ACTIVE": "Active",
   "STATE": "State",
   "DATE_ADDED": "Date added",
@@ -42,5 +42,7 @@
   "semi-new": "Semi-new",
   "good condition": "Good condition",
   "repaired": "Repaired",
-  "in repair": "In repair"
+  "in repair": "In repair",
+  "true": "Yes",
+  "false": "No"
 }
