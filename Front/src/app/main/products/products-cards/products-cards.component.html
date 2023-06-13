@@ -1,7 +1,7 @@
 <!-- TODO title cambiar por variable para adecuar el idioma -->
 
 <o-list #list id="cardProduct" attr="list" title="Productos" service="products" entity="product"
-  columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE" keys="ID" refresh-button="false" insert-button="false"
+  columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE;BODY" keys="ID" refresh-button="false" insert-button="false"
   quick-filter="no" row-height="small" detail-mode="none">
 
   <o-list-item *ngFor="let row of list.dataArray">
