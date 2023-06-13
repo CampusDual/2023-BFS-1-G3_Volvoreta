@@ -14,9 +14,10 @@
           <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
         </o-row>
         <o-row>
-            <o-text-input attr="STATE_NAME" class="input-padding" step="0" grouping="no" fxFlex="40"></o-text-input>
+            <!-- <o-text-input attr="STATE_NAME" class="input-padding" step="0" grouping="no" fxFlex="40"></o-text-input> -->
             
-            
+            <o-combo attr="STATE" fxFlex="40" service="states" entity="state" keys="id_state" columns="id_state;state_name"
+      visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding"></o-combo>
             
             <o-integer-input attr="PRICE" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
             <!-- <o-text-input attr="ACTIVE" fxFlex="40"></o-text-input> -->
