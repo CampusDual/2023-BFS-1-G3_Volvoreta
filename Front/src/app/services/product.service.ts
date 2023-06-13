@@ -15,4 +15,8 @@ export class ProductService {
       
     }
 
+    getById(id: number): Observable<OResponse>{
+        return this.ontimizeService.query({'ID':id},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY'], 'product')
+    }
+
 }
