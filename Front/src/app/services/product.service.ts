@@ -11,7 +11,7 @@ export class ProductService {
     }
 
      getAll(): Observable<OResponse> {
-         return this.ontimizeService.query({},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE'], 'product')
+         return this.ontimizeService.query({},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY'], 'product')
       
     }
 

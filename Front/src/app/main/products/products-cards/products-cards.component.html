@@ -2,7 +2,7 @@
 
 <o-list #list id="cardProduct" attr="list" title="Productos" service="products" entity="product"
   columns="ID;NAME;STOCK;PRICE;PHOTO;ACTIVE;DATE_ADDED;STATE;BODY" keys="ID" refresh-button="false" insert-button="false"
-  quick-filter="no" row-height="small" detail-mode="none">
+  quick-filter="no" query-on-init="true" query-rows="12" pagination-controls="true"  row-height="small" detail-mode="none">
 
   <o-list-item *ngFor="let row of list.dataArray">
     <o-list-item-card-image title="{{ row.NAME }}" subtitle="{{ row.PRICE }} €" content="{{ row.BODY }}"
