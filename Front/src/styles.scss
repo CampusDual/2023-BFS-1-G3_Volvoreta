@@ -50,3 +50,45 @@ $primary: #14148A !important;
     object-fit: cover;
   }
 }
+
+/* Inicio CardProduct */
+
+#cardProduct .mat-list.mat-list.mat-list-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#cardProduct .o-list-item.o-list-item.ng-star-inserted {
+  width: 23%;
+}
+
+#cardProduct  .o-list-item-card-image .mat-card.small {
+	 width: 100%; 
+	 margin-left: 0;
+	 margin-right: 0; 
+
+   max-width: 330px;
+}
+
+#cardProduct .mat-card-title {
+	font-size: 1.1em;
+}
+
+/* Mobile*/
+@media screen and (max-width: 480px) {
+  #cardProduct .o-list-item.o-list-item.ng-star-inserted {
+    width: 100%;
+  }
+}
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #cardProduct .o-list-item.o-list-item.ng-star-inserted {
+    width: 45%;
+  }
+}
+
+
+/* FIN cardProduct*/
