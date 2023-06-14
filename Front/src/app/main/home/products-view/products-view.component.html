@@ -1,0 +1,18 @@
+<div class="container-product-view">
+  <div class="product-view-image">
+    <img [src]="imagePath" alt="Monitor" />
+  </div>
+  <div class="product-view-content">
+    <form [formGroup]="contentView">
+      <div>
+        <p><span>{{ 'NAME' | oTranslate }}:</span> {{ product.NAME }}</p>
+        <p><span>{{'STOCK' | oTranslate}}:</span> {{ product.STOCK }}</p>
+        <p><span>{{'BODY' | oTranslate}}:</span></p>
+        <p> {{ product.BODY }}</p>
+        <p><span>{{'PRICE' | oTranslate}}:</span> {{ product.PRICE }} €</p>
+        <o-button (onClick)="reserve()" attr="raised2" type="RAISED" label="reserve" translate="yes" layout-padding
+          color="primary"></o-button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ProductsCardsComponent } from '../products/products-cards/products-cards.component';
+import { ProductsViewComponent } from './products-view/products-view.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ProductsCardsComponent } from '../products/products-cards/products-card
   declarations: [
     HomeComponent,
     ProductsCardsComponent,
+    ProductsViewComponent
     
   ]
 })

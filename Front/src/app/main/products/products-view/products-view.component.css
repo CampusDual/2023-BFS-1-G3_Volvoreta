@@ -1,9 +1,0 @@
-.container-product-view{
-    display: flex;
-    gap: 2rem;
-}
-
-.product-view-image{
-    width: 300px;
-    height: 320px;
-}

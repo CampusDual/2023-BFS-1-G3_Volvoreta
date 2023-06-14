@@ -1,0 +1,30 @@
+.container-product-view{
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    min-height: 85vh;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.product-view-image {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: fit-content;
+    width: 350px;
+    height: 370px;
+}
+
+.product-view-image img{
+    width: 350px;
+    height: 370px;
+    object-fit: cover;
+}
+
+.product-view-content span {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+}
