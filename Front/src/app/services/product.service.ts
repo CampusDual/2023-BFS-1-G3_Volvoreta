@@ -12,13 +12,13 @@ export class ProductService {
 
      getAll(): Observable<OResponse> {
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
-        return this.ontimizeService.query({},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY', 'PHOTO'], 'product')
+        return this.ontimizeService.query({},['id', 'name', 'stock', 'price', 'state', 'body', 'photo'], 'product')
       
     }
 
     getById(id: number): Observable<OResponse>{
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
-        return this.ontimizeService.query({'ID': id},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY', 'PHOTO'], 'product')
+        return this.ontimizeService.query({'id': id},['id', 'name', 'stock', 'price', 'state', 'body', 'photo'], 'product')
     }
 
 }

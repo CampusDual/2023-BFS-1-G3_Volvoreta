@@ -1,22 +1,22 @@
-<o-table attr="products" service="products" entity="product" keys="ID" sort-columns="NAME:DESC"
-  columns="PHOTO;ID;NAME;STATE_NAME;PRICE;STOCK;DATE_ADDED;ACTIVE;BODY;STATE" 
-  visible-columns="PHOTO;ID;NAME;STATE_NAME;PRICE;STOCK;DATE_ADDED;ACTIVE" query-on-init="true"
+<o-table attr="products" service="products" entity="product" keys="id" sort-columns="name:DESC"
+  columns="photo;id;name;state_name;price;stock;date_added;active;body;state" 
+  visible-columns="photo;id;name;state_name;price;stock;date_added;active" query-on-init="true"
   query-on-init="true" query-rows="20" quick-filter="yes"
   insert-table="yes">
-  <o-table-column attr="NAME" orderable="yes" searchable="no" type="string">
+  <o-table-column attr="name" orderable="yes" searchable="no" type="string">
   </o-table-column>
-  <o-table-column attr="PHOTO" orderable="no" searchable="no" type="image" image-type="base64"
+  <o-table-column attr="photo" orderable="no" searchable="no" type="image" image-type="base64"
     empty-image="assets/images/login_bg.jpg" avatar="yes">
   </o-table-column>
-  <o-table-column attr="DATE_ADDED" orderable="yes" searchable="no" type="date">
+  <o-table-column attr="date_added" orderable="yes" searchable="no" type="date">
   </o-table-column>
-  <o-table-column attr="ACTIVE" title="ACTIVE">
+  <o-table-column attr="active" title="active">
     <o-table-cell-renderer-boolean render-true-value="task_alt" render-false-value="cancel" render-type="icon"
         boolean-type="boolean">
     </o-table-cell-renderer-boolean>
   </o-table-column>
-  <o-table-column attr="STATE_NAME">
+  <o-table-column attr="state_name">
     <o-table-cell-renderer-translate></o-table-cell-renderer-translate>
   </o-table-column>
-  <o-table-column attr="PRICE" title="PRICE" type="currency" thousand-separator="." decimal-separator="," currency-symbol="€" currency-symbol-position="right"></o-table-column>
+  <o-table-column attr="price" title="price" type="currency" thousand-separator="." decimal-separator="," currency-symbol="€" currency-symbol-position="right"></o-table-column>
 </o-table>

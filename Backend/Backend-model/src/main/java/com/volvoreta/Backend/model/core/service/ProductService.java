@@ -23,6 +23,10 @@ public class ProductService implements IProductService {
     public EntityResult productQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(productDao, keyMap, attrList);
     }
+    public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList) {
+        keyMap.put(ProductDao.ACTIVE, true);
+        return this.daoHelper.query(productDao, keyMap, attrList);
+    }
 
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productInsert(Map<?, ?> attrMap) {

@@ -23,8 +23,9 @@ export class UserService {
 
 
     getUser():Observable<OResponse>{
+        this.nameUser = this.authService.getSessionInfo().user;
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
-        return this.ontimizeService.query({'USER_': this.nameUser}, ['USER_', 'NAME', 'SURNAME1', 'ROLENAME'], 'user');
+        return this.ontimizeService.query({'user_': this.nameUser}, ['user_', 'name', 'surname1', 'rolename'], 'user');
     }
 
     getWellcome():Observable<any>{

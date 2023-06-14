@@ -23,7 +23,7 @@ export class ProductsCardsComponent implements OnInit {
   }
 
   showProduct(product: Products){
-    this.router.navigate(['/main/home/' + product.ID])
+    this.router.navigate(['/main/home/' + product.id])
   }
 
 }

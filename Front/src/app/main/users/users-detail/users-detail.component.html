@@ -1,15 +1,15 @@
-<o-form service="users" entity="user" keys="USER_" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-text-input #user attr="USER_" sql-type="VARCHAR" enabled="no" required="yes"></o-text-input>
+<o-form service="users" entity="user" keys="user_" header-actions="R;I;U;D" show-header-navigation="no">
+  <o-text-input #user attr="user_" enabled="no" required="yes"></o-text-input>
   <o-row>
 
     <o-column title-label="USER_PERSONAL_INFORMATION" fxFlex>
       <o-row>
-        <o-text-input class="input-padding" attr="NAME" enabled="no" fxFlex="40" required="yes"></o-text-input>
-        <o-text-input class="input-padding" attr="SURNAME1" enabled="no" fxFlex="40" required="yes"></o-text-input>
-        <o-text-input class="input-padding" attr="SURNAME2" enabled="no" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="name" enabled="no" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="surname1" enabled="no" fxFlex="40" required="yes"></o-text-input>
+        <o-text-input class="input-padding" attr="surname2" enabled="no" fxFlex="40" required="yes"></o-text-input>
       </o-row>
       <o-row>
-        <o-nif-input attr="NIF" class="input-padding" fxFlex="40" enabled="no"></o-nif-input>
+        <o-nif-input attr="nif" class="input-padding" fxFlex="40" enabled="no"></o-nif-input>
 
         <span class="my"><o-button attr="raised4" type="RAISED" label="Generar clave" layout-padding color="warn"
             (onClick)='pass(user.value.value)'></o-button></span>

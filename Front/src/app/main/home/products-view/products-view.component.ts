@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Products } from 'src/app/models/products';
 import { ProductService } from 'src/app/services/product.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -17,24 +17,29 @@ export class ProductsViewComponent implements OnInit {
   contentView: FormGroup = new FormGroup({});
   id: number;
   imagePath: SafeResourceUrl = "data:image/png;base64," + imageDefaulProdut
-  constructor(private productService: ProductService, private actRoute: ActivatedRoute, private _sanitizer: DomSanitizer) { }
+  constructor(
+    private productService: ProductService, 
+    private actRoute: ActivatedRoute, 
+    private _sanitizer: DomSanitizer,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    // Get ID param
+    // Get id param
     this.actRoute.params.subscribe((params: Params) => {
-      this.id = Number(params['ID'])
+      this.id = Number(params['id'])
     });
 
-    // Get product by ID
+    // Get product by id
     this.productService.getById(this.id).subscribe(res => {
 
       if (res.code === 0) {
         this.product = res.data[0]
 
-        this.imagePath = (this.product.PHOTO === undefined) || (this.product.PHOTO === null)
+        this.imagePath = (this.product.photo === undefined) || (this.product.photo === null)
           ? this.imagePath
           : this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
-            + this.product.PHOTO);
+            + this.product.photo);
       }
     }, err => console.log(err))
   }
@@ -42,5 +47,7 @@ export class ProductsViewComponent implements OnInit {
   reserve() {
       console.log('Reservao!!')
   }
-
+  turnback(){
+    this.router.navigate(['../../', 'home'], { relativeTo: this.actRoute });
+  }
 }

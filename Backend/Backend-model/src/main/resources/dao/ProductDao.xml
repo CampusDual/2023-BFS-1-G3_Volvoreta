@@ -3,36 +3,36 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="PRODUCTS"
+        catalog="" schema="${mainschema}" table="products"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
     <DeleteKeys>
-        <Column>ID</Column>
+        <Column>id</Column>
     </DeleteKeys>
     <UpdateKeys>
-        <Column>ID</Column>
+        <Column>id</Column>
     </UpdateKeys>
     <Queries>
         <Query id="default">
             <ValidColumns>
-                <Column>ID</Column>
-                <Column>NAME</Column>
-                <Column>STOCK</Column>
-                <Column>PRICE</Column>
-                <Column>PHOTO</Column>
-                <Column>ACTIVE</Column>
-                <Column>STATE</Column>
-                <Column>DATE_ADDED</Column>
-                <Column>BODY</Column>
-                <Column>ID_STATE</Column>
-                <Column>STATE_NAME</Column>
+                <Column>id</Column>
+                <Column>name</Column>
+                <Column>stock</Column>
+                <Column>price</Column>
+                <Column>photo</Column>
+                <Column>active</Column>
+                <Column>state</Column>
+                <Column>date_added</Column>
+                <Column>body</Column>
+                <Column>id_state</Column>
+                <Column>state_name</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.PRODUCTS tp
-                        LEFT JOIN ${mainschema}.STATE ts ON tp.STATE = ts.ID_STATE
+                        ${mainschema}.products tp
+                        LEFT JOIN ${mainschema}.state ts ON tp.state = ts.id_state
                     #WHERE#
                 ]]>
             </Sentence>

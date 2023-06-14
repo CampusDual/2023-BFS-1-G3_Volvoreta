@@ -50,9 +50,9 @@ public class UserService implements IUserService {
 	public ResponseEntity newRandomPass(String username) {
 		String pass = genPass();
 		Map<String, Object> attrMap = new HashMap<>();
-		attrMap.put("PASSWORD",pass);
+		attrMap.put("password",pass);
 		Map<String, Object> keyMap = new HashMap<>();
-		keyMap.put("USER_",username);
+		keyMap.put("user_",username);
 
 		Map<String, Object> body = new HashMap<>();
 		body.put("password", pass);

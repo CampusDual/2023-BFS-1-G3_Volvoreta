@@ -61,8 +61,11 @@ $primary: #14148A !important;
     height: 50%;
     object-fit: cover;
   }
+  
 }
-
+.mat-button-base:hover{
+  background-color: #bdcedb !important;
+}
 /* Inicio CardProduct */
 
 #cardProduct .mat-list.mat-list.mat-list-base {
