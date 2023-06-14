@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 $primary: #14148A !important;
-.input-padding{
-    padding-right: 6px;
+
+.input-padding {
+  padding-right: 6px;
 }
-.navMenu, .sidenav-toggle-container, .footer-container, .mat-drawer-inner-container{
+
+.navMenu,
+.sidenav-toggle-container,
+.footer-container,
+.mat-drawer-inner-container {
   background-color: #14148A !important;
 }
-.mat-raised-button.mat-button-base.mat-primary{
+
+.mat-raised-button.mat-button-base.mat-primary {
   background-color: #14148A !important;
 }
 
@@ -14,39 +20,115 @@ $primary: #14148A !important;
   background-color: #f5f5f5f5;
 }
 
-.container-item{
+.container-item {
   width: 100%;
-  height:100%;
+  height: 100%;
 
-  .name{
-    margin:8px 0;
+  .name {
+    margin: 8px 0;
     font-size: 0.9em;
   }
+
   .price,
   .domain,
   .stock,
   .body,
-  .website{
+  .website {
     font-size: 0.7em;
     display: flex;
     align-items: center;
-    color:#4b4b4b;
-    mat-icon{
-      padding-right:8px;
+    color: #4b4b4b;
+
+    mat-icon {
+      padding-right: 8px;
     }
-    span{
+
+    span {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       margin: 5px 0;
     }
   }
-  .mat-icon{
-    font-size:18px;
-    height: 18px;;
+
+  .mat-icon {
+    font-size: 18px;
+    height: 18px;
+    ;
   }
+
   img {
     height: 50%;
     object-fit: cover;
   }
 }
+
+/* Inicio CardProduct */
+
+#cardProduct .mat-list.mat-list.mat-list-base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+  // align-items: center;
+}
+
+#cardProduct .o-list-item.o-list-item.ng-star-inserted {
+  width: 23%;
+  max-height: 350px;
+}
+
+#cardProduct .o-list-item-card-image .mat-card.small {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 100%;
+  max-width: 330px;
+}
+
+#cardProduct .mat-card-title {
+  font-size: 1.1em;
+}
+
+.mat-card-image.ng-star-inserted {
+	height: 60%;
+	object-fit: contain;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.o-item-card.mat-card.small {
+  place-content: flex-start !important;
+  align-items: start !important;
+}
+
+.mat-card-content.ng-star-inserted p {
+  font-size: 1rem;
+}
+
+.o-list-container .mat-list .o-custom-list-item {
+	height: 100% !important;
+}
+
+.mat-list .mat-list-item.o-card-item, .mat-list .mat-list-item.o-card-item .mat-list-item-content {
+	height: 100% !important;
+}
+
+
+
+/* Mobile*/
+@media screen and (max-width: 480px) {
+  #cardProduct .o-list-item.o-list-item.ng-star-inserted {
+    width: 100%;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #cardProduct .o-list-item.o-list-item.ng-star-inserted {
+    width: 45%;
+  }
+}
+
+
+/* FIN cardProduct*/

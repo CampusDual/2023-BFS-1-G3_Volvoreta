@@ -6,13 +6,19 @@ import { OResponse } from "../models/response";
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-    constructor(@Inject(AuthService) private authService: AuthService, private ontimizeService: OntimizeService){
+  constructor(@Inject(AuthService) private authService: AuthService, private ontimizeService: OntimizeService){
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
     }
 
      getAll(): Observable<OResponse> {
-         return this.ontimizeService.query({},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE'], 'product')
+        this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
+        return this.ontimizeService.query({},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY', 'PHOTO'], 'product')
       
+    }
+
+    getById(id: number): Observable<OResponse>{
+        this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
+        return this.ontimizeService.query({'ID': id},['ID', 'NAME', 'STOCK', 'PRICE', 'STATE', 'BODY', 'PHOTO'], 'product')
     }
 
 }

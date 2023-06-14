@@ -1,10 +1,11 @@
 export class Products {
-    id: number;
-    name?: string;
-    stock?: number;
-    price?: number;
-    active: boolean;
-    state: string;
-    date_add?: Date;
-    body?: string;
+    ID: number;
+    NAME?: string;
+    STOCK?: number;
+    PRICE?: number;
+    ACTIVE: boolean;
+    STATE: string;
+    DATE_ADD?: Date;
+    BODY?: string;
+    PHOTO?: string;
 }

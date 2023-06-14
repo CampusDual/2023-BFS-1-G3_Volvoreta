@@ -14,7 +14,8 @@ import { ProductsCardsComponent } from '../products/products-cards/products-card
   ],
   declarations: [
     HomeComponent,
-    ProductsCardsComponent
+    ProductsCardsComponent,
+    
   ]
 })
 export class HomeModule { }
