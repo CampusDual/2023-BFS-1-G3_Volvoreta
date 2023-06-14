@@ -6,11 +6,7 @@
       <o-column class="productInformation" title-label="PRODUCT_INFORMATION" fxFlex>
         <o-row>
             <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
-            <!-- <o-integer-input attr="STATE" class="input-padding" step="0" grouping="no" required="yes" fxFlex="40"></o-integer-input> -->
-            <!--           <o-slide-toggle attr="ACTIVE" label-position="before" boolean-type="number" true-value="1" false-value="0"></o-slide-toggle> -->
-            <o-radio attr="ACTIVE" [static-data]="getDataArray()"
-            value-column="key" columns="key;value" visible-columns="value" read-only="no" required="yes"
-            layout="row" translate="yes"></o-radio> 
+            <o-slide-toggle attr="ACTIVE" label-position="before"></o-slide-toggle>
           </o-row>
         <o-row>
             <o-date-input attr="DATE_ADDED" fxFlex="60" required="yes"></o-date-input>
