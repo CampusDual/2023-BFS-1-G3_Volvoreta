@@ -36,5 +36,13 @@
   "ACTIVE": "Activo",
   "STATE": "Estado",
   "DATE_ADDED": "Agregado con fecha ",
-  "BODY": "Descripción"
+  "BODY": "Descripción",
+  "STATE_NAME": "Estado",
+  "ID_STATE": "Id estado",
+  "almost new": "Seminuevo",
+  "good condition": "Bueno",
+  "repaired": "Reparado",
+  "in repair": "En reparación",
+  "true": "Si",
+  "false": "No"
 }

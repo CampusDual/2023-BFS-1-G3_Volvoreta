@@ -15,7 +15,7 @@ export const CONFIG: Config = {
   uuid: 'com.ontimize.web.volvoreta',
 
   // Title of the app
-  title: 'Volvoreta',
+  title: 'VolVoreta',
 
   //  Language of the application.
   locale: 'es',

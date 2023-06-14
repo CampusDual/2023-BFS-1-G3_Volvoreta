@@ -23,13 +23,16 @@
                 <Column>STATE</Column>
                 <Column>DATE_ADDED</Column>
                 <Column>BODY</Column>
+                <Column>ID_STATE</Column>
+                <Column>STATE_NAME</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.PRODUCTS
+                        ${mainschema}.PRODUCTS tp
+                        LEFT JOIN ${mainschema}.STATE ts ON tp.STATE = ts.ID_STATE
                     #WHERE#
                 ]]>
             </Sentence>

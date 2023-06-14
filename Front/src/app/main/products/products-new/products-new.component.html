@@ -1,29 +1,30 @@
 <o-form #newProduct service="products" entity="product" keys="ID" header-actions="R;I;U;D" show-header-navigation="no">
-  <o-row>
-    <o-column>
-      <o-image id="PRODUCT_PHOTO" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
-    </o-column>
-    <o-column class="productInformation" title-label="PRODUCT_INFORMATION" fxFlex>
-      <o-row>
-        <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
-        <o-integer-input attr="STATE" class="input-padding" step="0" grouping="no" required="yes"
-          fxFlex="40"></o-integer-input>
+<o-row>
+      <o-column>
+        <o-image id="PRODUCT_PHOTO" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
+      </o-column>
+      <o-column class="productInformation" title-label="PRODUCT_INFORMATION" fxFlex>
+        <o-row>
+            <o-text-input class="input-padding" attr="NAME" fxFlex="40" required="yes"></o-text-input>
+            <o-slide-toggle attr="ACTIVE" label-position="before"></o-slide-toggle>
+          </o-row>
+        <o-row>
+            <o-date-input attr="DATE_ADDED" fxFlex="60" required="yes"></o-date-input>
+        </o-row>
+        <o-row>
+          <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="60"></o-integer-input>
+        </o-row>
+        <o-row>
+          <o-currency-input attr="PRICE" class="input-padding" step="0" grouping="no" fxFlex="60"></o-currency-input>
+        </o-row>
+        <o-row>
+          <!-- <o-integer-input attr="ACTIVE" required="yes" fxFlex="60"></o-integer-input> -->
+          <o-combo attr="STATE" fxFlex="60" service="states" entity="state" keys="id_state" columns="id_state;state_name"
+          visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding"></o-combo>
+        </o-row>
+        <o-row>
+          <o-textarea-input attr="BODY" class="input-padding" step="0" grouping="no" fxFlex="60"></o-textarea-input>
       </o-row>
-      <o-row>
-        <o-date-input attr="DATE_ADDED" fxFlex="60" required="yes"></o-date-input>
-      </o-row>
-      <o-row>
-        <o-integer-input attr="STOCK" class="input-padding" step="0" grouping="no" fxFlex="60"></o-integer-input>
-      </o-row>
-      <o-row>
-        <o-integer-input attr="PRICE" class="input-padding" step="0" grouping="no" fxFlex="60"></o-integer-input>
-      </o-row>
-      <o-row>
-        <o-text-input attr="BODY" class="input-padding" step="0" grouping="no" fxFlex></o-text-input>
-      </o-row>
-      <o-row>
-        <o-integer-input attr="ACTIVE" required="yes" fxFlex="60"></o-integer-input>
-      </o-row>
-    </o-column>
-  </o-row>
-</o-form>
+      </o-column>
+    </o-row>
+  </o-form>

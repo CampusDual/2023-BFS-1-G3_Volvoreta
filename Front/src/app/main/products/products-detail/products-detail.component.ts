@@ -8,6 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsDetailComponent implements OnInit {
 
   constructor() { }
+  getDataArray() {
+    const array: Array<Object> = [];
+    array.push({
+      'key': 0,
+      'value': 'false'
+    });
+    array.push({
+      'key': 1,
+      'value': 'true'
+    });
+    
+    return array;
+  }
 
   ngOnInit() {
   }

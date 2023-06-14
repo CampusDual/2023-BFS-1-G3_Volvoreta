@@ -12,7 +12,14 @@ export const routes: Routes = [
     canActivateChild: [PermissionsGuardService],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), 
+      data: {
+        oPermission: {
+          permissionId: 'home-permissions',
+          restrictedPermissionsRedirect: '/login',
+        }
+      } 
+    },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), 
           data: {
             oPermission: {
