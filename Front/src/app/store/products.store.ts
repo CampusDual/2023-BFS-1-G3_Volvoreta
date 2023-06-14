@@ -15,6 +15,4 @@ export class ProductsStore {
     clearPRoductDB(){
         this.productDB.next(new Products());
     }
-
-    
 }

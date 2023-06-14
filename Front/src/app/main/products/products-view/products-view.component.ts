@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Products } from 'src/app/models/products';
 import { ProductService } from 'src/app/services/product.service';
-import { ProductsStore } from 'src/app/store/products.store';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { imageDefaulProdut } from 'src/app/utils/constants';
 
 @Component({
   selector: 'app-products-view',
@@ -12,26 +12,30 @@ import { ProductsStore } from 'src/app/store/products.store';
 })
 export class ProductsViewComponent implements OnInit {
 
-  product: Products
-  
+  product: Products = new Products()
 
-  constructor(private productStore: ProductsStore, private productService: ProductService, private actRoute: ActivatedRoute) { 
+  id: number;
+  imagePath: SafeResourceUrl = "data:image/png;base64," + imageDefaulProdut
+  constructor(private productService: ProductService, private actRoute: ActivatedRoute, private _sanitizer: DomSanitizer) { }
 
-    // this.actRoute.queryParams.subscribe(params => {
-    //   console.log(""params)
-    //   if (params) {
-    //     const isDetail = params['ID'];
-    //     console.log(isDetail)
-    //   }
-    // });
-
-    this.productStore.getProductDB().subscribe(res => this.product = res)
-    //this.productService.getById()
-    console.log(this.product)
-
-  }
-
-  ngOnInit() {
+  ngOnInit() { 
+        // Get ID param
+        this.actRoute.params.subscribe((params: Params) => {
+          this.id = Number(params['ID'])
+        });
+    
+        // Get product by ID
+        this.productService.getById(this.id).subscribe(res => {
+    
+          if (res.code === 0) {
+            this.product = res.data[0]
+            
+            this.imagePath = (this.product.PHOTO === undefined) || (this.product.PHOTO === null) 
+            ? this.imagePath 
+            : this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+              + this.product.PHOTO);
+          }
+        }, err => console.log(err))
   }
 
 }

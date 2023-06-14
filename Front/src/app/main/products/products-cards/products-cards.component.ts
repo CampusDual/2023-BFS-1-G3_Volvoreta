@@ -20,10 +20,10 @@ export class ProductsCardsComponent implements OnInit {
   }
 
   showProduct(product: Products){
-    console.log(product.ID)
-    this.productStore.setProductDB(product);
-    this.router.navigate(['/main/products/product/' + product.ID])
+  //  this.productStore.setProductDB(product);
 
+  console.log('show product')
+    this.router.navigate(['/main/products/product/' + product.ID])
   }
 
 }

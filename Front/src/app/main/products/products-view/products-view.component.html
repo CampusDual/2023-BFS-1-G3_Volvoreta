@@ -1,6 +1,6 @@
-<!-- <div class="container-product-view">
+ <div class="container-product-view">
   <div class="product-view-image">
-    <img src="data:image/png;base64,{{ product.PHOTO }}" alt="Producto" />
+    <img [src]="imagePath" alt="Monitor" />
   </div>
   <div class="product-view-content">
     <p>ID: {{ product.ID }}</p>
@@ -9,11 +9,4 @@
     <p>Descripción: {{ product.BODY }}</p>
     <p>Precio: {{ product.PRICE }} €</p>
   </div>
-</div> -->
-
-<o-form attr="products_detail" service="products" entity="product" fxLayout="column" show-header="yes"
-  header-actions="R;I;U;D" #oDetailForm keys="ID" keys-sql-types="INTEGER"
-  show-header-navigation="yes">
-  <p attr="stock">Stock: {{ STOCK }}</p>
-  <p>Precio: {{ PRICE }}</p>
-</o-form>
+</div>

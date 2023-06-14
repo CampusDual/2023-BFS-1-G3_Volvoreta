@@ -7,4 +7,5 @@ export class Products {
     STATE: string;
     DATE_ADD?: Date;
     BODY?: string;
+    PHOTO?: string;
 }
