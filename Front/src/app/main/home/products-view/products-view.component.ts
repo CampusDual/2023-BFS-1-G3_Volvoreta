@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { imageDefaulProdut } from 'src/app/utils/constants';
 import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
 
 @Component({
   selector: 'app-products-view',
@@ -21,7 +23,8 @@ export class ProductsViewComponent implements OnInit {
     private productService: ProductService, 
     private actRoute: ActivatedRoute, 
     private _sanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog, 
   ) { }
 
   ngOnInit() {
@@ -44,9 +47,11 @@ export class ProductsViewComponent implements OnInit {
     }, err => console.log(err))
   }
 
-  reserve() {
-      console.log('Reservao!!')
+  reserve(value: string) {
+    let totalImport: number = Number(this.product.price) * Number(value);
+    this.dialog.open(ReserveDialogComponent, {data: {product: this.product, units: value, totalImport: totalImport}});
   }
+
   turnback(){
     this.router.navigate(['../../', 'home'], { relativeTo: this.actRoute });
   }
