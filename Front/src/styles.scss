@@ -92,6 +92,10 @@ $primary: #14148A !important;
 #cardProduct .mat-card-title {
   font-size: 1.1em;
 }
+.o-list-container .mat-list {
+	overflow: hidden !important;
+  padding-bottom: 2rem;
+}
 
 .mat-card-image.ng-star-inserted {
 	height: 60%;

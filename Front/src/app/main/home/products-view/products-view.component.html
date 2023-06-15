@@ -14,10 +14,17 @@
     </span>
   </button>
 </div>
+
 <div class="container-product-view">
-  <div class="product-view-image">
+  <div> 
+    <div class="product-view-image">
     <img [src]="imagePath" alt="photo" translate="yes"/>
+    
   </div>
+  <o-button (onClick)="reserve()" attr="raised2" type="RAISED" label="reserve" translate="yes" layout-padding
+          color="primary"></o-button>
+</div>
+ 
   <div class="product-view-content">
     <form [formGroup]="contentView">
       <div>
@@ -26,9 +33,7 @@
         <p><span>{{'price' | oTranslate}}:</span> {{ product.price }} €</p>
         <p><span>{{'body' | oTranslate}}:</span></p>
         <p> {{ product.body }}</p>
-        <o-button (onClick)="reserve()" attr="raised2" type="RAISED" label="reserve" translate="yes" layout-padding
-          color="primary"></o-button>
-        </div>
+      </div>
     </form>
   </div>
 </div>
