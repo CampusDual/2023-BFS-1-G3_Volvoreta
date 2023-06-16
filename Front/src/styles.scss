@@ -61,8 +61,11 @@ $primary: #14148A !important;
     height: 50%;
     object-fit: cover;
   }
+  
 }
-
+.mat-button-base:hover{
+  background-color: #bdcedb !important;
+}
 /* Inicio CardProduct */
 
 #cardProduct .mat-list.mat-list.mat-list-base {
@@ -89,9 +92,13 @@ $primary: #14148A !important;
 #cardProduct .mat-card-title {
   font-size: 1.1em;
 }
+.o-list-container .mat-list {
+	overflow: hidden !important;
+  padding-bottom: 2rem;
+}
 
 .mat-card-image.ng-star-inserted {
-	height: 60%;
+	height: 50%;
 	object-fit: contain;
   padding: 1rem;
   box-sizing: border-box;
@@ -114,7 +121,17 @@ $primary: #14148A !important;
 	height: 100% !important;
 }
 
-
+.back{
+  display: flex;
+  /* width: 100%; */
+  /* height: 2%; */
+  margin-top: 1%;
+  margin-bottom: 2%;
+  background-color: #ECEFF1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem;
+  border-radius: 2px;
+}
 
 /* Mobile*/
 @media screen and (max-width: 480px) {

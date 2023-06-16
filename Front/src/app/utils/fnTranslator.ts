@@ -10,21 +10,21 @@ export class FnTranslator {
         // console.log(localStorage)
         if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
             let role: string;
-            if (user.ROLENAME == 'security') {
+            if (user.rolename == 'security') {
                 role = 'seguridad';
-            } else if (user.ROLENAME == 'maintenance') {
+            } else if (user.rolename == 'maintenance') {
                 role = 'mantenimiento';
-            } else if (user.ROLENAME == 'user'){
+            } else if (user.rolename == 'user'){
                 role = 'usuario';
             } else {
                 role = 'no autorizado';
             }
-            return "Bienvenid@, " + user.NAME + " " + user.SURNAME1 + ";  acceso: " + role;
+            return "Bienvenid@, " + user.name + " " + user.surname1 + ";  acceso: " + role;
         } else {
-            if(user.ROLENAME == '' || user.ROLENAME == null){
-                return "Welcome, " + user.NAME+ " " + user.SURNAME1 + "; access type: not authorized";
+            if(user.rolename == '' || user.rolename == null){
+                return "Welcome, " + user.name+ " " + user.surname1 + "; access type: not authorized";
             } else {
-                return "Welcome, " + user.NAME+ " " + user.SURNAME1 + "; access type: " + user.ROLENAME;
+                return "Welcome, " + user.name+ " " + user.surname1 + "; access type: " + user.rolename;
             }
             
         }

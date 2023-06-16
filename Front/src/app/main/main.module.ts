@@ -14,6 +14,7 @@ import { MainComponent } from './main.component';
   ],
   declarations: [
     MainComponent,
+
   ]
 })
 export class MainModule { }

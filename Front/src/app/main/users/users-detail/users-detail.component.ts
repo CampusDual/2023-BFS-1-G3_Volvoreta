@@ -3,6 +3,7 @@ import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs';
 import { UsersDialogPasswordComponent } from '../users-dialog-password/users-dialog-password.component';
 import { MatDialog } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-detail',
@@ -11,7 +12,12 @@ import { MatDialog } from '@angular/material';
 })
 export class UsersDetailComponent implements OnInit {
   
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  constructor(
+    private userService: UserService, 
+    public dialog: MatDialog, 
+    private router: Router,
+    private actRoute: ActivatedRoute
+    ) { }
 
   ngOnInit() {
   }
@@ -27,6 +33,9 @@ export class UsersDetailComponent implements OnInit {
       this.dialog.open(UsersDialogPasswordComponent, {data: {user: user_, pass: message}});
     });
     
+  }
+  turnback(){
+    this.router.navigate(['../../', 'users'], { relativeTo: this.actRoute });
   }
  }
 export interface PasswordInput{

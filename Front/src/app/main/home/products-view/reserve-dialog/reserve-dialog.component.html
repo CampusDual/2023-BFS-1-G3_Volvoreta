@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Resumen de la reserva</h1>
+<div mat-dialog-content class="dialog-content-reserve">
+    <p><span>{{ 'name' | oTranslate }}:</span> {{ data.product.name }}</p>
+    <p><span>{{'stock' | oTranslate}}:</span> {{ data.product.stock }}</p>
+    <p><span>{{'price' | oTranslate}}:</span> {{ data.product.price }} €</p>
+    <p><span>{{ 'units' | oTranslate }}:</span> {{data.units}}</p>
+    <p><span>Importe total:</span> {{data.totalImport}} €</p>
+
+</div>
+<div mat-dialog-actions class="btn-reserve">
+    <o-button attr="raised2" type="RAISED" label="Primary" (onClick)="reserveOK()" layout-padding color="white">
+        Aceptar
+    </o-button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+</div>

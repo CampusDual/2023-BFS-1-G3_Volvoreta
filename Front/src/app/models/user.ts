@@ -1,11 +1,11 @@
 export class User {
-    USER_: string;
-    PASSWORD?: string;
-    NAME:  string;
-    SURNAME1: string;
-    SURNAME2?: string;
-    EMAIL?: string;
-    NIF: string;
-    ID_ROLENAME?: number;
-    ROLENAME?: string;
+    user_: string;
+    password?: string;
+    name:  string;
+    surname1: string;
+    surname2?: string;
+    email?: string;
+    nif: string;
+    id_rolename?: number;
+    rolename?: string;
 }
