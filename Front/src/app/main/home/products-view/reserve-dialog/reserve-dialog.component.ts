@@ -46,15 +46,18 @@ export class ReserveDialogComponent implements OnInit {
 
     this.reserveService.reserve(currentReserve).subscribe(({ code }: OResponse) => {
       if (code !== 0) {
-        this.dialogService.error('Error reserva', 'Error al realizar reseva');
+        this.dialogService.error("reservation error", "error when making the reservation");
         return
       }
-
-      this.updateStock(product.id, newStock);
-      // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
-      this.close("Has reservado " + product.name + ", " + units + " unidades. Pasa a recoger tu pedido antes de 7 dias");
+        this.updateStock(product.id, newStock);
+        // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
+        this.close("Has reservado " + product.name + ", " + units + " unidades. Pasa a recoger tu pedido antes de 7 dias");
+      
     })
 
+  }
+  reserveCancel(){
+    this.close('Has cancelado la reserva');
   }
 
 }
