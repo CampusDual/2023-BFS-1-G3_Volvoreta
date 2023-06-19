@@ -37,7 +37,7 @@ export const routes: Routes = [
               // restrictedPermissionsRedirect: '403',
             }
           } 
-      }
+      },
     ]
   }
 ];

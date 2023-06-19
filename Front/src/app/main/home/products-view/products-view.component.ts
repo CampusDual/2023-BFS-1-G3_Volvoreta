@@ -7,6 +7,8 @@ import { imageDefaulProdut } from 'src/app/utils/constants';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
+import { DialogService } from 'ontimize-web-ngx';
+
 
 @Component({
   selector: 'app-products-view',
@@ -20,11 +22,12 @@ export class ProductsViewComponent implements OnInit {
   id: number;
   imagePath: SafeResourceUrl = "data:image/png;base64," + imageDefaulProdut
   constructor(
-    private productService: ProductService, 
-    private actRoute: ActivatedRoute, 
+    private productService: ProductService,
+    private actRoute: ActivatedRoute,
     private _sanitizer: DomSanitizer,
     private router: Router,
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
+    protected dialogService: DialogService,
   ) { }
 
   ngOnInit() {
@@ -49,10 +52,26 @@ export class ProductsViewComponent implements OnInit {
 
   reserve(value: string) {
     let totalImport: number = Number(this.product.price) * Number(value);
-    this.dialog.open(ReserveDialogComponent, {data: {product: this.product, units: value, totalImport: totalImport}});
+    //  1. Dialogo de confirmacion de reserva, insert reserva y update de stock
+    const dialogRef = this.dialog.open(ReserveDialogComponent, 
+      { data: { product: this.product, units: value, totalImport: totalImport } })
+
+    // 2. OK -> Dialog de confirmacion de reserva OK
+    //this.dialogService.dialogRef.afterClosed()
+    dialogRef.afterClosed().subscribe((data) => {
+      console.log(data)
+   //   alert(data)
+
+   this.dialogService.info('Resumen', data);
+
+   // this.dialog.open(MainDialogHomeComponent, { data: { msg: data } })
+
+    this.turnback()
+    }
+    )
   }
 
-  turnback(){
+  turnback() {
     this.router.navigate(['../../', 'home'], { relativeTo: this.actRoute });
   }
 }

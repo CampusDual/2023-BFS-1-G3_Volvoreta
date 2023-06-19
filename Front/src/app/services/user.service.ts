@@ -4,9 +4,7 @@ import { Injectable } from "@angular/core";
 import { AuthService, Observable, OntimizeService } from 'ontimize-web-ngx';
 import { PasswordInput } from '../main/users/users-detail/users-detail.component';
 import { BehaviorSubject } from 'rxjs';
-import { User } from '../models/user';
 import { OResponse } from '../models/response';
-
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -21,6 +19,9 @@ export class UserService {
     constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService,
     private ontimizeService: OntimizeService,) { }
 
+    getCurrentUser(): string {
+        return this.authService.getSessionInfo().user;
+    }
 
     getUser():Observable<OResponse>{
         this.nameUser = this.authService.getSessionInfo().user;
@@ -29,7 +30,6 @@ export class UserService {
     }
 
     getWellcome():Observable<any>{
-        // console.log(this.wellcome.asObservable())
         return this.wellcome.asObservable();
     }
     setWellcome(wellcome: any){

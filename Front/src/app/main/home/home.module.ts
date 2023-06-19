@@ -12,13 +12,12 @@ import { ReserveDialogComponent } from './products-view/reserve-dialog/reserve-d
   imports: [
     SharedModule,
     OntimizeWebModule,
-    HomeRoutingModule
-  ],
+    HomeRoutingModule,  ],
   declarations: [
     HomeComponent,
     ProductsCardsComponent,
     ProductsViewComponent,
-    ReserveDialogComponent
+    ReserveDialogComponent,
     
   ]
 })

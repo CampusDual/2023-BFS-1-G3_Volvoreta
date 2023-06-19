@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: ":reserveDialog",
     component: ReserveDialogComponent
-  }
+  },
 ];
 
 @NgModule({
