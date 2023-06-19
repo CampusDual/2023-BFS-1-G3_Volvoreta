@@ -21,9 +21,10 @@ export class UsersDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-  pass(user_: any){
-
+  pass(user_: string){
+    
     this.userService.genPass(user_).subscribe(res=> {
+      //console.log(res['password'])
       let response = res as PasswordInput;
       let  msg: Observable<PasswordInput> = this.userService.getPasswordBD();
       let message: string; 

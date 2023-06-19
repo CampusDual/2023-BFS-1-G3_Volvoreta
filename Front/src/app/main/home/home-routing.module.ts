@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { ProductsViewComponent } from './products-view/products-view.component';
 import { ReserveDialogComponent } from './products-view/reserve-dialog/reserve-dialog.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,6 @@ const routes: Routes = [
     path: ":reserveDialog",
     component: ReserveDialogComponent
   },
-
 ];
 
 @NgModule({

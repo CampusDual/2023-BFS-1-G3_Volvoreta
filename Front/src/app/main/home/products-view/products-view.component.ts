@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
 import { DialogService } from 'ontimize-web-ngx';
 
+
 @Component({
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
@@ -73,7 +74,4 @@ export class ProductsViewComponent implements OnInit {
   turnback() {
     this.router.navigate(['../../', 'home'], { relativeTo: this.actRoute });
   }
-
-
-
 }

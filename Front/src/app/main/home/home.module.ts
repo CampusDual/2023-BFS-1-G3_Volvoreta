@@ -8,7 +8,6 @@ import { ProductsCardsComponent } from '../products/products-cards/products-card
 import { ProductsViewComponent } from './products-view/products-view.component';
 import { ReserveDialogComponent } from './products-view/reserve-dialog/reserve-dialog.component';
 
-
 @NgModule({
   imports: [
     SharedModule,
