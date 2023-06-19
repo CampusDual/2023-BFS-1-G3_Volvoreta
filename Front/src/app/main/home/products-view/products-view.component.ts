@@ -33,7 +33,7 @@ export class ProductsViewComponent implements OnInit {
   ngOnInit() {
     // Get id param
     this.actRoute.params.subscribe((params: Params) => {
-      this.id = Number(params['id'])
+      this.id = Number(params['id']);
     });
 
     // Get product by id
@@ -47,28 +47,24 @@ export class ProductsViewComponent implements OnInit {
           : this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
             + this.product.photo);
       }
-    }, err => console.log(err))
+    }, err => console.log(err));
   }
 
   reserve(value: string) {
     let totalImport: number = Number(this.product.price) * Number(value);
     //  1. Dialogo de confirmacion de reserva, insert reserva y update de stock
     const dialogRef = this.dialog.open(ReserveDialogComponent, 
-      { data: { product: this.product, units: value, totalImport: totalImport } })
+      { data: { product: this.product, units: value, totalImport: totalImport } });
 
     // 2. OK -> Dialog de confirmacion de reserva OK
     //this.dialogService.dialogRef.afterClosed()
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data)
-   //   alert(data)
-
-   this.dialogService.info('Resumen', data);
-
-   // this.dialog.open(MainDialogHomeComponent, { data: { msg: data } })
-
-    this.turnback()
-    }
-    )
+      if(data != ""){
+        this.dialogService.info("summary", data);
+      // this.dialog.open(MainDialogHomeComponent, { data: { msg: data } })
+        this.turnback();
+      } 
+    });
   }
 
   turnback() {

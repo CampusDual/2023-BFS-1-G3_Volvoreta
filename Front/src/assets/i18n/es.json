@@ -48,5 +48,9 @@
   "reserve": "Reservar",
   "photo": "Imagen",
   "more": "Más detalles",
-  "units": "Unidades"
+  "units": "Unidades",
+  "reservation error": "Error reserva",
+  "error when making the reservation": "Error al realizar la reserva",
+  "confirm": "Confirmar",
+  "summary": "Resumen"
 }
