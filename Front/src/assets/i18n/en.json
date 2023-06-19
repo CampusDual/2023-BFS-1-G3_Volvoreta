@@ -53,6 +53,8 @@
   "error when making the reservation": "Error when making the reservation",
   "confirm": "Confirm",
   "summary": "Summary",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "total amount": "Total amount",
+  "reservation summary": "Reservation summary"
 
 }
