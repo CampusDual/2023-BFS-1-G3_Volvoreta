@@ -37,27 +37,29 @@ export class ReserveDialogComponent implements OnInit {
   reserveOK() {
 
     const currentUser = this.userService.getCurrentUser()
-
     const { product, units, totalImport } = this.data
-
     let newStock = product.stock - Number(units)
-
     let currentReserve = new Reserve(currentUser, product.id, Number(units), product.price, totalImport)
 
     this.reserveService.reserve(currentReserve).subscribe(({ code }: OResponse) => {
+      let part1: string = "";
+      let part2: string = "";
       if (code !== 0) {
         this.dialogService.error("reservation error", "error when making the reservation");
         return
       }
-        this.updateStock(product.id, newStock);
-        // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
-        this.close("Has reservado " + product.name + ", " + units + " unidades. Pasa a recoger tu pedido antes de 7 dias");
+      this.updateStock(product.id, newStock);
+      // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
+      if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
+        part1 = "Has reservado ";
+        part2 = "Pasa a recoger tu pedido antes de <b>7</b> dias.";
+      } else {
+        part1 = "You have reserved ";
+        part2 = "Pick up your order before <b>7</b> days.";
+      }
+      this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
       
     })
 
   }
-  reserveCancel(){
-    this.close('Has cancelado la reserva');
-  }
-
 }

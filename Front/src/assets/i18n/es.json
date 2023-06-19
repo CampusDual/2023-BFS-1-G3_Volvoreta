@@ -52,5 +52,6 @@
   "reservation error": "Error reserva",
   "error when making the reservation": "Error al realizar la reserva",
   "confirm": "Confirmar",
-  "summary": "Resumen"
+  "summary": "Resumen",
+  "cancel": "Cancelar"
 }
