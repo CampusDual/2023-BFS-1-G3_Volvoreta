@@ -1,17 +1,13 @@
-<!-- TODO title cambiar por variable para adecuar el idioma -->
-
 <o-list #list id="cardProduct" attr="list" title="PRODUCTS" service="products" entity="activeProduct"
   columns="id;name;stock;price;photo;date_added;state;body" keys="id" refresh-button="false" insert-button="false"
-  delete-button="no"
-  quick-filter="yes" query-on-init="true" query-rows="12" pagination-controls="true"  row-height="small" >
+  delete-button="no" quick-filter="yes" query-on-init="true" query-rows="12" pagination-controls="true"
+  row-height="small">
 
   <o-list-item *ngFor="let row of list.dataArray" select-table="true">
     <o-list-item-card-image title="{{ row.name }}" subtitle="{{'price' | oTranslate}}: {{ row.price }} €"
-      image="data:image/png;base64,{{ row.photo }}" 
-      content="{{'stock' | oTranslate}}: {{ row.stock }} uds"
-      collapsible="false" 
-      collapsed="true" sql-type="varchar" 
-      action-1-text="{{'more' | oTranslate}}" (action-1)="showProduct(row)">
+      image="data:image/png;base64,{{ row.photo }}" content="{{'stock' | oTranslate}}: {{ row.stock }} uds"
+      collapsible="false" collapsed="true" sql-type="varchar"
+      >
     </o-list-item-card-image>
   </o-list-item>
 </o-list>

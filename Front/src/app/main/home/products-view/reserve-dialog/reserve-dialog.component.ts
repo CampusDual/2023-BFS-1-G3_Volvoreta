@@ -48,7 +48,7 @@ export class ReserveDialogComponent implements OnInit {
         this.dialogService.error("reservation error", "error when making the reservation");
         return
       }
-      this.updateStock(product.id, newStock);
+this.updateStock(product.id, newStock);
       // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
       if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
         part1 = "Has reservado ";
@@ -58,6 +58,7 @@ export class ReserveDialogComponent implements OnInit {
         part2 = "Pick up your order before <b>7</b> days.";
       }
       this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
+
       
     })
 

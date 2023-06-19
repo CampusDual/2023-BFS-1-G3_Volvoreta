@@ -9,7 +9,6 @@ import { MatDialog } from '@angular/material';
 import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
 import { DialogService } from 'ontimize-web-ngx';
 
-
 @Component({
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
@@ -57,11 +56,9 @@ export class ProductsViewComponent implements OnInit {
       { data: { product: this.product, units: value, totalImport: totalImport } });
 
     // 2. OK -> Dialog de confirmacion de reserva OK
-    //this.dialogService.dialogRef.afterClosed()
     dialogRef.afterClosed().subscribe((data) => {
-      if(data != "" && data){
+      if(data !== "" && data){
         this.dialogService.info("summary", data);
-      // this.dialog.open(MainDialogHomeComponent, { data: { msg: data } })
         this.turnback();
       } 
     });
