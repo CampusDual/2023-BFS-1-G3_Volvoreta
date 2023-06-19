@@ -59,7 +59,7 @@ export class ProductsViewComponent implements OnInit {
     // 2. OK -> Dialog de confirmacion de reserva OK
     //this.dialogService.dialogRef.afterClosed()
     dialogRef.afterClosed().subscribe((data) => {
-      if(data != ""){
+      if(data != "" && data){
         this.dialogService.info("summary", data);
       // this.dialog.open(MainDialogHomeComponent, { data: { msg: data } })
         this.turnback();
