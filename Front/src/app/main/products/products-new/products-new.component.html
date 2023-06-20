@@ -19,8 +19,9 @@
         </o-row>
         <o-row>
           <!-- <o-integer-input attr="active" required="yes" fxFlex="60"></o-integer-input> -->
-          <o-combo attr="state" fxFlex="60" service="states" entity="state" keys="id_state" columns="id_state;state_name"
-          visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding" ></o-combo>
+          <o-combo #stateC attr="state" fxFlex="60" service="states" entity="state" keys="id_state" columns="id_state;state_name"
+          visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
+          (onDataLoaded)="defaultId($event)"></o-combo>
         </o-row>
         <o-row>
           <o-textarea-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="60"></o-textarea-input>
