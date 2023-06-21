@@ -4,7 +4,7 @@
   row-height="small">
 
   <o-list-item *ngFor="let row of list.dataArray" select-table="true">
-    <o-list-item-card-image title="{{ row.name }}" subtitle="{{'price' | oTranslate}}: {{ row.price }} €"
+    <o-list-item-card-image empty-image="assets\images\no-image.png" title="{{ row.name }}" subtitle="{{'price' | oTranslate}}: {{ row.price }} €"
       image="data:image/png;base64,{{ row.photo }}" content="{{'stock' | oTranslate}}: {{ row.stock }} uds"
       collapsible="false" collapsed="true" sql-type="varchar"
       >

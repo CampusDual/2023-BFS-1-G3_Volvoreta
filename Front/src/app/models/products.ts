@@ -8,6 +8,7 @@ export class Products {
     date_add?: Date;
     body?: string;
     photo?: string;
-    id_locations: number;
+    id_locations: string;
     name_location: string;
+    state_name: string;
 }

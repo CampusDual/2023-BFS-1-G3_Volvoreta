@@ -40,7 +40,7 @@ export class ProductsViewComponent implements OnInit {
 
       if (res.code === 0) {
         this.product = res.data[0]
-
+        
         this.imagePath = (this.product.photo === undefined) || (this.product.photo === null)
           ? this.imagePath
           : this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'

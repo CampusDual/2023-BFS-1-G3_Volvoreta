@@ -32,10 +32,11 @@
   <div class="product-view-content">
     <form [formGroup]="contentView">
       <div>
-        <p><span>{{ 'name_location' | oTranslate }}:</span> {{ product.name_location }}</p>
+        <p><span>{{ 'id_locations' | oTranslate }}:</span> {{ product.name_location }}</p>
         <p><span>{{ 'name' | oTranslate }}:</span> {{ product.name }}</p>
-        <p><span>{{'stock' | oTranslate}}:</span> {{ product.stock }}</p>
+        <p><span>{{'stock' | oTranslate}}:</span> {{ product.stock }} {{ 'units' | oTranslate }}</p>
         <p><span>{{'price' | oTranslate}}:</span> {{ product.price }} €</p>
+        <p><span>{{'state' | oTranslate}}:</span> {{ product.state_name | oTranslate}}</p>
         <p><span>{{'body' | oTranslate}}:</span></p>
         <p> {{ product.body }}</p>
       </div>

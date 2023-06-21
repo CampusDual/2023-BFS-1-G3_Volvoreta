@@ -15,7 +15,7 @@ export class ProductService {
 
     getById(id: number): Observable<OResponse>{
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
-        return this.ontimizeService.query({'id': id},['id', 'name', 'stock', 'price', 'state', 'body', 'photo'], 'product')
+        return this.ontimizeService.query({'id': id},['id', 'name', 'stock', 'price', 'state_name', 'body', 'photo', 'name_location'], 'product')
     }
 
     updateStock(id: number, newStock: number): Observable<OResponse> {
