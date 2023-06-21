@@ -25,6 +25,8 @@
                 <Column>body</Column>
                 <Column>id_state</Column>
                 <Column>state_name</Column>
+                <Column>id_locations</Column>
+                <Column>name_location</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
@@ -33,6 +35,7 @@
                     FROM
                         ${mainschema}.products tp
                         LEFT JOIN ${mainschema}.state ts ON tp.state = ts.id_state
+                        LEFT JOIN ${mainschema}.locations tl ON tp.id_locations = tl.id
                     #WHERE#
                 ]]>
             </Sentence>

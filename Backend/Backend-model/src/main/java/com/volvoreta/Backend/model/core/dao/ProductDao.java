@@ -25,5 +25,7 @@ public class ProductDao extends OntimizeJdbcDaoSupport {
     public static final String BODY = "body";
     public static final String ID_STATE = "id_state";
     public static final String STATE_NAME = "state_name";
+    public static final String ID_LOCATIONS = "id_locations";
+    public static final String NAME_LOCATION = "name_location";
 
 }
