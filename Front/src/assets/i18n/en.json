@@ -55,6 +55,9 @@
   "summary": "Summary",
   "cancel": "Cancel",
   "total amount": "Total amount",
-  "reservation summary": "Reservation summary"
+  "reservation summary": "Reservation summary",
+  "id_locations": "Locations",
+  "name_location": "Location",
+  "locations": "Location"
 
 }

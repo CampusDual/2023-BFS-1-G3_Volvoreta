@@ -32,6 +32,7 @@
   <div class="product-view-content">
     <form [formGroup]="contentView">
       <div>
+        <p><span>{{ 'name_location' | oTranslate }}:</span> {{ product.name_location }}</p>
         <p><span>{{ 'name' | oTranslate }}:</span> {{ product.name }}</p>
         <p><span>{{'stock' | oTranslate}}:</span> {{ product.stock }}</p>
         <p><span>{{'price' | oTranslate}}:</span> {{ product.price }} €</p>

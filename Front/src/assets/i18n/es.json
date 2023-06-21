@@ -55,5 +55,8 @@
   "summary": "Resumen",
   "cancel": "Cancelar",
   "total amount": "Importe total",
-  "reservation summary": "Resumen de la reserva"
+  "reservation summary": "Resumen de la reserva",
+  "id_locations": "Localización",
+  "name_location": "Localización",
+  "locations": "Localización"
 }

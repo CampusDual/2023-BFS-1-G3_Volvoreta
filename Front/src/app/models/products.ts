@@ -8,4 +8,6 @@ export class Products {
     date_add?: Date;
     body?: string;
     photo?: string;
+    id_locations: number;
+    name_location: string;
 }

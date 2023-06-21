@@ -13,5 +13,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'bookings': {
     'path': '/bookings'
+  },
+  'locations': {
+    'path': '/locations'
   }
 };

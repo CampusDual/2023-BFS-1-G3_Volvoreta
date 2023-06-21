@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 	configurationFilePlaceholder = "dao/placeholders.properties")
 public class LocationDao extends OntimizeJdbcDaoSupport {
 
-    public static final String ID = "id";
+    public static final String ID_LOCATION = "id_location";
     public static final String NAME_LOCATION = "name_location";
 
 }
