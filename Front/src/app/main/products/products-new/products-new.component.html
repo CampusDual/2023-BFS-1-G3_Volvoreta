@@ -1,7 +1,7 @@
 <o-form #newProduct service="products" entity="product" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
 <o-row>
       <o-column>
-        <o-image id="product_photo" attr="photo" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
+        <o-image id="product_photo" attr="photo" empty-image="assets/images/no-image.png" sql-type="varchar" required="yes"></o-image>
       </o-column>
       <o-column class="productInformation" title-label="PRODUCT_INFORMATION" fxFlex>
         <o-row>
@@ -21,11 +21,11 @@
           <!-- <o-integer-input attr="active" required="yes" fxFlex="60"></o-integer-input> -->
           <o-combo #stateC attr="state" fxFlex="60" service="states" entity="state" keys="id_state" columns="id_state;state_name"
           visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
-          (onDataLoaded)="defaultId($event)"></o-combo>
+          (onDataLoaded)="defaultId($event)" required="yes"></o-combo>
         </o-row>
         <o-row>
           <o-combo attr="id_locations" fxFlex="60" service="locations" entity="location" keys="id_location" columns="id_location;name_location"
-          visible-columns="name_location" value-column="id_location" translate="yes" class="input-padding" null-selection="no" ></o-combo>
+          visible-columns="name_location" value-column="id_location" translate="yes" class="input-padding" null-selection="no" required="yes"></o-combo>
         </o-row>
         <o-row>
           <o-textarea-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="60"></o-textarea-input>
