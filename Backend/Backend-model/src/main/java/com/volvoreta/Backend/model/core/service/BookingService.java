@@ -26,6 +26,10 @@ public class BookingService implements IBookingService {
 
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult bookingInsert(Map<?, ?> attrMap) {
+//        for (String keys : attrMap.keySet())
+//        {
+//            System.out.println(keys);
+//        }
         return this.daoHelper.insert(bookingDao, attrMap);
     }
 

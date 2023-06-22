@@ -23,6 +23,8 @@
                 <Column>unit_price</Column>
                 <Column>total_price</Column>
                 <Column>reservation_days</Column>
+                <Column>collection_completed</Column>
+                <Column>end_date</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[

@@ -21,4 +21,6 @@ public class BookingDao extends OntimizeJdbcDaoSupport {
     public static final String UNIT_PRICE = "unit_price";
     public static final String TOTAL_PRICE = "total_price";
     public static final String RESERVATION_DAYS = "reservation_days";
+    public static final String COLLECTION_COMPLETED = "collection_completed";
+    public static final String END_DATE = "end_date";
 }
