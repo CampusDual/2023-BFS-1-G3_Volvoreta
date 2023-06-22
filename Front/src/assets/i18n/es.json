@@ -58,5 +58,6 @@
   "reservation summary": "Resumen de la reserva",
   "id_locations": "Localización",
   "name_location": "Localización",
-  "locations": "Localización"
+  "locations": "Localización",
+  "BOOKINGS": "Reservas"
 }

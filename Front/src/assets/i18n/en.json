@@ -58,6 +58,7 @@
   "reservation summary": "Reservation summary",
   "id_locations": "Locations",
   "name_location": "Location",
-  "locations": "Location"
+  "locations": "Location",
+  "BOOKINGS": "Bookings"
 
 }
