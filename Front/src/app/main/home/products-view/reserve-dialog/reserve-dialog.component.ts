@@ -52,10 +52,10 @@ this.updateStock(product.id, newStock);
       // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
       if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
         part1 = "Has reservado ";
-        part2 = "Pasa a recoger tu pedido antes de <b>7</b> dias.";
+        part2 = "Pasa a recoger tu pedido antes de <b>15</b> dias naturales.";
       } else {
         part1 = "You have reserved ";
-        part2 = "Pick up your order before <b>7</b> days.";
+        part2 = "Pick up your order before <b>15</b> calendar days.";
       }
       this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
 

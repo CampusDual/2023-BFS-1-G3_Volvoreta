@@ -38,15 +38,7 @@ export const routes: Routes = [
             }
           } 
       },
-      { path: 'bookings', loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule), 
-          data: {
-            oPermission: {
-              permissionId: 'bookings-permissions',
-              restrictedPermissionsRedirect: '/main/home',
-              // restrictedPermissionsRedirect: '403',
-            }
-          } 
-      },
+      { path: 'bookings', loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule)},
     ]
   }
 ];
