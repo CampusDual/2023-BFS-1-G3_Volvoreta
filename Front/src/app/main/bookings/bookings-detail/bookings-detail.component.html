@@ -9,8 +9,11 @@
           <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes" enabled="no"></o-text-input>
         </o-row>
         <o-row>
-          <o-currency-input attr="unit_price" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-currency-input>
-          <o-currency-input attr="total_price" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-currency-input>
+            <o-integer-input attr="units" class="input-padding" fxFlex="40" required="yes" enabled="no"></o-integer-input>
+            <o-currency-input attr="unit_price" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-currency-input>
+        </o-row>  
+        <o-row>
+            <o-currency-input attr="total_price" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-currency-input>
         </o-row>
         <o-row>
             <o-date-input attr="reservation_date" fxFlex="40" enabled="no"></o-date-input>

@@ -5,6 +5,7 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.volvoreta.Backend.api.core.service.IBookingService;
 import com.volvoreta.Backend.model.core.dao.BookingDao;
 import com.volvoreta.Backend.model.core.dao.ProductDao;
+import org.apache.commons.math3.stat.descriptive.summary.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -13,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Lazy
 @Service("BookingService")
@@ -26,6 +24,8 @@ public class BookingService implements IBookingService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+    private Enumeration enumeration;
+    private Enumeration enumeration1;
 
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
@@ -54,6 +54,16 @@ public class BookingService implements IBookingService {
     public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put("id_user", auth.getName());
+        attrMap.put("units", 0);
+        EntityResult product = myBookingQuery(keyMap, Arrays.asList("id_product"));
+        Map <String, Object> attrProduct = product.getColumnSQLTypes();
+//        ProductService productService = new ProductService();
+//        productService.productQuery();
+//        Map<String, Object> attrMapP = null;
+//        Map<String, Object> keyMapP = null;
+//        keyMapP.put("id", "id_product");
+//        attrMapP.put("stock", "stock+units");
+//        productService.productUpdate(attrMapP, keyMapP);
         return this.daoHelper.update(bookingDao,attrMap, keyMap);
     }
 
