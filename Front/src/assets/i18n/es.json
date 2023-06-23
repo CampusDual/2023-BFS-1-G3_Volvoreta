@@ -59,5 +59,15 @@
   "id_locations": "Localización",
   "name_location": "Localización",
   "locations": "Localización",
-  "BOOKINGS": "Mis reservas"
+  "BOOKINGS": "Mis reservas",
+  "reservation_date": "Fecha reserva",
+  "end_date": "Fecha límite reserva",
+  "unit_price": "Precio unitario",
+  "total_price": "Precio total",
+  "picked_up": "Fecha recogida",
+  "collection_completed": "Fecha recogida",
+  "confirmed": "¿Confirmado?",
+  "reservation_state": "¿Confirmado?",
+  "id": "Referencia",
+  "booking_information": "Información de reserva"
 }

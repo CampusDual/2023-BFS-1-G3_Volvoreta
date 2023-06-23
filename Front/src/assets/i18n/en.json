@@ -59,6 +59,16 @@
   "id_locations": "Locations",
   "name_location": "Location",
   "locations": "Location",
-  "BOOKINGS": "My bookings"
-
+  "BOOKINGS": "My bookings",
+  "reservation_date": "Reservation date",
+  "end_date": "End date",
+  "unit_price": "Unit price",
+  "total_price": "Total price",
+  "picked_up": "Picked up",
+  "collection_completed": "Picked up",
+  "confirmed": "Confirmed?",
+  "reservation_state": "Confirmed?",
+  "id": "Reference",
+  "booking_information": "Booking information"
+  
 }

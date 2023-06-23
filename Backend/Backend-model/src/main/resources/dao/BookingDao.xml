@@ -13,6 +13,9 @@
     </UpdateKeys>
     <Queries>
         <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
             <ValidColumns>
                 <Column>id</Column>
                 <Column>id_user</Column>
@@ -25,13 +28,23 @@
                 <Column>reservation_days</Column>
                 <Column>collection_completed</Column>
                 <Column>end_date</Column>
+                <Column>name</Column>
+                <Column>photo</Column>
+                <Column>id_locations</Column>
+                <Column>state</Column>
+                <Column>body</Column>
+                <Column>state_name</Column>
+                <Column>name_location</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT
                         #COLUMNS#
                     FROM
-                        ${mainschema}.bookings
+                        ${mainschema}.bookings tb
+                        LEFT JOIN ${mainschema}.products tp ON tb.id_product = tp.id
+                        LEFT JOIN ${mainschema}.state ts ON tp.state = ts.id_state
+                        LEFT JOIN ${mainschema}.locations tl ON tp.id_locations = tl.id_location
                     #WHERE#
                 ]]>
             </Sentence>

@@ -13,6 +13,7 @@ public interface IBookingService {
 //    public EntityResult userBookingQuery(Map<String, Object> keyMap, List<String> attrList, String user_);
     public EntityResult bookingInsert(Map<String, Object> attrMap);
     public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult bookingDelete(Map<?, ?> keyMap);
 
 }

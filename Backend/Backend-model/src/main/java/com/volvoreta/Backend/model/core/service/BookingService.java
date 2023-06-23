@@ -50,6 +50,14 @@ public class BookingService implements IBookingService {
     public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
+
+    public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put("id_user", auth.getName());
+        return this.daoHelper.update(bookingDao,attrMap, keyMap);
+    }
+
+
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult bookingDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.bookingDao, keyMap);
