@@ -54,7 +54,7 @@ public class BookingService implements IBookingService {
     public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put("id_user", auth.getName());
-        attrMap.put("units", 0);
+        //attrMap.put("units", 0);
         EntityResult product = myBookingQuery(keyMap, Arrays.asList("id_product"));
         Map <String, Object> attrProduct = product.getColumnSQLTypes();
 //        ProductService productService = new ProductService();
