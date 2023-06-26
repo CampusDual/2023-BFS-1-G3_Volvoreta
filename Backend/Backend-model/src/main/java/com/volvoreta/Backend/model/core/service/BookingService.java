@@ -27,9 +27,15 @@ public class BookingService implements IBookingService {
     private Enumeration enumeration;
     private Enumeration enumeration1;
 
+    @Override
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
     }
+    @Override
+    public EntityResult reserveStockQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList, "reserveStockQuery");
+    }
+    @Override
     public EntityResult myBookingQuery(Map<String, Object> keyMap, List<?> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put("id_user", auth.getName());
@@ -37,6 +43,7 @@ public class BookingService implements IBookingService {
     }
 
     //@Secured({ PermissionsProviderSecured.SECURED })
+    @Override
     public EntityResult bookingInsert(Map<String, Object> attrMap) {
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.DAY_OF_YEAR, 15);
@@ -45,29 +52,13 @@ public class BookingService implements IBookingService {
         return this.daoHelper.insert(bookingDao, attrMap);
     }
 
-
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
 
-    public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        keyMap.put("id_user", auth.getName());
-        //attrMap.put("units", 0);
-        EntityResult product = myBookingQuery(keyMap, Arrays.asList("id_product"));
-        Map <String, Object> attrProduct = product.getColumnSQLTypes();
-//        ProductService productService = new ProductService();
-//        productService.productQuery();
-//        Map<String, Object> attrMapP = null;
-//        Map<String, Object> keyMapP = null;
-//        keyMapP.put("id", "id_product");
-//        attrMapP.put("stock", "stock+units");
-//        productService.productUpdate(attrMapP, keyMapP);
-        return this.daoHelper.update(bookingDao,attrMap, keyMap);
-    }
-
-
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult bookingDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.bookingDao, keyMap);

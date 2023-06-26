@@ -9,11 +9,9 @@ public interface IBookingService {
 
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult myBookingQuery(Map<String, Object> keyMap, List<?> attrList);
-
-//    public EntityResult userBookingQuery(Map<String, Object> keyMap, List<String> attrList, String user_);
+    public EntityResult reserveStockQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult bookingInsert(Map<String, Object> attrMap);
     public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
-    public EntityResult myBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult bookingDelete(Map<?, ?> keyMap);
 
 }

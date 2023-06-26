@@ -30,9 +30,9 @@ export class ReserveDialogComponent implements OnInit {
     this.dialogRef.close(msg)
   }
   
-  updateStock(id, newStock) {
-    this.productService.updateStock(id, newStock).subscribe(res=> console.log(res));
-  }
+  // updateStock(id, newStock) {
+  //   this.productService.updateStock(id, newStock).subscribe(res=> console.log(res));
+  // }
 
   reserveOK() {
 
@@ -41,26 +41,26 @@ export class ReserveDialogComponent implements OnInit {
     let newStock = product.stock - Number(units)
     let currentReserve = new Reserve(currentUser, product.id, Number(units), product.price, totalImport)
 
-    this.reserveService.reserve(currentReserve).subscribe(({ code }: OResponse) => {
-      let part1: string = "";
-      let part2: string = "";
-      if (code !== 0) {
-        this.dialogService.error("reservation error", "error when making the reservation");
-        return
+    this.reserveService.reserve(currentReserve).subscribe(
+      ({ code }: OResponse) => {
+        let part1: string = "";
+        let part2: string = "";
+        if (code !== 0) {
+          this.dialogService.error("reservation error", "error when making the reservation");
+          return
+        }
+      // this.updateStock(product.id, newStock);
+        // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
+        if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
+          part1 = "Has reservado ";
+          part2 = "Pasa a recoger tu pedido antes de <b>15</b> dias naturales.";
+        } else {
+          part1 = "You have reserved ";
+          part2 = "Pick up your order before <b>15</b> calendar days.";
+        }
+        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
       }
-this.updateStock(product.id, newStock);
-      // TODO-> pendiente crear una funcion para calcular la fecha actual + 7 dias de reserva
-      if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
-        part1 = "Has reservado ";
-        part2 = "Pasa a recoger tu pedido antes de <b>15</b> dias naturales.";
-      } else {
-        part1 = "You have reserved ";
-        part2 = "Pick up your order before <b>15</b> calendar days.";
-      }
-      this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
-
-      
-    })
+    )
 
   }
 }

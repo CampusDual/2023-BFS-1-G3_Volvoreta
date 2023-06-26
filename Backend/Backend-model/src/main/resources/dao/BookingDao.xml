@@ -49,5 +49,32 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="reserveStockQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>id_product</Column>
+                <Column>reserved</Column>
+                <Column>istock</Column>
+                <Column>rstock</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (SELECT
+                            id_product, sum(units) reserved, (us.rstock - sum(units)) istock, us.rstock
+                        FROM
+                            (SELECT tb.id, id_product, units, stock as rstock FROM ${mainschema}.bookings tb
+                                LEFT JOIN ${mainschema}.products tp ON id_product = tp.id
+                                    WHERE reservation_state = true
+                                    AND id_product = 4) us
+                            GROUP BY us.id_product, us.rstock) t
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

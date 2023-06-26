@@ -20,27 +20,33 @@ public class ProductService implements IProductService {
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
+    @Override
     public EntityResult productQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(productDao, keyMap, attrList);
     }
+
+    @Override
     public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList) {
         keyMap.put(ProductDao.ACTIVE, true);
         return this.daoHelper.query(productDao, keyMap, attrList);
     }
 
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productInsert(Map<?, ?> attrMap) {
         return this.daoHelper.insert(productDao, attrMap);
     }
 
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(productDao, attrMap, keyMap);
     }
+
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.productDao, keyMap);
     }
-
 
 }

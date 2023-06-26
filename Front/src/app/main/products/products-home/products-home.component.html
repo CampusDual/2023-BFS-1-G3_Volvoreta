@@ -1,6 +1,6 @@
 <o-table attr="products" service="products" entity="product" keys="id" sort-columns="name:DESC"
-  columns="photo;id;name;state_name;price;stock;date_added;active;body;state;id_locations;name_location" 
-  visible-columns="photo;id;name;state_name;price;stock;date_added;name_location;active" query-on-init="true"
+  columns="photo;id;name;state_name;price;stock;istock;reserved;date_added;active;body;state;id_locations;name_location" 
+  visible-columns="photo;id;name;state_name;price;stock;istock;reserved;date_added;name_location;active" query-on-init="true"
   query-on-init="true" query-rows="20" quick-filter="yes"
   insert-table="yes">
   <o-table-column attr="name" orderable="yes" searchable="no" type="string">
@@ -20,3 +20,5 @@
   </o-table-column>
   <o-table-column attr="price" title="price" type="currency" thousand-separator="." decimal-separator="," currency-symbol="€" currency-symbol-position="right"></o-table-column>
 </o-table>
+
+

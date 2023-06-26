@@ -4,11 +4,11 @@ export class Reserve {
     id_product: number
     units: number
     reservation_date?: Date
-    reservation_state?: boolean
+    reservation_state?: string
     reservation_days?: number
     unit_price: number
     total_price: number
-    collection_completed: boolean
+    collection_completed: Date
     end_date: boolean
 
     constructor(

@@ -1,6 +1,6 @@
 <o-table attr="bookings" service="bookings" entity="myBooking" keys="id" sort-columns="name:DESC"
-  columns="id;id_user;id_product;name;units;reservation_date;reservation_state;unit_price;total_price;reservation_days;collection_completed;end_date" 
-  visible-columns="id;name;units;reservation_date;end_date;unit_price;total_price;collection_completed;reservation_state" query-on-init="true"
+  columns="id;id_user;id_product;name;units;reservation_date;unit_price;total_price;reservation_days;collection_completed;end_date" 
+  visible-columns="id;name;units;reservation_date;end_date;unit_price;total_price;collection_completed" query-on-init="true"
   query-on-init="true" query-rows="20" quick-filter="yes" delete-button="no" insert-button="false"
   insert-table="yes">
     <o-table-column attr="reservation_date" type="date"></o-table-column>
@@ -9,9 +9,9 @@
     <o-table-column attr="unit_price" title="unit_price" type="currency" thousand-separator="." decimal-separator="," currency-symbol="€" currency-symbol-position="right"></o-table-column>
     <o-table-column attr="total_price" title="total_price" type="currency" thousand-separator="." decimal-separator="," currency-symbol="€" currency-symbol-position="right"></o-table-column>
     <o-table-column attr="collection_completed" title="picked_up" type="date"></o-table-column>
-    <o-table-column attr="reservation_state" title="confirmed">
+    <!-- <o-table-column attr="reservation_state" title="confirmed">
       <o-table-cell-renderer-boolean render-true-value="task_alt" render-false-value="cancel" render-type="icon"
           boolean-type="boolean">
       </o-table-cell-renderer-boolean>
-    </o-table-column>
+    </o-table-column> -->
 </o-table>

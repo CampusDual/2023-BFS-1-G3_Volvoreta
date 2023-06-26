@@ -17,6 +17,8 @@ public class ProductDao extends OntimizeJdbcDaoSupport {
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String STOCK = "stock";
+    public static final String ISTOCK = "istock";
+    public static final String RESERVED = "reserved";
     public static final String PRICE = "price";
     public static final String PHOTO = "photo";
     public static final String ACTIVE = "active";
