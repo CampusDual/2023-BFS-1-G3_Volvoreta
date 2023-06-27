@@ -20,20 +20,26 @@
             <o-date-input attr="end_date" fxFlex="40" enabled="no"></o-date-input>
         </o-row>
         <o-row>
-            <o-text-input class="input-padding" attr="state_name" fxFlex="40" required="yes" enabled="no"></o-text-input>
+            <o-combo attr="state" fxFlex="80" service="states" entity="state" keys="id_state" columns="id_state;state_name"
+            visible-columns="state_name" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
+            enabled="no"></o-combo>
         </o-row>
         <o-row>
-            <o-text-input class="input-padding" attr="name_location" fxFlex="40" required="yes" enabled="no"></o-text-input>
+            <o-text-input class="input-padding" attr="name_location" fxFlex="80" required="yes" enabled="no"></o-text-input>
         </o-row>
         <o-row>
             <o-text-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="80" enabled="no"></o-text-input>
         </o-row>
         <o-row>
-            <o-text-input attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" enabled="no"></o-text-input>
-            <o-combo #rState attr="reservation_state" fxFlex="80" service="reservationStates" entity="clientReservationState" keys="id_state" columns="id_state;name_reservation_state"
-            visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" ng-model="selectedOption" 
+            <o-combo #rState id="iState" attr="reservation_state" fxFlex="40" service="reservationStates" entity="clientReservationState" keys="id_state" 
+            columns="id_state;name_reservation_state"
+            visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
+            ng-model="selectedOption" 
             (onValueChange)="enable($event)" enabled="{{enabled}}"></o-combo>
+            <o-date-input id=picked attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" 
+           enabled="no"></o-date-input>
         </o-row>
       </o-column>
     </o-row>
   </o-form>
+  
