@@ -1,4 +1,4 @@
-<o-form #detailBooking service="bookings" entity="myBooking" keys="id" header-actions="R;U" show-header-navigation="no">
+<o-form #detailBooking service="bookings" entity="booking" keys="id" header-actions="R;U" show-header-navigation="no">
     <o-row>
       <o-column>
         <o-image attr="photo" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
@@ -20,7 +20,7 @@
             <o-date-input attr="end_date" fxFlex="40" enabled="no"></o-date-input>
         </o-row>
         <o-row>
-            <o-text-input class="input-padding" attr="state_name" translate="yes" fxFlex="40" required="yes" enabled="no"></o-text-input>
+            <o-text-input class="input-padding" attr="state_name" fxFlex="40" required="yes" enabled="no"></o-text-input>
         </o-row>
         <o-row>
             <o-text-input class="input-padding" attr="name_location" fxFlex="40" required="yes" enabled="no"></o-text-input>
@@ -30,7 +30,9 @@
         </o-row>
         <o-row>
             <o-text-input attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" enabled="no"></o-text-input>
-            <!-- <o-slide-toggle attr="reservation_state" label-position="before"></o-slide-toggle> -->
+            <o-combo #rState attr="reservation_state" fxFlex="80" service="reservationStates" entity="clientReservationState" keys="id_state" columns="id_state;name_reservation_state"
+            visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" ng-model="selectedOption" 
+            (onValueChange)="enable($event)" enabled="{{enabled}}"></o-combo>
         </o-row>
       </o-column>
     </o-row>

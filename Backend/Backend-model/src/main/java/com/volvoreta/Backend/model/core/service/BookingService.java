@@ -24,9 +24,6 @@ public class BookingService implements IBookingService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
-    private Enumeration enumeration;
-    private Enumeration enumeration1;
-
     @Override
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);

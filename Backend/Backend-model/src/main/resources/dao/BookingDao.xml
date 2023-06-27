@@ -72,8 +72,8 @@
                         FROM
                             (SELECT tb.id, id_product, units, stock as rstock FROM ${mainschema}.bookings tb
                                 LEFT JOIN ${mainschema}.products tp ON id_product = tp.id
-                                    WHERE reservation_state = true
-                                    AND id_product = 4) us
+                                    WHERE reservation_state = 1
+                                    AND id_product = 10) us
                             GROUP BY us.id_product, us.rstock) t
                     #WHERE#
                 ]]>

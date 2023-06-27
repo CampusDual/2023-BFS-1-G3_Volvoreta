@@ -68,8 +68,11 @@
   "total_price": "Precio total",
   "picked_up": "Fecha recogida",
   "collection_completed": "Fecha recogida",
-  "confirmed": "¿Confirmado?",
-  "reservation_state": "¿Confirmado?",
+  "reservation_state": "Estado",
   "id": "Referencia",
-  "booking_information": "Información de reserva"
+  "booking_information": "Información de reserva",
+  "name_reservation_state": "Estado",
+  "confirmed": "Confirmado",
+  "cancelled": "Cancelado",
+  "delivered": "Entregado"
 }
