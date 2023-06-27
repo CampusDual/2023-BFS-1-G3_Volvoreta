@@ -23,6 +23,8 @@
                 <Column>units</Column>
                 <Column>reservation_date</Column>
                 <Column>reservation_state</Column>
+                <Column>id_state</Column>
+                <Column>name_reservation_state</Column>
                 <Column>unit_price</Column>
                 <Column>total_price</Column>
                 <Column>reservation_days</Column>
@@ -45,6 +47,7 @@
                         LEFT JOIN ${mainschema}.products tp ON tb.id_product = tp.id
                         LEFT JOIN ${mainschema}.state ts ON tp.state = ts.id_state
                         LEFT JOIN ${mainschema}.locations tl ON tp.id_locations = tl.id_location
+                        LEFT JOIN ${mainschema}.reservation_states trs ON tb.reservation_state = trs.id_state
                     #WHERE#
                 ]]>
             </Sentence>
