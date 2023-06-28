@@ -39,7 +39,15 @@ export const routes: Routes = [
           } 
       },
       { path: 'bookings', loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule)},
-      { path: 'global-bookings', loadChildren: () => import('./global-bookings/global-bookings.module').then(m => m.GlobalBookingsModule)},
+      { path: 'global-bookings', loadChildren: () => import('./global-bookings/global-bookings.module').then(m => m.GlobalBookingsModule), 
+        data: {
+          oPermission: {
+            permissionId: 'global-bookings-permissions',
+            restrictedPermissionsRedirect: '/main/home',
+            // restrictedPermissionsRedirect: '403',
+          }
+        } 
+      },
     ]
   }
 ];
