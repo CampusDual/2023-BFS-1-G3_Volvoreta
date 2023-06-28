@@ -28,6 +28,13 @@ public class BookingService implements IBookingService {
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
     }
+
+    @Override
+    public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList);
+    }
+
+
     @Override
     public EntityResult reserveStockQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList, "reserveStockQuery");
@@ -52,6 +59,22 @@ public class BookingService implements IBookingService {
     @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+        return this.daoHelper.update(bookingDao, attrMap, keyMap);
+    }
+
+    @Override
+    //@Secured({ PermissionsProviderSecured.SECURED })
+    public EntityResult myBookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+        return this.daoHelper.update(bookingDao, attrMap, keyMap);
+    }
+
+    @Override
+    //@Secured({ PermissionsProviderSecured.SECURED })
+    public EntityResult gBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        if (attrMap.get("reservation_state").equals(3)){
+            Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+            attrMap.put("collection_completed", timestamp);
+        }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
 

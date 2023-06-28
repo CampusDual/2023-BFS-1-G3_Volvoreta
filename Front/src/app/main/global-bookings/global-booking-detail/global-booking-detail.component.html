@@ -1,4 +1,4 @@
-<o-form #detailBooking service="bookings" entity="booking" keys="id" header-actions="R;U" show-header-navigation="no">
+<o-form #detailGlobalBooking service="bookings" entity="gBooking" keys="id" header-actions="R;U" show-header-navigation="no">
     <o-row>
       <o-column>
         <o-image attr="photo" empty-image="assets/images/no-image.png" sql-type="varchar"></o-image>
@@ -31,12 +31,12 @@
             <o-text-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="80" enabled="no"></o-text-input>
         </o-row>
         <o-row>
-            <o-combo #rState id="iState" attr="reservation_state" fxFlex="40" service="reservationStates" entity="clientReservationState" keys="id_state" 
+            <o-combo #gState id="igState" attr="reservation_state" fxFlex="40" service="reservationStates" entity="reservationState" keys="id_state" 
             columns="id_state;name_reservation_state"
             visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
-            ng-model="selectedOption" 
-            (onValueChange)="enable($event)" enabled="{{enabled}}"></o-combo>
-            <o-date-input id=picked attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" 
+            ng-model="selectedOption"
+            (onValueChange)="delivered($event)" enabled="{{enabled}}"></o-combo>
+            <o-date-input id=gPicked attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" 
            enabled="no"></o-date-input>
         </o-row>
       </o-column>
