@@ -72,8 +72,15 @@ public class BookingService implements IBookingService {
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult gBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         if (attrMap.get("reservation_state").equals(3)){
+            gBookingQuery()
+            ProductService productService = new ProductService();
+            Map<String, Object> attrProduct = new HashMap<>();
+            Map<String, Object> keyMapProduct = new HashMap<>();
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);
+            attrProduct.put("stock", "0");
+            keyMapProduct.put("id", 0);
+            //productService.productUpdate();
         }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }

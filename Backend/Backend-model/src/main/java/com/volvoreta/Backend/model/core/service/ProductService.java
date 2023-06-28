@@ -39,7 +39,17 @@ public class ProductService implements IProductService {
 
     @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
-    public EntityResult productUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+    public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        System.out.println("Esto es attr");
+        for (String attr: attrMap.keySet()){
+            System.out.println(attr);
+            System.out.println(attrMap.get(attr));
+        }
+        System.out.println("Esto es key");
+        for (String key: keyMap.keySet()){
+            System.out.println(key);
+            System.out.println(keyMap.get(key));
+        }
         return this.daoHelper.update(productDao, attrMap, keyMap);
     }
 
