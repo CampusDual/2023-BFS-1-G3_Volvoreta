@@ -74,5 +74,6 @@
   "name_reservation_state": "Estado",
   "confirmed": "Confirmado",
   "cancelled": "Cancelado",
-  "delivered": "Entregado"
+  "delivered": "Entregado",
+  "GLOBAL-BOOKINGS": "Reservas"
 }

@@ -39,6 +39,7 @@ export const routes: Routes = [
           } 
       },
       { path: 'bookings', loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule)},
+      { path: 'global-bookings', loadChildren: () => import('./global-bookings/global-bookings.module').then(m => m.GlobalBookingsModule)},
     ]
   }
 ];
