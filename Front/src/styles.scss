@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+/*Estilos IMATIA*/
 // $primary: #14148A !important;
 $primary: #000000 !important;
 .alert-icon.info {
 	color: #000000 !important;
 }
-
+body, html {
+  background-color: #FFFFFF !important;
+}
 .input-padding {
   padding-right: 6px;
 }
@@ -68,8 +71,26 @@ $primary: #000000 !important;
   
 }
 .mat-button-base:hover{
-  background-color: #bdcedb !important;
+  background-color: #ffffffad !important;
 }
+.o-app-sidenav .o-app-sidenav-sidenav {
+  background: #000000 !important;
+}
+.o-app-sidenav .o-app-sidenav-menu-group:not([disabled="true"]) a.o-app-sidenav-viewer-sidenav-item-selected, .o-app-sidenav .o-app-sidenav-menu-group:not([disabled="true"]) a:hover, .o-app-sidenav .o-app-sidenav-menu-item:not([disabled="true"]) a.o-app-sidenav-viewer-sidenav-item-selected, .o-app-sidenav .o-app-sidenav-menu-item:not([disabled="true"]) a:hover {
+  color: #000000 !important;
+  background-color: #ffffffd0;
+}
+.mat-dialog-actions button:not([disabled]).o-button-primary.mat-stroked-button.mat-button-base, .mat-dialog-actions button:not([disabled]).mat-button-base.mat-primary, .mat-dialog-actions button:not([disabled]).mat-button-base.o-button-primary {
+  color: #303030;
+  background-color: #e4333c63;
+  border-color: transparent;
+}
+.mat-dialog-actions button:not([disabled]).o-button-default.cancel {
+  color: #1464a5;
+  background-color: #e4333c1e;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+/*Fin estilos IMATIA*/
 /* Inicio CardProduct */
 
 #cardProduct .mat-list.mat-list.mat-list-base {
