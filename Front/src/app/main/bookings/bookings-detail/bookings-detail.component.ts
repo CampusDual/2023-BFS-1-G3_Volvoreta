@@ -47,13 +47,4 @@ export class BookingsDetailComponent implements OnInit {
     // this.enabled = (Number(this.rState.getValue()) == 2 && type == 1) ? false : true;
 
   }
-  // hidden(event){
-  //   console.log(this.detailBooking.getDataValue('collection_completed'))
-  //   console.log(event)
-  //   const { newValue } = event
-  //   if(newValue.value == undefined){
-  //     document.getElementById("picked").setAttribute("style", "display:none");
-  //   }
-    
-  // }
 }
