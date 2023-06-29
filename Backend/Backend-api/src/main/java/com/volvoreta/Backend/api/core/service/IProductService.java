@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IProductService {
 
-    public EntityResult productQuery(Map<?, ?> keyMap, List<?> attrList);
+    public EntityResult productQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult productInsert(Map<?, ?> attrMap);
     public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);

@@ -21,9 +21,22 @@ public class ProductService implements IProductService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult productQuery(Map<?, ?> keyMap, List<?> attrList) {
+    public EntityResult productQuery(Map<String, Object> keyMap, List<String> attrList) {
+//        System.out.println("Esto es keyMap");
+//        for (String key: keyMap.keySet()){
+//            System.out.println(key);
+//            System.out.println(keyMap.get(key));
+//        }
+//        System.out.println("Esto es attr");
+//        for (int i = 0; i < attrList.size(); i++){
+//            System.out.println(i);
+//            System.out.println(keyMap.get(i));
+//        }
+//        EntityResult entityResult = this.daoHelper.query(productDao, keyMap, attrList);
+//        System.out.println(entityResult.getRecordValues(0));
         return this.daoHelper.query(productDao, keyMap, attrList);
     }
+
 
     @Override
     public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList) {
@@ -40,16 +53,16 @@ public class ProductService implements IProductService {
     @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
-        System.out.println("Esto es attr");
-        for (String attr: attrMap.keySet()){
-            System.out.println(attr);
-            System.out.println(attrMap.get(attr));
-        }
-        System.out.println("Esto es key");
-        for (String key: keyMap.keySet()){
-            System.out.println(key);
-            System.out.println(keyMap.get(key));
-        }
+//        System.out.println("Esto es attr");
+//        for (String attr: attrMap.keySet()){
+//            System.out.println(attr);
+//            System.out.println(attrMap.get(attr));
+//        }
+//        System.out.println("Esto es key");
+//        for (String key: keyMap.keySet()){
+//            System.out.println(key);
+//            System.out.println(keyMap.get(key));
+//        }
         return this.daoHelper.update(productDao, attrMap, keyMap);
     }
 

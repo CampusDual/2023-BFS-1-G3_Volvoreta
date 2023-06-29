@@ -1,11 +1,11 @@
 package com.volvoreta.Backend.model.core.service;
 
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.volvoreta.Backend.api.core.service.IBookingService;
 import com.volvoreta.Backend.model.core.dao.BookingDao;
 import com.volvoreta.Backend.model.core.dao.ProductDao;
-import org.apache.commons.math3.stat.descriptive.summary.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.*;
 
 @Lazy
@@ -21,6 +20,8 @@ import java.util.*;
 public class BookingService implements IBookingService {
     @Autowired
     private BookingDao bookingDao;
+    @Autowired
+    private ProductDao productDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -72,17 +73,44 @@ public class BookingService implements IBookingService {
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult gBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         if (attrMap.get("reservation_state").equals(3)){
-            gBookingQuery()
-            ProductService productService = new ProductService();
-            Map<String, Object> attrProduct = new HashMap<>();
-            Map<String, Object> keyMapProduct = new HashMap<>();
+            //Sacar datos producto
+            List<String> attrListBooking = new ArrayList<String>(Arrays.asList("id_product", "units"));
+            EntityResult eRProductUnits = daoHelper.query(bookingDao, keyMap, attrListBooking);
+            if(otherQuerys(eRProductUnits) != null){
+                return eRProductUnits;
+            }
+
+            Integer id_product = (Integer) eRProductUnits.getRecordValues(0).get("id_product");
+            Integer units = (Integer) eRProductUnits.getRecordValues(0).get("units");
+            Map<String, Object> keyMapStock = Collections.singletonMap("id", id_product);
+            List<String> stockList = new ArrayList<>(Arrays.asList("stock"));
+
+            EntityResult eRProductStock = daoHelper.query(productDao, keyMapStock, stockList);
+            if(otherQuerys(eRProductStock) != null){
+                return eRProductStock;
+            }
+
+            Integer stock = (Integer) eRProductStock.getRecordValues(0).get("stock");
+            Integer stockUpdated = stock - units;
+
+            daoHelper.update(productDao, Collections.singletonMap("stock", stockUpdated), keyMapStock);
+            //Estampar la fecha en bookings
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);
-            attrProduct.put("stock", "0");
-            keyMapProduct.put("id", 0);
-            //productService.productUpdate();
         }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
+    }
+    private EntityResult otherQuerys(EntityResult entityResult){
+        if(entityResult.isWrong()){
+            return entityResult;
+        }
+        if(entityResult.isEmpty()){
+            EntityResult notFoundERPS = new EntityResultMapImpl();
+            notFoundERPS.setCode(EntityResult.OPERATION_WRONG);
+            notFoundERPS.setMessage("Product not found");
+            return notFoundERPS;
+        }
+        return null;
     }
 
     @Override
