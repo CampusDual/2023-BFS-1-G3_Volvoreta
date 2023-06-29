@@ -10,10 +10,14 @@
         </o-row>
         <o-row>
           <o-text-input class="input-padding" attr="name" fxFlex="40" required="yes"></o-text-input>
-          <o-integer-input attr="stock" class="input-padding" step="0" grouping="no" fxFlex="40"></o-integer-input>
+          <o-integer-input attr="reserved" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-integer-input>
         </o-row>
         <o-row>
-            <o-currency-input attr="price" class="input-padding" step="0" grouping="no" fxFlex="40"></o-currency-input>>
+          <o-integer-input class="input-padding" attr="stock" fxFlex="40" required="yes"></o-integer-input>
+          <o-integer-input attr="istock" class="input-padding" step="0" grouping="no" fxFlex="40" enabled="no"></o-integer-input>
+        </o-row>
+        <o-row>
+            <o-currency-input attr="price" class="input-padding" step="0" grouping="no" fxFlex="40"></o-currency-input>
             <o-date-input attr="date_added" fxFlex="40"></o-date-input>
         </o-row>
         <o-row>
