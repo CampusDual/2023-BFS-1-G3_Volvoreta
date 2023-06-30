@@ -9,7 +9,7 @@ public interface IProductService {
 
     public EntityResult productQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList);
-    public EntityResult productInsert(Map<?, ?> attrMap);
+    public EntityResult productInsert(Map<String, Object> attrMap);
     public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult productDelete(Map<?, ?> keyMap);
 
