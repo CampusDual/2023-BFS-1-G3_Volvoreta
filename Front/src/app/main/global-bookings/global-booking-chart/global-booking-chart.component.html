@@ -11,6 +11,10 @@
     </o-list-item-card-image>
   </o-list-item>
 </o-list> -->
+
 <!-- 
 <o-chart type="pie" layout-fill entity="EMovementTypesTotal"
   x-axis="MOVEMENTTYPES" y-axis="MOVEMENT"></o-chart> -->
+
+<o-chart #discretebar type="discreteBar" x-label="Time" y-label="Amount" x-data-type="time" [chart-parameters]="chartParameters"></o-chart>
+

@@ -8,5 +8,4 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'global-bookings', name: 'GLOBAL-BOOKINGS', route: '/main/global-bookings', icon: 'outbox'},
   { id: 'global-bookings-chart', name: 'GLOBAL-BOOKINGS-CHART', route: '/main/global-bookings/chart', icon: 'bar_chart'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
-  
 ];
