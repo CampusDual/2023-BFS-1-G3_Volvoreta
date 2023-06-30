@@ -45,7 +45,7 @@ public class PermissionService implements IPermissionService {
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": true }]," +
 					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"global-bookings\", \"visible\": true, \"enabled\": true }, " +
-					"{ \"attr\": \"global-bookings-chart\", \"visible\": false, \"enabled\": true }, " +
+					"{ \"attr\": \"global-bookings-chart\", \"visible\": true, \"enabled\": true }, " +
 					"{ \"attr\": \"products\", \"visible\": true, \"enabled\": true }]}";
 	public static final String PLANNER_PERMISSION_DEFAULT =
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
