@@ -23,31 +23,39 @@ public class PermissionService implements IPermissionService {
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"home-permissions\", \"enabled\": true }," +
 					"{ \"permissionId\": \"global-bookings-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"global-bookings-chart-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
 			"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"global-bookings\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"global-bookings-chart\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
 	public static final String PLANNER_PERMISSION_SECURITY =
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": true }," +
 					"{ \"permissionId\": \"global-bookings-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"global-bookings-chart-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
 					"\"menu\": [{ \"attr\": \"users\", \"visible\": true, \"enabled\": true }, " +
 					"{ \"attr\": \"global-bookings\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"global-bookings-chart\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
 	public static final String PLANNER_PERMISSION_MAINTENANCE =
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"global-bookings-permissions\", \"enabled\": true }," +
+					"{ \"permissionId\": \"global-bookings-chart-permissions\", \"enabled\": true }," +
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": true }]," +
 					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"global-bookings\", \"visible\": true, \"enabled\": true }, " +
+					"{ \"attr\": \"global-bookings-chart\", \"visible\": false, \"enabled\": true }, " +
 					"{ \"attr\": \"products\", \"visible\": true, \"enabled\": true }]}";
 	public static final String PLANNER_PERMISSION_DEFAULT =
 			"{\"routes\": [{ \"permissionId\": \"users-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"home-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"global-bookings-permissions\", \"enabled\": false }," +
+					"{ \"permissionId\": \"global-bookings-chart-permissions\", \"enabled\": false }," +
 					"{ \"permissionId\": \"products-permissions\", \"enabled\": false }]," +
 					"\"menu\": [{ \"attr\": \"users\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"global-bookings\", \"visible\": false, \"enabled\": false }, " +
+					"{ \"attr\": \"global-bookings-chart\", \"visible\": false, \"enabled\": false }, " +
 					"{ \"attr\": \"products\", \"visible\": false, \"enabled\": false }]}";
 
 	@Override
