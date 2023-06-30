@@ -25,7 +25,7 @@ export class GlobalBookingDetailComponent implements OnInit {
   delivered(event){
     const { type } = event
     
-    console.log(event)
+    //console.log(event)
     // console.log(event.type)
     // console.log(newValue)
     // console.log(oldValue)

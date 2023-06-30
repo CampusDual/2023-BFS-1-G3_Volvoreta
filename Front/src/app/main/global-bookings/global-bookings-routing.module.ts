@@ -7,7 +7,7 @@ import { GlobalBookingChartComponent } from './global-booking-chart/global-booki
 
 const routes: Routes = [
   { path: '', component: GlobalBookingHomeComponent },
-  { path: "/chart", component: GlobalBookingChartComponent},
+  { path: "chart", component: GlobalBookingChartComponent},
   { path: ":id", component: GlobalBookingDetailComponent}  
 ];
 

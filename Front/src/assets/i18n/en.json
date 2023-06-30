@@ -75,6 +75,7 @@
   "confirmed": "Confirmed",
   "cancelled": "Cancelled",
   "delivered": "Delivered",
-  "GLOBAL-BOOKINGS": "Bookings"
+  "GLOBAL-BOOKINGS": "Bookings",
+  "GLOBAL-BOOKINGS-CHART": "Charts"
   
 }
