@@ -9,6 +9,7 @@ export class ReserveService {
   data: Reserve[];
 
   constructor(private ontimizeService: OntimizeService){
+
     }
     reserve(reserve: Reserve): Observable<OResponse>{
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
@@ -19,5 +20,4 @@ export class ReserveService {
       this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
       return this.ontimizeService.query({'reservation_state': 3}, ['id', 'collection_completed', 'reservation_state', 'units', 'unit_price', 'total_price', 'id_user', 'id_product', 'reservation_date', 'end_date'], 'booking');
   }
-
 }
