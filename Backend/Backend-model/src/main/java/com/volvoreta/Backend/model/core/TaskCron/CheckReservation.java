@@ -3,12 +3,10 @@ package com.volvoreta.Backend.model.core.TaskCron;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.volvoreta.Backend.api.core.service.IBookingService;
 import com.volvoreta.Backend.api.core.service.IProductService;
-import com.volvoreta.Backend.model.core.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -69,10 +67,10 @@ public class CheckReservation {
 
              if(endDate.isBefore(today)){
 
-                 Map<String, Integer> attrMap = new HashMap<>();
-                 attrMap.put("reservation_state",2);
+                 Map<String, Object> attrMap = new HashMap<>();
+                 attrMap.put("reservation_state","2");
                  Map<String, Object> keyMap = new HashMap<>();
-                 keyMap.put("id",Integer.parseInt(booking.get("id").toString()));
+                 keyMap.put("id", booking.get("id"));
 
                  EntityResult updatedBooking = bookingService.bookingUpdate(attrMap, keyMap);
 
@@ -80,7 +78,7 @@ public class CheckReservation {
                      System.out.println("Reserva cancelada");
                  }
 
-                }
+             }
         } );
     }
 

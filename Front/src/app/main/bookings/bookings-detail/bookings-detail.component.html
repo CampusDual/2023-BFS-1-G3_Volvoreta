@@ -28,7 +28,7 @@
             <o-text-input class="input-padding" attr="name_location" fxFlex="80" required="yes" enabled="no"></o-text-input>
         </o-row>
         <o-row>
-            <o-text-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="80" enabled="no"></o-text-input>
+            <o-textarea-input attr="body" class="input-padding" step="0" grouping="no" fxFlex="80" enabled="no"></o-textarea-input>
         </o-row>
         <o-row>
             <o-combo #rState id="iState" attr="reservation_state" fxFlex="40" service="reservationStates" entity="clientReservationState" keys="id_state" 
@@ -36,6 +36,10 @@
             visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
             ng-model="selectedOption" 
             (onValueChange)="enable($event)" enabled="{{enabled}}"></o-combo>
+            <o-combo #cCollected id="collected" attr="reservation_state" fxFlex="40" service="reservationStates" entity="reservationState" keys="id_state" 
+            columns="id_state;name_reservation_state"
+            visible-columns="name_reservation_state" value-column="id_state" translate="yes" class="input-padding" null-selection="no" 
+            ng-model="selectedOption" enabled="no"></o-combo>
             <o-date-input id=picked attr="collection_completed" title="picked_up" type="date" class="input-padding" fxFlex="40" 
            enabled="no"></o-date-input>
         </o-row>

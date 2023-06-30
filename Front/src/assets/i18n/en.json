@@ -67,7 +67,7 @@
   "unit_price": "Unit price",
   "total_price": "Total price",
   "picked_up": "Picked up",
-  "collection_completed": "Picked up",
+  "collection_completed": "Date",
   "reservation_state": "State",
   "id": "Reference",
   "booking_information": "Booking information",

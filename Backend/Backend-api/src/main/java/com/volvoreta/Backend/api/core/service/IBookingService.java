@@ -12,7 +12,7 @@ public interface IBookingService {
     public EntityResult myBookingQuery(Map<String, Object> keyMap, List<?> attrList);
     public EntityResult reserveStockQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult bookingInsert(Map<String, Object> attrMap);
-    public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    public EntityResult bookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult myBookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
     public EntityResult gBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
     public EntityResult bookingDelete(Map<?, ?> keyMap);

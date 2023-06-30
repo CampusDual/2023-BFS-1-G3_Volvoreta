@@ -59,7 +59,11 @@ public class BookingService implements IBookingService {
 
     @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
-    public EntityResult bookingUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+    public EntityResult bookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        if (attrMap.get("reservation_state").equals(2)){
+            Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+            attrMap.put("collection_completed", timestamp);
+        }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
 
@@ -95,6 +99,9 @@ public class BookingService implements IBookingService {
 
             daoHelper.update(productDao, Collections.singletonMap("stock", stockUpdated), keyMapStock);
             //Estampar la fecha en bookings
+            Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+            attrMap.put("collection_completed", timestamp);
+        } else if (attrMap.get("reservation_state").equals(2)){
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);
         }

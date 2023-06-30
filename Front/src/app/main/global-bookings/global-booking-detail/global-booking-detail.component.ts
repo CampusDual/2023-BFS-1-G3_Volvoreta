@@ -25,17 +25,8 @@ export class GlobalBookingDetailComponent implements OnInit {
   delivered(event){
     const { type } = event
     
-    //console.log(event)
-    // console.log(event.type)
-    // console.log(newValue)
-    // console.log(oldValue)
-    // console.log(this.rState.getValue())
-    // console.log(this.rState.getSelectedItems())
-    // console.log(this.rState.getSelectedRecord())
-
     if(Number(this.gState.getValue()) == 2 && type == 1){
       this.enabled = false;
-      document.getElementById("gPicked").setAttribute("style", "display:none");
     } else if(Number(this.gState.getValue()) == 3 && type == 1){
       this.enabled = false;
       document.getElementById("gPicked").setAttribute("style", "display:flex");
