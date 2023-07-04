@@ -67,6 +67,18 @@ public class BookingService implements IBookingService {
         if (attrMap.get("reservation_state").equals(2)){
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);
+
+            EntityResult entityResult = this.daoHelper.query(bookingDao, keyMap, new ArrayList<String>(Arrays.asList("id_product")));
+            if(otherQuerys(entityResult) != null){
+                return entityResult;
+            }
+
+            Integer id_product = (Integer) entityResult.getRecordValues(0).get("id_product");
+            Map<String, Object> keyMapProduct = Collections.singletonMap("id", id_product);
+            Map<String, Object> productMap = new HashMap<>();
+            productMap.putAll(this.activeBookingUpdate(productMap, keyMapProduct));
+
+            EntityResult eProductActive = daoHelper.update(productDao, productMap, keyMapProduct);
         }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
@@ -113,9 +125,28 @@ public class BookingService implements IBookingService {
         } else if (attrMap.get("reservation_state").equals(2)){
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);
+            //this.activeBookingUpdate(attrMap, keyMap);
         }
         return this.daoHelper.update(bookingDao, attrMap, keyMap);
     }
+
+    private Map<String, Object> activeBookingUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        List<String> stateList = new ArrayList<>(Arrays.asList("state"));
+
+        EntityResult eRProductState = daoHelper.query(productDao, keyMap, stateList);
+        if(otherQuerys(eRProductState) != null){
+            return eRProductState.getRecordValues(0);
+        }
+
+        Integer state= (Integer) eRProductState.getRecordValues(0).get("state");
+
+        if(state != 4){
+            attrMap.put("active", true);
+        }
+        return attrMap;
+    }
+
+
     private EntityResult otherQuerys(EntityResult entityResult){
         if(entityResult.isWrong()){
             return entityResult;

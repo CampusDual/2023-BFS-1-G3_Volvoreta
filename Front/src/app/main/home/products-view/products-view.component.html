@@ -23,7 +23,7 @@
   </div>
   <div class="units">
     <label for="units">{{ 'units' | oTranslate }}:</label>
-    <input #units value="1" type="number" id="units" name="units" min="1" max="{{product.stock}}">
+    <input #units value="1" type="number" id="units" name="units" min="1" max="{{product.istock}}">
     <o-button (onClick)="reserve(units.value)" attr="raised2" type="RAISED" label="reserve" translate="yes" layout-padding
           color="primary"></o-button>
   </div>
