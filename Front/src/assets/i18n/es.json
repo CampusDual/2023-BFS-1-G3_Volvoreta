@@ -76,5 +76,8 @@
   "cancelled": "Cancelado",
   "delivered": "Entregado",
   "GLOBAL-BOOKINGS": "Reservas",
-  "GLOBAL-BOOKINGS-CHART": "Estadísticas"
+  "GLOBAL-BOOKINGS-CHART": "Estadísticas",
+  "charts": "Estadísticas",
+  "sales_per_month": "Ventas por mes",
+  "unit": "Uds"
 }

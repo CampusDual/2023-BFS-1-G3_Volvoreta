@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent, PieChartConfiguration } from 'ontimize-web-ngx-charts';
 import { D3LocaleService} from 'src/app/shared/d3-locale/d3Locale.service';
+import { FnTranslator } from 'src/app/utils/fnTranslator';
 
 @Component({
   selector: 'app-booking-charts-home',
@@ -15,7 +16,11 @@ export class BookingChartsHomeComponent implements OnInit {
   protected graphData: Array<Object>;
   // protected criteriaValue = 50;
   
-  constructor(private ontimizeService: OntimizeService, private cd: ChangeDetectorRef, private d3LocaleService: D3LocaleService) { 
+  constructor(private ontimizeService: OntimizeService, 
+            private cd: ChangeDetectorRef, 
+            private d3LocaleService: D3LocaleService, 
+            public injector: Injector) { 
+
     this.graphData = [];
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
     this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['total_sales','month_','year_'], 'sellBooking').subscribe(
@@ -55,45 +60,47 @@ export class BookingChartsHomeComponent implements OnInit {
     }
   }
   processKeys(data: any) {
+    let translateMonth = new FnTranslator();
+
     let keys = [];
     data.forEach((item: any, index: number) => {
       //keys.push(item['month_']);
       switch (item['month_']){
         case 1:
-          keys.push("Ene");
+          keys.push(translateMonth.translateMonth(1));
           break;
         case 2:
-          keys.push("Feb");
+          keys.push(translateMonth.translateMonth(2));
           break;
         case 3:
-          keys.push("Mar");
+          keys.push(translateMonth.translateMonth(3));
           break;
         case 4:
-          keys.push("Abr");
+          keys.push(translateMonth.translateMonth(4));
           break;
         case 5:
-          keys.push("May");
+          keys.push(translateMonth.translateMonth(5));
           break;
         case 6:
-          keys.push("Jun");
+          keys.push(translateMonth.translateMonth(6));
           break;
         case 7:
-          keys.push("Jul");
+          keys.push(translateMonth.translateMonth(7));
           break;
         case 8:
-          keys.push("Ago");
+          keys.push(translateMonth.translateMonth(8));
           break;
         case 9:
-          keys.push("Sep");
+          keys.push(translateMonth.translateMonth(9));
           break;
         case 10:
-          keys.push("Oct");
+          keys.push(translateMonth.translateMonth(10));
           break;
         case 11:
-          keys.push("Nov");
+          keys.push(translateMonth.translateMonth(11));
           break;
         case 12:
-          keys.push("Dic");
+          keys.push(translateMonth.translateMonth(12));
           break;
       }
 
