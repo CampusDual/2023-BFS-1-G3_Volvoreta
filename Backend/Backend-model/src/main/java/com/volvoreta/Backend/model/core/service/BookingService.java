@@ -29,6 +29,10 @@ public class BookingService implements IBookingService {
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
     }
+    @Override
+    public EntityResult sellBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList, "sellBookingQuery");
+    }
 
     @Override
     public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
@@ -96,8 +100,13 @@ public class BookingService implements IBookingService {
 
             Integer stock = (Integer) eRProductStock.getRecordValues(0).get("stock");
             Integer stockUpdated = stock - units;
+            Map attrProduct = new HashMap<String, Object>();
+            attrProduct.put("stock", stockUpdated);
+            if(stockUpdated == 0){
+                attrProduct.put("active", false);
+            }
+            daoHelper.update(productDao, attrProduct, keyMapStock);
 
-            daoHelper.update(productDao, Collections.singletonMap("stock", stockUpdated), keyMapStock);
             //Estampar la fecha en bookings
             Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
             attrMap.put("collection_completed", timestamp);

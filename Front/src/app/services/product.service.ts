@@ -15,13 +15,17 @@ export class ProductService {
 
     getById(id: number): Observable<OResponse>{
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
-        return this.ontimizeService.query({'id': id},['id', 'name', 'stock', 'price', 'state_name', 'body', 'photo', 'name_location'], 'product')
+        return this.ontimizeService.query({'id': id},['id', 'name', 'stock', 'istock', 'price', 'state_name', 'body', 'photo', 'name_location'], 'product')
     }
 
     updateStock(id: number, newStock: number): Observable<OResponse> {
       let active = (newStock === 0) ? false : true;
       this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
-      return this.ontimizeService.update({'id': id},{'stock': newStock, 'active': active}, 'product')
+      return this.ontimizeService.update({'id': id},{'stock': newStock, 'active': active}, 'product');
+    }
+    updateActive(id: number, active: boolean): Observable<OResponse> { console.log("Entro update", id, active)
+      this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('products'));
+      return this.ontimizeService.update({'id': id},{'active': active}, 'product');
     }
 
 }

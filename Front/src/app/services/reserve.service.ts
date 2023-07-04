@@ -13,11 +13,11 @@ export class ReserveService {
     }
     reserve(reserve: Reserve): Observable<OResponse>{
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-        return this.ontimizeService.insert(reserve, 'booking')
+        return this.ontimizeService.insert(reserve, 'booking');
     }
 
     getReserveDate():Observable<OResponse>{
       this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-      return this.ontimizeService.query({'reservation_state': 3}, ['id', 'collection_completed', 'reservation_state', 'units', 'unit_price', 'total_price', 'id_user', 'id_product', 'reservation_date', 'end_date'], 'booking');
+      return this.ontimizeService.query({}, ['id', 'collection_completed', 'reservation_state', 'units', 'unit_price', 'total_price', 'id_user', 'id_product', 'reservation_date', 'end_date'], 'booking');
   }
 }
