@@ -1,0 +1,9 @@
+<o-form editable-detail="no" show-header="no">
+  <div><h2>Estadísticas</h2></div>
+  <div><h3>Reservas: Ventas por mes</h3></div>
+  <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
+    visible-columns="name" read-only="yes"></o-combo>
+  <!-- <o-combo attr="year_" fxFlex="80" service="bookings" entity="sellBooking" keys="year_" columns="year_;year_"
+  visible-columns="year_" value-column="year_" translate="yes" class="input-padding" null-selection="no"></o-combo> -->
+  <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Ventas" x-data-type="text" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
+</o-form>

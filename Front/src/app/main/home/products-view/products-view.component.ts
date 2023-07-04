@@ -59,7 +59,10 @@ export class ProductsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if(data !== "" && data){
         this.dialogService.info("summary", data);
-        this.turnback();
+        setTimeout(() => {
+          console.log("here")
+          this.turnback();
+        }, 1500);
       } 
     });
   }

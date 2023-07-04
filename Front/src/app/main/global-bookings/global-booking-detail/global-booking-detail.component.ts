@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OComboComponent, OFormComponent } from 'ontimize-web-ngx';
 
+
 @Component({
   selector: 'app-global-booking-detail',
   templateUrl: './global-booking-detail.component.html',

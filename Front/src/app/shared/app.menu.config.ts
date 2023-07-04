@@ -6,6 +6,6 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'users', name: 'USERS', route: '/main/users', icon: 'people'},
   { id: 'products', name: 'PRODUCTS', route: '/main/products', icon: 'inventory'},
   { id: 'global-bookings', name: 'GLOBAL-BOOKINGS', route: '/main/global-bookings', icon: 'outbox'},
-  { id: 'global-bookings-chart', name: 'GLOBAL-BOOKINGS-CHART', route: '/main/global-bookings/chart', icon: 'bar_chart'},
+  { id: 'booking-charts', name: 'GLOBAL-BOOKINGS-CHART', route: '/main/booking-charts', icon: 'bar_chart'},
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
 ];

@@ -48,6 +48,15 @@ export const routes: Routes = [
           }
         } 
       },
+      { path: 'booking-charts', loadChildren: () => import('./booking-charts/booking-charts.module').then(m => m.BookingChartsModule), 
+        data: {
+          oPermission: {
+            permissionId: 'booking-charts-permissions',
+            restrictedPermissionsRedirect: '/main/home',
+            // restrictedPermissionsRedirect: '403',
+          }
+        } 
+      },
     ]
   }
 ];

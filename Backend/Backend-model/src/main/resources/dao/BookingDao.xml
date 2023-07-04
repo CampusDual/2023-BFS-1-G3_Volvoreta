@@ -79,5 +79,33 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="sellBookingQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>total_sales</Column>
+                <Column>month_</Column>
+                <Column>year_</Column>
+                <Column>reservation_state</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (SELECT
+                            reservation_state,
+                            COUNT(EXTRACT(MONTH FROM collection_completed)) total_sales,
+                            EXTRACT(MONTH FROM collection_completed) month_,
+                            EXTRACT(YEAR FROM collection_completed) year_
+                        FROM
+                            ${mainschema}.bookings
+                        GROUP BY EXTRACT(YEAR FROM collection_completed),
+                        EXTRACT(MONTH FROM collection_completed), reservation_state) t
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>
