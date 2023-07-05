@@ -60,7 +60,6 @@ export class ProductsViewComponent implements OnInit {
       if(data !== "" && data){
         this.dialogService.info("summary", data);
         setTimeout(() => {
-          console.log("here")
           this.turnback();
         }, 1500);
       } 

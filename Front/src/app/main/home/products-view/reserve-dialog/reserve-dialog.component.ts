@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DialogService, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService } from 'ontimize-web-ngx';
 import { Products } from 'src/app/models/products';
 import { Reserve } from 'src/app/models/reserve';
 import { OResponse } from 'src/app/models/response';
@@ -22,9 +21,7 @@ export class ReserveDialogComponent implements OnInit {
     private userService: UserService,
     private reserveService: ReserveService,
     private productService: ProductService,
-    private actRoute: ActivatedRoute,
-    private router: Router,
-    private dialogRef: MatDialogRef<ReserveDialogComponent>,
+   private dialogRef: MatDialogRef<ReserveDialogComponent>,
     protected dialogService: DialogService,
   ) { }
 
@@ -39,12 +36,19 @@ export class ReserveDialogComponent implements OnInit {
 
     const currentUser = this.userService.getCurrentUser();
     const { product, units, totalImport } = this.data;
-    let currentReserve = new Reserve(currentUser, product.id, Number(units), product.price, totalImport)
+    let endDate: Date = new Date();
+    endDate.setDate(endDate.getDate() + 15);
+    let day: number = endDate.getDate();
+    let month_: number = endDate.getMonth() + 1;
+    let year_: number = endDate.getFullYear();
+    let currentReserve = new Reserve(currentUser, product.id, Number(units), product.price, totalImport, endDate.getTime());
+    
 
     this.reserveService.reserve(currentReserve).subscribe(
-      ({ code }: OResponse) => {console.log()
+      ({ code }: OResponse) => {
         let part1: string = "";
         let part2: string = "";
+        let part3: string = "";
         if (code !== 0) {
           this.dialogService.error("reservation error", "error when making the reservation");
           return
@@ -53,12 +57,14 @@ export class ReserveDialogComponent implements OnInit {
         if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
           part1 = "Has reservado ";
           part2 = "Pasa a recoger tu pedido antes del ";
+          part3 = + day + "-" + month_ + "-" + year_;
         } else {
           part1 = "You have reserved ";
           part2 = "Pick up your order before ";
+          part3 = + year_ + "-" + month_ + "-" + day;
         }
         this.updateActive(product.id);
-        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + "fecha aqui" + "</b>. ");
+        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + part3 +  "</b>. ");
       }
     );
     //this.reserveService.getReserveDate()
@@ -76,8 +82,5 @@ export class ReserveDialogComponent implements OnInit {
       }
     );
   }
-  
-  endDate(): Date {
-    return null;
-  }
+
 }

@@ -55,7 +55,9 @@ public class BookingService implements IBookingService {
     @Override
     public EntityResult bookingInsert(Map<String, Object> attrMap) {
         Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.DAY_OF_YEAR, 15);
+        endDate.setTimeInMillis((long) attrMap.get("end_date"));
+//        Calendar endDate = Calendar.getInstance();
+//        endDate.add(Calendar.DAY_OF_YEAR, 15);
         Timestamp timestamp = new Timestamp(endDate.getTime().getTime());
         attrMap.put("end_date", timestamp);
         return this.daoHelper.insert(bookingDao, attrMap);
