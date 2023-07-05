@@ -2,7 +2,7 @@
   <o-app-layout-header>
     <div class="container-bg-wellcome">
       <img class="logo" src="../assets/images/faviconv.svg" alt="Volvoreta logo">
-      <p class="wellcome">{{wellcome}}</p>
+      <p class="wellcome">{{'wellcome' | oTranslate}}, {{user_name}} {{user_surname}}; {{'access_type' | oTranslate}}: {{role_name | oTranslate}}</p>
     </div>
   </o-app-layout-header>
   <router-outlet></router-outlet>

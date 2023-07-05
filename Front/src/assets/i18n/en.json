@@ -78,7 +78,17 @@
   "GLOBAL-BOOKINGS": "Bookings",
   "GLOBAL-BOOKINGS-CHART": "Charts",
   "charts": "Charts",
-  "sales_per_month": "Sales per month",
-  "unit": "Units"
+  "sales_per_month": "Sales per month, units",
+  "unit": "Units",
+  "profits_per_month": "Profits per month, €",
+  "access_type": "access type",
+  "not_authorized": "not authorized",
+  "security": "security",
+  "maintenance": "maintenance",
+  "user": "user",
+  "wellcome": "Wellcome",
+  "jan": "Jan",
+  "mar": "Mar",
+  "jul": "Jul" 
   
 }

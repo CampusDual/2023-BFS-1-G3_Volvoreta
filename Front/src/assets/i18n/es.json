@@ -78,6 +78,16 @@
   "GLOBAL-BOOKINGS": "Reservas",
   "GLOBAL-BOOKINGS-CHART": "Estadísticas",
   "charts": "Estadísticas",
-  "sales_per_month": "Ventas por mes",
-  "unit": "Uds"
+  "sales_per_month": "Ventas por mes, unidades",
+  "unit": "Uds",
+  "profits_per_month": "Beneficios por mes, €",
+  "access_type": "acceso",
+  "not_authorized": "no autorizado",
+  "security": "seguridad",
+  "maintenance": "mantenimiento",
+  "user": "usuario",
+  "wellcome": "Bienvenid@",
+  "jan": "Ene",
+  "mar": "Mar",
+  "jul": "Jul" 
 }

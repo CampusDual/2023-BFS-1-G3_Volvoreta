@@ -85,6 +85,7 @@
             </AmbiguousColumns>
             <ValidColumns>
                 <Column>total_sales</Column>
+                <Column>profits</Column>
                 <Column>month_</Column>
                 <Column>year_</Column>
                 <Column>reservation_state</Column>
@@ -98,7 +99,8 @@
                             reservation_state,
                             COUNT(EXTRACT(MONTH FROM collection_completed)) total_sales,
                             EXTRACT(MONTH FROM collection_completed) month_,
-                            EXTRACT(YEAR FROM collection_completed) year_
+                            EXTRACT(YEAR FROM collection_completed) year_,
+                            SUM(total_price) as profits
                         FROM
                             ${mainschema}.bookings
                         GROUP BY EXTRACT(YEAR FROM collection_completed),
