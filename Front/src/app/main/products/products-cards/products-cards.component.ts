@@ -6,7 +6,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
   styleUrls: ['./products-cards.component.css']
 })
 export class ProductsCardsComponent implements OnInit {
-
+      subtitle="{{row.name_location}}&NewLine;{{'price' | oTranslate}}: {{ row.price }} €"
+ variable: any = "&NewLine;";
   constructor(private cd: ChangeDetectorRef) { }
 
   ngAfterContentChecked() {

@@ -37,12 +37,12 @@ export class ReserveDialogComponent implements OnInit {
   
   reserveOK() {
 
-    const currentUser = this.userService.getCurrentUser()
-    const { product, units, totalImport } = this.data
+    const currentUser = this.userService.getCurrentUser();
+    const { product, units, totalImport } = this.data;
     let currentReserve = new Reserve(currentUser, product.id, Number(units), product.price, totalImport)
 
     this.reserveService.reserve(currentReserve).subscribe(
-      ({ code }: OResponse) => {
+      ({ code }: OResponse) => {console.log()
         let part1: string = "";
         let part2: string = "";
         if (code !== 0) {
@@ -52,15 +52,16 @@ export class ReserveDialogComponent implements OnInit {
         
         if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
           part1 = "Has reservado ";
-          part2 = "Pasa a recoger tu pedido antes de <b>15</b> dias naturales.";
+          part2 = "Pasa a recoger tu pedido antes del ";
         } else {
           part1 = "You have reserved ";
-          part2 = "Pick up your order before <b>15</b> calendar days.";
+          part2 = "Pick up your order before ";
         }
         this.updateActive(product.id);
-        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2);
+        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + "fecha aqui" + "</b>. ");
       }
     );
+    //this.reserveService.getReserveDate()
   }
   updateActive(id: number){
     this.productService.getById(id).subscribe(
@@ -76,7 +77,7 @@ export class ReserveDialogComponent implements OnInit {
     );
   }
   
-  // turnback() {
-  //   this.router.navigate(['../../main/', 'home'], { relativeTo: this.actRoute });
-  // }
+  endDate(): Date {
+    return null;
+  }
 }
