@@ -11,6 +11,7 @@
     <UpdateKeys>
         <Column>id</Column>
     </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
     <Queries>
         <Query id="default">
             <AmbiguousColumns>
@@ -73,7 +74,7 @@
                             (SELECT tb.id, id_product, units, stock as rstock FROM ${mainschema}.bookings tb
                                 LEFT JOIN ${mainschema}.products tp ON id_product = tp.id
                                     WHERE reservation_state = 1
-                                    AND id_product = 10) us
+                                    AND id_product = tp.id) us
                             GROUP BY us.id_product, us.rstock) t
                     #WHERE#
                 ]]>
@@ -106,6 +107,7 @@
                         GROUP BY EXTRACT(YEAR FROM collection_completed),
                         EXTRACT(MONTH FROM collection_completed), reservation_state) t
                     #WHERE#
+			ORDER BY t.month_
                 ]]>
             </Sentence>
         </Query>

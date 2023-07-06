@@ -68,7 +68,7 @@ public class CheckReservation {
              if(endDate.isBefore(today)){
 
                  Map<String, Object> attrMap = new HashMap<>();
-                 attrMap.put("reservation_state","2");
+                 attrMap.put("reservation_state","4");
                  Map<String, Object> keyMap = new HashMap<>();
                  keyMap.put("id", booking.get("id"));
 

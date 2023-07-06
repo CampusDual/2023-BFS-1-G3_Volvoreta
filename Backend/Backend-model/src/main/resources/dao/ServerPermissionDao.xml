@@ -11,4 +11,5 @@
     <UpdateKeys>
         <Column>id_server_permission</Column>
     </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
 </JdbcEntitySetup>

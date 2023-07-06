@@ -66,7 +66,7 @@
   "end_date": "Fecha límite reserva",
   "unit_price": "Precio unitario",
   "total_price": "Precio total",
-  "picked_up": "Fecha recogida",
+  "picked_up": "Reserva completada a",
   "collection_completed": "Fecha",
   "reservation_state": "Estado",
   "id": "Referencia",
@@ -89,5 +89,6 @@
   "wellcome": "Bienvenid@",
   "jan": "Ene",
   "mar": "Mar",
-  "jul": "Jul" 
+  "jul": "Jul" ,
+  "not_picked_up": "No recogido"
 }

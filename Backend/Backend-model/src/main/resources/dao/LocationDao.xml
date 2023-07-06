@@ -11,4 +11,5 @@
     <UpdateKeys>
         <Column>id_location</Column>
     </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
 </JdbcEntitySetup>

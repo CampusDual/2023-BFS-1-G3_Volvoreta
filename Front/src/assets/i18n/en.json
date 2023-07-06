@@ -66,7 +66,7 @@
   "end_date": "End date",
   "unit_price": "Unit price",
   "total_price": "Total price",
-  "picked_up": "Picked up",
+  "picked_up": "Collection completed",
   "collection_completed": "Date",
   "reservation_state": "State",
   "id": "Reference",
@@ -89,6 +89,6 @@
   "wellcome": "Wellcome",
   "jan": "Jan",
   "mar": "Mar",
-  "jul": "Jul" 
-  
+  "jul": "Jul" ,
+  "not_picked_up":"Not picked up"
 }
