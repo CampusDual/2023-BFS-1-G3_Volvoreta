@@ -1,0 +1,10 @@
+<o-form #myForm editable-detail="no" show-header="no">
+    <div><h2>{{'charts'| oTranslate}}</h2></div>
+    <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
+      visible-columns="name" read-only="yes"></o-combo>
+    <div><h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'sales_per_month' | oTranslate}}</h3></div>
+    
+    <!-- <o-combo attr="year_" fxFlex="80" service="bookings" entity="sellBooking" keys="year_" columns="year_;year_"
+    visible-columns="year_" value-column="year_" translate="yes" class="input-padding" null-selection="no"></o-combo> -->
+    <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Sells" x-data-type="text" [data]="graphDataS" [chart-parameters]="chartParameters" fxFlex></o-chart>
+  </o-form>

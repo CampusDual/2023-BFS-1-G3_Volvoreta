@@ -90,5 +90,6 @@
   "jan": "Ene",
   "mar": "Mar",
   "jul": "Jul" ,
-  "not_picked_up": "No recogido"
+  "not_picked_up": "No recogido",
+  "CHARTS-SELLS-YEAR": "Ventas anuales"
 }

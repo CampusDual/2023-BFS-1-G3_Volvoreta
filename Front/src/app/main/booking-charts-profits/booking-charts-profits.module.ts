@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
-import { BookingChartsRoutingModule } from './booking-charts-routing.module';
-import { BookingChartsHomeComponent } from './booking-charts-home/booking-charts-home.component';
+import { BookingChartsProfitsRoutingModule } from './booking-charts-profits-routing.module';
+import { BookingChartsProfitsHomeComponent } from './booking-charts-profits-home/booking-charts-profits-home.component';
 import { OChartModule } from 'ontimize-web-ngx-charts';
 
 @NgModule({
-  declarations: [BookingChartsHomeComponent],
+  declarations: [BookingChartsProfitsHomeComponent],
   imports: [
     CommonModule,
     OntimizeWebModule,
     SharedModule,
-    BookingChartsRoutingModule,
+    BookingChartsProfitsRoutingModule,
     OChartModule
   ]
 })
-export class BookingChartsModule { }
+export class BookingChartsProfitsModule { }
