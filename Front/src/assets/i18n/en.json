@@ -91,5 +91,6 @@
   "mar": "Mar",
   "jul": "Jul" ,
   "not_picked_up":"Not picked up",
-  "CHARTS-SELLS-YEAR": "Sales year"
+  "CHARTS-SELLS-YEAR": "Sales per year",
+  "CHARTS-PROFITS-YEAR": "Profits per year"
 }

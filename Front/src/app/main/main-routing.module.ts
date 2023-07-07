@@ -48,24 +48,26 @@ export const routes: Routes = [
           }
         } 
       },
-      { path: 'booking-charts-profits', loadChildren: () => import('./booking-charts-profits/booking-charts-profits.module').then(m => m.BookingChartsProfitsModule), 
-        data: {
-          oPermission: {
-            permissionId: 'booking-charts-sells-permissions',
-            restrictedPermissionsRedirect: '/main/home',
-            // restrictedPermissionsRedirect: '403',
-          }
-        } 
-      },
-      { path: 'booking-charts-sells', loadChildren: () => import('./booking-charts-sells/booking-charts-sells.module').then(m => m.BookingChartsSellsModule), 
-        data: {
-          oPermission: {
-            permissionId: 'booking-charts-sells-permissions',
-            restrictedPermissionsRedirect: '/main/home',
-            // restrictedPermissionsRedirect: '403',
-          }
-        } 
-      },
+      // { path: 'booking-charts-profits', loadChildren: () => import('./booking-charts-profits/booking-charts-profits.module').then(m => m.BookingChartsProfitsModule), 
+      //   data: {
+      //     oPermission: {
+      //       permissionId: 'booking-charts-sells-permissions',
+      //       restrictedPermissionsRedirect: '/main/home',
+      //       // restrictedPermissionsRedirect: '403',
+      //     }
+      //   } 
+      // },
+      // { path: 'booking-charts-sells', loadChildren: () => import('./booking-charts-sells/booking-charts-sells.module').then(m => m.BookingChartsSellsModule), 
+      //   data: {
+      //     oPermission: {
+      //       permissionId: 'booking-charts-sells-permissions',
+      //       restrictedPermissionsRedirect: '/main/home',
+      //       // restrictedPermissionsRedirect: '403',
+      //     }
+      //   } 
+      // },
+      { path: 'booking-charts', loadChildren: () => import('./booking-charts/booking-charts.module').then(m => m.BookingChartsModule)},
+    
     ]
   }
 ];

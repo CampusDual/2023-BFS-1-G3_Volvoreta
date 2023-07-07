@@ -6,10 +6,13 @@ export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'users', name: 'USERS', route: '/main/users', icon: 'people'},
   { id: 'products', name: 'PRODUCTS', route: '/main/products', icon: 'inventory'},
   { id: 'global-bookings', name: 'GLOBAL-BOOKINGS', route: '/main/global-bookings', icon: 'outbox'},
-  { id: 'views-booking-charts', name: 'GLOBAL-BOOKINGS-CHART', icon: 'remove_red_eye', opened: false,
+  { id: 'booking-charts', name: 'GLOBAL-BOOKINGS-CHART', icon: 'bar_chart', opened: false, route: 'main/booking-charts/home',
     items: [
-      { id: 'booking-charts-sells', name: 'CHARTS-SELLS-YEAR', route: '/main/booking-charts-sells', icon: 'bar_chart'},
-      { id: 'booking-charts-profits', name: 'CHARTS-PROFITS-YEAR', route: '/main/booking-charts-profits', icon: 'bar_chart'},
+      { id: 'chart-sells', name: 'CHARTS-SELLS-YEAR', route: '/main/booking-charts/chart-sells', icon: 'bar_chart'},
+      { id: 'chart-profits', name: 'CHARTS-PROFITS-YEAR', route: '/main/booking-charts/chart-profits', icon: 'bar_chart'},
+      { id: 'chart-locations', name: 'CHARTS-LOCATIONS-YEAR', route: '/main/booking-charts/chart-locations', icon: 'bar_chart'},
+      { id: 'chart-stock', name: 'CHARTS-STOCK-YEAR', route: '/main/booking-charts/chart-stock', icon: 'bar_chart'},
+      { id: 'chart-users', name: 'CHARTS-USERS-YEAR', route: '/main/booking-charts/chart-users', icon: 'bar_chart'},
     ]
   },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },
