@@ -92,5 +92,7 @@
   "jul": "Jul" ,
   "not_picked_up":"Not picked up",
   "CHARTS-SELLS-YEAR": "Sales per year",
-  "CHARTS-PROFITS-YEAR": "Profits per year"
+  "CHARTS-PROFITS-YEAR": "Profits per year",
+  "CHARTS-LOCATIONS-YEAR": "Sales per locations",
+  "sales_per_location": "Sales per location, €"
 }

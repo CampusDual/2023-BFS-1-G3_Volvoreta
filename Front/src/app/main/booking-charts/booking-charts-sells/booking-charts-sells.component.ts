@@ -56,6 +56,7 @@ export class BookingChartsSellsComponent implements OnInit {
     let translateMonth = new FnTranslator();
 
     let keys = [];
+    console.log(data);
     data.forEach((item: any, index: number) => {
       switch (item['month_']){
         case 1:
