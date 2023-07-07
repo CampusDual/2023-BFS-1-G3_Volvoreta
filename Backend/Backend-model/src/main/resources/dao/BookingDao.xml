@@ -111,5 +111,132 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="locationsBookingQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>locations</Column>
+                <Column>profits</Column>
+                <Column>year_</Column>
+                <Column>reservation_state</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (SELECT
+                            sum(total_price) profits, locations, year_, reservation_state
+                        FROM
+                        (
+                            SELECT DISTINCT (name_location) locations, *
+                            FROM
+                        (
+                            select EXTRACT(YEAR FROM collection_completed) year_, name_location, reservation_state, total_price FROM ${mainschema}.bookings b
+                            LEFT JOIN ${mainschema}.products p ON b.id_product = p.id
+                            LEFT JOIN ${mainschema}.locations l ON l.id_location = p.id_locations
+                        )bpl
+                        )tbpl
+                        GROUP BY year_,locations, reservation_state) t
+                    #WHERE#
+			ORDER BY t.locations
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="locationsBookingQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>locations</Column>
+                <Column>profits</Column>
+                <Column>year_</Column>
+                <Column>reservation_state</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+                        (SELECT
+                            sum(total_price) profits, locations, year_, reservation_state
+                        FROM
+                        (
+                            SELECT DISTINCT (name_location) locations, *
+                            FROM
+                        (
+                            select EXTRACT(YEAR FROM collection_completed) year_, name_location, reservation_state, total_price FROM ${mainschema}.bookings b
+                            LEFT JOIN ${mainschema}.products p ON b.id_product = p.id
+                            LEFT JOIN ${mainschema}.locations l ON l.id_location = p.id_locations
+                        )bpl
+                        )tbpl
+                        GROUP BY year_,locations, reservation_state) t
+                    #WHERE#
+			ORDER BY t.locations
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="stockBookingQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>units</Column>
+                <Column>product</Column>
+                <Column>name</Column>
+                <Column>year_</Column>
+                <Column>reservation_state</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+	                    (select  sum(units) units, product, name , EXTRACT(YEAR FROM collection_completed) year_, reservation_state
+	                FROM
+	                (
+	                select distinct(id_product) product,*
+ 		    FROM
+		    (
+                select collection_completed, id_product, name, reservation_state, units from bookings b
+                LEFT JOIN products p on b.id_product = p.id
+                ) bp
+                ) tbp
+                    GROUP BY  product, year_, name, reservation_state) t
+                    #WHERE#
+			ORDER BY t.name
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="usersBookingQuery">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>id_user</Column>
+                <Column>name</Column>
+                <Column>surname1</Column>
+                <Column>year_</Column>
+                <Column>reservation_state</Column>
+                <Column>not_picked_up</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                        #COLUMNS#
+                    FROM
+	                    (SELECT COUNT(id_user) not_picked_up, year_, reservation_state, id_user, name, surname1
+                    FROM (
+                        SELECT EXTRACT(YEAR FROM end_date) year_ , reservation_state, id_user, name, surname1
+                         FROM bookings b
+                         LEFT JOIN tuser tu ON b.id_user = tu.user_
+                    ) bu
+                    GROUP BY year_, reservation_state, id_user, name, surname1) t
+                    #WHERE#
+			        ORDER BY t.surname1
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

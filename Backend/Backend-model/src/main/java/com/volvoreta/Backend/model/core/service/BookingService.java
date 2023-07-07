@@ -35,6 +35,21 @@ public class BookingService implements IBookingService {
     }
 
     @Override
+    public EntityResult locationsBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList, "locationsBookingQuery");
+    }
+
+    @Override
+    public EntityResult stockBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList, "stockBookingQuery");
+    }
+
+    @Override
+    public EntityResult usersBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+        return this.daoHelper.query(bookingDao, keyMap, attrList, "usersBookingQuery");
+    }
+
+    @Override
     public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
     }
