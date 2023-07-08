@@ -38,12 +38,12 @@ export class BookingChartsLocationsComponent implements OnInit {
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.xAxis = "key";
     this.chartParameters.yAxis = ["values"];
-    this.chartParameters.color = ['#363636', '#41bf78', '#1464a5', '#4649A6', '#006bdb'];
+    this.chartParameters.color = ['#4649A6', '#ffcc33', '#e84b2c', '#006bdb', '#41bf78'];
   }
-  adaptResult(data: any, graphData: any[], numero: number) {
+  adaptResult(data: any, graphData: any[]) {
     graphData = [];
     if (data && data.length) {
-      let values = this.processValues(data, numero);
+      let values = this.processValues(data);
       let keys = this.processKeys(data);
       keys.forEach((item: any, items: number) => {
         const linea: object[] = [{'key': item, 'values': values[items]}]; console.log(linea)
@@ -60,7 +60,7 @@ export class BookingChartsLocationsComponent implements OnInit {
     });
     return keys;
   }
-  processValues(data: any, numero: number) {
+  processValues(data: any) {
     let values = [];
     data.forEach((item: any) => {
     values.push(item.total_sales); 
