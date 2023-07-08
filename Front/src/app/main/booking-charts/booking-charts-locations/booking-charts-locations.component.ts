@@ -26,7 +26,7 @@ export class BookingChartsLocationsComponent implements OnInit {
 
   getSalles(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['profits','locations','year_'], 'locationsBooking').subscribe(
+    this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['total_sales','name_location','year_'], 'locationsBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.adaptResult(res.data, this.graphDataS, 1);
@@ -55,20 +55,16 @@ export class BookingChartsLocationsComponent implements OnInit {
   }
   processKeys(data: any) {
     let keys = [];
-    data.forEach((item: any, index: number) => {
-      keys.push(item.locations);
-
+    data.forEach((item: any) => {
+      keys.push(item.name_location);
     });
     return keys;
   }
   processValues(data: any, numero: number) {
     let values = [];
-    let valor = 'profits';
-    
-    data.forEach((item: any, index: number) => {
-    values.push(item[valor]); 
+    data.forEach((item: any) => {
+    values.push(item.total_sales); 
     });
-    console.log(values);
     return values;
   }  
   

@@ -101,13 +101,13 @@
                             COUNT(EXTRACT(MONTH FROM collection_completed)) total_sales,
                             EXTRACT(MONTH FROM collection_completed) month_,
                             EXTRACT(YEAR FROM collection_completed) year_,
-                            SUM(total_price) as profits
+                            SUM(total_price)  profits
                         FROM
                             ${mainschema}.bookings
                         GROUP BY EXTRACT(YEAR FROM collection_completed),
                         EXTRACT(MONTH FROM collection_completed), reservation_state) t
                     #WHERE#
-			ORDER BY t.month_
+			        ORDER BY t.month_
                 ]]>
             </Sentence>
         </Query>
@@ -116,7 +116,8 @@
                 <AmbiguousColumn name="id" prefix="tb" />
             </AmbiguousColumns>
             <ValidColumns>
-                <Column>locations</Column>
+                <Column>name_location</Column>
+                <Column>total_sales</Column>
                 <Column>profits</Column>
                 <Column>year_</Column>
                 <Column>reservation_state</Column>
@@ -127,53 +128,18 @@
                         #COLUMNS#
                     FROM
                         (SELECT
-                            sum(total_price) profits, locations, year_, reservation_state
+                            COUNT(name_location) total_sales,
+                            EXTRACT(YEAR FROM collection_completed) year_,
+                            SUM(total_price) profits,
+                            reservation_state,
+                            name_location
                         FROM
-                        (
-                            SELECT DISTINCT (name_location) locations, *
-                            FROM
-                        (
-                            select EXTRACT(YEAR FROM collection_completed) year_, name_location, reservation_state, total_price FROM ${mainschema}.bookings b
-                            LEFT JOIN ${mainschema}.products p ON b.id_product = p.id
-                            LEFT JOIN ${mainschema}.locations l ON l.id_location = p.id_locations
-                        )bpl
-                        )tbpl
-                        GROUP BY year_,locations, reservation_state) t
+                            ${mainschema}.bookings tb
+                        LEFT JOIN ${mainschema}.products tp ON tb.id_product = tp.id
+                        LEFT JOIN ${mainschema}.locations tl ON tl.id_location = tp.id_locations
+                        GROUP BY EXTRACT(YEAR FROM collection_completed), reservation_state, name_location) t
                     #WHERE#
-			ORDER BY t.locations
-                ]]>
-            </Sentence>
-        </Query>
-        <Query id="locationsBookingQuery">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="tb" />
-            </AmbiguousColumns>
-            <ValidColumns>
-                <Column>locations</Column>
-                <Column>profits</Column>
-                <Column>year_</Column>
-                <Column>reservation_state</Column>
-            </ValidColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM
-                        (SELECT
-                            sum(total_price) profits, locations, year_, reservation_state
-                        FROM
-                        (
-                            SELECT DISTINCT (name_location) locations, *
-                            FROM
-                        (
-                            select EXTRACT(YEAR FROM collection_completed) year_, name_location, reservation_state, total_price FROM ${mainschema}.bookings b
-                            LEFT JOIN ${mainschema}.products p ON b.id_product = p.id
-                            LEFT JOIN ${mainschema}.locations l ON l.id_location = p.id_locations
-                        )bpl
-                        )tbpl
-                        GROUP BY year_,locations, reservation_state) t
-                    #WHERE#
-			ORDER BY t.locations
+			        ORDER BY name_location
                 ]]>
             </Sentence>
         </Query>

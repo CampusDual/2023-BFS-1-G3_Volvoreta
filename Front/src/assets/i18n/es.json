@@ -93,6 +93,6 @@
   "not_picked_up": "No recogido",
   "CHARTS-SELLS-YEAR": "Ventas anuales",
   "CHARTS-PROFITS-YEAR": "Beneficios anuales",
-  "CHARTS-LOCATIONS-YEAR": "Ventas por localizaciones",
-  "sales_per_location": "Ventas por localización, €"
+  "CHARTS-LOCATIONS-YEAR": "Ventas por ubicación",
+  "sales_per_location": "Ventas por ubicación, unidades"
 }
