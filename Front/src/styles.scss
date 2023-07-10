@@ -126,6 +126,13 @@ input:not([type]):disabled, input[type="color"]:disabled, input[type="date"]:dis
   background-color: #e4333c1e;
   border-color: rgba(0, 0, 0, 0.12);
 }
+.o-app-sidenav 
+.o-app-sidenav-sidenav 
+.o-app-sidenav-menu-group-level-1 
+.o-app-sidenav-menugroup.opened + 
+.o-app-sidenav-menugroup-items-container ul {
+	background: #E4333C47;
+}
 /*Fin estilos IMATIA*/
 /* Inicio CardProduct */
 
