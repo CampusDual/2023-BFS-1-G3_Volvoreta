@@ -13,14 +13,14 @@ export class BookingChartsLocationsComponent implements OnInit {
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
   public chartParameters: DiscreteBarChartConfiguration;
-  protected graphDataS: Array<Object>;
+  protected graphData: Array<Object>;
   // protected criteriaValue = 50;
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
 
-    this.graphDataS = [];
+    this.graphData = [];
     this.getSalles();
   }
 
@@ -29,7 +29,7 @@ export class BookingChartsLocationsComponent implements OnInit {
     this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['total_sales','name_location','year_'], 'locationsBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
-          this.adaptResult(res.data, this.graphDataS, 1);
+          this.adaptResult(res.data);
         }
       },
       err => console.log(err),
@@ -40,17 +40,17 @@ export class BookingChartsLocationsComponent implements OnInit {
     this.chartParameters.yAxis = ["values"];
     this.chartParameters.color = ['#4649A6', '#ffcc33', '#e84b2c', '#006bdb', '#41bf78'];
   }
-  adaptResult(data: any, graphData: any[]) {
-    graphData = [];
+  adaptResult(data: any) {
+    this.graphData = [];
     if (data && data.length) {
       let values = this.processValues(data);
       let keys = this.processKeys(data);
       keys.forEach((item: any, items: number) => {
         const linea: object[] = [{'key': item, 'values': values[items]}]; console.log(linea)
-        graphData.push(linea[0]); console.log(graphData);
+       this.graphData.push(linea[0]); console.log(this.graphData);
       });
       let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
-      this.discretebar.setDataArray(dataAdapter.adaptResult(graphData));
+      this.discretebar.setDataArray(dataAdapter.adaptResult(this.graphData));
     }
   }
   processKeys(data: any) {
