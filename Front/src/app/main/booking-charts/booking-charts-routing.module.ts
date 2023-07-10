@@ -6,6 +6,7 @@ import { BookingChartsProfitsComponent } from './booking-charts-profits/booking-
 import { BookingChartsLocationsComponent } from './booking-charts-locations/booking-charts-locations.component';
 import { BookingChartsStockComponent } from './booking-charts-stock/booking-charts-stock.component';
 import { BookingChartsUsersComponent } from './booking-charts-users/booking-charts-users.component';
+import { BookingChartLocationpComponent } from './booking-chart-locationp/booking-chart-locationp.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {  path: "chart-sells", component: BookingChartsSellsComponent },
   {  path: "chart-profits", component: BookingChartsProfitsComponent },
   {  path: "chart-locations", component: BookingChartsLocationsComponent },
+  {  path: "chart-locationp", component: BookingChartLocationpComponent },
   {  path: "chart-stock", component: BookingChartsStockComponent },
   {  path: "chart-users", component: BookingChartsUsersComponent },
 ];

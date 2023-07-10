@@ -11,8 +11,9 @@ export const MENU_CONFIG: MenuRootItem[] = [
       { id: 'chart-sells', name: 'CHARTS-SELLS-YEAR', route: '/main/booking-charts/chart-sells', icon: 'bar_chart'},
       { id: 'chart-profits', name: 'CHARTS-PROFITS-YEAR', route: '/main/booking-charts/chart-profits', icon: 'bar_chart'},
       { id: 'chart-locations', name: 'CHARTS-LOCATIONS-YEAR', route: '/main/booking-charts/chart-locations', icon: 'bar_chart'},
-      { id: 'chart-stock', name: 'CHARTS-STOCK-YEAR', route: '/main/booking-charts/chart-stock', icon: 'bar_chart'},
-      { id: 'chart-users', name: 'CHARTS-USERS-YEAR', route: '/main/booking-charts/chart-users', icon: 'bar_chart'},
+      { id: 'chart-locationp', name: 'CHARTS-LOCATIONP-YEAR', route: '/main/booking-charts/chart-locationp', icon: 'bar_chart'},
+      { id: 'chart-stock', name: 'CHARTS-STOCK', route: '/main/booking-charts/chart-stock', icon: 'bar_chart'},
+      { id: 'chart-users', name: 'CHARTS-USERS', route: '/main/booking-charts/chart-users', icon: 'bar_chart'},
     ]
   },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },

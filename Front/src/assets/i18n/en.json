@@ -94,5 +94,11 @@
   "CHARTS-SELLS-YEAR": "Sales per year",
   "CHARTS-PROFITS-YEAR": "Profits per year",
   "CHARTS-LOCATIONS-YEAR": "Sales per locations",
-  "sales_per_location": "Sales per location, units"
+  "sales_per_location": "Sales per location, units",
+  "CHARTS-LOCATIONP-YEAR": "Profits per location",
+  "profits_per_location": "Profits per location, €",
+  "CHARTS-STOCK": "Stock rotation",
+  "stock_rotation": "Stock rotation",
+  "CHARTS-USERS": "Products not picked up",
+  "not_picked_up_products": "Products not picked up"
 }

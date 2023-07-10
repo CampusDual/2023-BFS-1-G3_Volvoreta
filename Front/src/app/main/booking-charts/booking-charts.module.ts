@@ -10,10 +10,11 @@ import { BookingChartsProfitsComponent } from './booking-charts-profits/booking-
 import { BookingChartsLocationsComponent } from './booking-charts-locations/booking-charts-locations.component';
 import { BookingChartsStockComponent } from './booking-charts-stock/booking-charts-stock.component';
 import { BookingChartsUsersComponent } from './booking-charts-users/booking-charts-users.component';
+import { BookingChartLocationpComponent } from './booking-chart-locationp/booking-chart-locationp.component';
 
 
 @NgModule({
-  declarations: [BookingChartsHomeComponent, BookingChartsSellsComponent, BookingChartsProfitsComponent, BookingChartsLocationsComponent, BookingChartsStockComponent, BookingChartsUsersComponent],
+  declarations: [BookingChartsHomeComponent, BookingChartsSellsComponent, BookingChartsProfitsComponent, BookingChartsLocationsComponent, BookingChartsStockComponent, BookingChartsUsersComponent, BookingChartLocationpComponent],
   imports: [
     CommonModule,
     BookingChartsRoutingModule,

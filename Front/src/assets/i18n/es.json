@@ -94,5 +94,11 @@
   "CHARTS-SELLS-YEAR": "Ventas anuales",
   "CHARTS-PROFITS-YEAR": "Beneficios anuales",
   "CHARTS-LOCATIONS-YEAR": "Ventas por ubicación",
-  "sales_per_location": "Ventas por ubicación, unidades"
+  "sales_per_location": "Ventas por ubicación, unidades",
+  "CHARTS-LOCATIONP-YEAR": "Beneficios por ubicación",
+  "profits_per_location": "Beneficios por ubicación, €",
+  "CHARTS-STOCK": "Rotación de stock",
+  "stock_rotation": "Rotación de stock",
+  "CHARTS-USERS": "Productos no recogidos",
+  "not_picked_up_products": "Productos no recogidos"
 }

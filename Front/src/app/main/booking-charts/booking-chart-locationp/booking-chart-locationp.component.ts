@@ -3,11 +3,11 @@ import { OntimizeService } from 'ontimize-web-ngx';
 import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 
 @Component({
-  selector: 'app-booking-charts-users',
-  templateUrl: './booking-charts-users.component.html',
-  styleUrls: ['./booking-charts-users.component.css']
+  selector: 'app-booking-chart-locationp',
+  templateUrl: './booking-chart-locationp.component.html',
+  styleUrls: ['./booking-chart-locationp.component.css']
 })
-export class BookingChartsUsersComponent implements OnInit {
+export class BookingChartLocationpComponent implements OnInit {
 
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
@@ -25,7 +25,7 @@ export class BookingChartsUsersComponent implements OnInit {
 
   getSalles(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({"reservation_state": 4, "year_": 2023}, ['id_user','name','year_', 'surname1', 'not_picked_up'], 'usersBooking').subscribe(
+    this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['profits','name_location','year_'], 'locationsBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.adaptResult(res.data);
@@ -55,20 +55,20 @@ export class BookingChartsUsersComponent implements OnInit {
   processKeys(data: any) {
     let keys = [];
     data.forEach((item: any) => {
-      let id_name = 'Ref: ' + item.id_user + ' - ' + item.name + ' ' + item.surname1;
-      keys.push(id_name);
+      keys.push(item.name_location);
     });
     return keys;
   }
   processValues(data: any) {
     let values = [];
     data.forEach((item: any) => {
-    values.push(item.not_picked_up); 
+    values.push(item.profits); 
     });
     return values;
   }  
   
   ngOnInit() {
   }
+
 
 }
