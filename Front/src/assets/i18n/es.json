@@ -99,6 +99,6 @@
   "profits_per_location": "Beneficios por ubicación, €",
   "CHARTS-STOCK": "Rotación de stock",
   "stock_rotation": "Rotación de stock",
-  "CHARTS-USERS": "Productos no recogidos",
-  "not_picked_up_products": "Productos no recogidos"
+  "CHARTS-USERS": "Reservas no recogidas",
+  "not_picked_up_bookings": "Número de reservas no retiradas"
 }

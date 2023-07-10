@@ -99,6 +99,6 @@
   "profits_per_location": "Profits per location, €",
   "CHARTS-STOCK": "Stock rotation",
   "stock_rotation": "Stock rotation",
-  "CHARTS-USERS": "Products not picked up",
-  "not_picked_up_products": "Products not picked up"
+  "CHARTS-USERS": "Bookings not picked up",
+  "not_picked_up_bookings": "Number of bookings not picked up"
 }

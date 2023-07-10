@@ -1,10 +1,27 @@
 <o-form #myForm editable-detail="no" show-header="no">
-    <div><h2>{{'charts'| oTranslate}}</h2></div>
-    <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
-      visible-columns="name" read-only="yes"></o-combo>
-    <div><h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_products' | oTranslate}}</h3></div>
-    
-    <!-- <o-combo attr="year_" fxFlex="80" service="bookings" entity="sellBooking" keys="year_" columns="year_;year_"
-    visible-columns="year_" value-column="year_" translate="yes" class="input-padding" null-selection="no"></o-combo> -->
-    <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Stock" x-data-type="text" [data]="graphDataS" [chart-parameters]="chartParameters" fxFlex></o-chart>
-  </o-form>
+  <div fxLayout="column">
+    <div fxLayout="column">
+      <h2>{{'charts'| oTranslate}}</h2>
+      <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
+        visible-columns="name" read-only="yes"></o-combo>
+    </div>
+    <div fxLayout="column">
+      <h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_bookings' | oTranslate}}</h3>
+    </div>
+    <div fxLayoutAlign="space-between center">
+      <h4>{{ 'users_not_picked_up' | oTranslate }}: {{ total_not_picked_up }} </h4>
+    </div>
+    <div fxLayoutAlign="space-between center">
+      <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }} </p>
+    </div>
+  </div>
+  <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
+  
+  <div fxLayout="column">
+    <div fxLayout="column">
+      <h4>{{ 'users_over' | oTranslate }}: </h4>
+    </div>
+  </div>
+  <o-chart #discretebar2 id="discrete" type="discreteBar" x-label="Axis x" y-label="Axis y" [data]="graphDataU" [chart-parameters]="chartParameters2" fxFlex></o-chart>
+
+</o-form>
