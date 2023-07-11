@@ -30,20 +30,6 @@ export class BookingChartsUsersComponent implements OnInit {
     this.graphDataU = [];
     this.auxGraph = [];
     this.getCount();
-  }
-  getCount(){
-    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({"reservation_state": 4, "year_": 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
-      res => {
-        if (res && res.data.length && res.code === 0) {
-          this.total_not_picked_up = res.data.length;
-          this.adaptResult(res.data, this.graphData, 1);
-          this.adaptResult(res.data, this.graphDataU, 2);
-        }
-      },
-      err => console.log(err),
-      () => this.cd.detectChanges()
-    );
 
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.height = 130;
@@ -58,7 +44,21 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters2.x1Axis.orient = "bottom";
     this.chartParameters2.x1Axis.rotateLabels = 270;
   }
-  adaptResult(data: any, graphData: any[], numero: number) {
+  getCount(){
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
+    this.ontimizeService.query({"reservation_state": 4, "year_": 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
+      res => {
+        if (res && res.data.length && res.code === 0) {
+          this.total_not_picked_up = res.data.length;
+          this.adaptResult(res.data, 1);
+          this.adaptResult(res.data, 2);
+        }
+      },
+      err => console.log(err),
+      () => this.cd.detectChanges()
+    );
+  }
+  adaptResult(data: any, numero: number) {
     if (data && data.length) {
       if(numero === 1){
         let values = this.processValues(data, this.auxGraph);
@@ -82,7 +82,6 @@ export class BookingChartsUsersComponent implements OnInit {
     }
   }
   processValues(data: any, graphData: any[]) {
-    // let fntranslator =  new FnTranslator();
     let values = [];
     let minorValue = 0;
     let majorValue = 0;
@@ -94,9 +93,6 @@ export class BookingChartsUsersComponent implements OnInit {
         minorValue++;
       }
     });
-
-    // let over = fntranslator.translateOU("over");
-    // let under = fntranslator.translateOU("under");
     let lowerCrit = {
       'x': "Under",
       'y': minorValue

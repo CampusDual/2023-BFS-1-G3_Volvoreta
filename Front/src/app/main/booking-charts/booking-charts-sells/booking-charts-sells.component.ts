@@ -19,11 +19,11 @@ export class BookingChartsSellsComponent implements OnInit {
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
 
-              this.chartParameters1 = new LineChartConfiguration();
-      this.chartParameters1.isArea = [true];
-      this.chartParameters1.interactive = false;
-      this.chartParameters1.showLegend = false;
-      this.chartParameters1.useInteractiveGuideline = false;
+    this.chartParameters1 = new LineChartConfiguration();
+    this.chartParameters1.isArea = [true];
+    this.chartParameters1.interactive = false;
+    this.chartParameters1.showLegend = false;
+    this.chartParameters1.useInteractiveGuideline = false;
     this.graphDataS = [];
     this.getSalles();
   }

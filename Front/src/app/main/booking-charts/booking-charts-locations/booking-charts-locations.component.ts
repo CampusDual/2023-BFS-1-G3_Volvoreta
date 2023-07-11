@@ -19,62 +19,13 @@ export class BookingChartsLocationsComponent implements OnInit {
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
-              this.chartParameters1 = new DonutChartConfiguration();
-              this.chartParameters1.showLabels = false;
-              this.chartParameters1.donutRatio = 0.5;
-              // this.chartParameters1.cornerRadius = 20;
-              this.chartParameters1.legendPosition = "bottom";
-              this.chartParameters1.labelType = "value";
-    // this.graphData = [];
-    // this.getSales();
+    this.chartParameters1 = new DonutChartConfiguration();
+    this.chartParameters1.showLabels = false;
+    this.chartParameters1.donutRatio = 0.5;
+    this.chartParameters1.legendPosition = "bottom";
+    this.chartParameters1.labelType = "value";
   }
 
-  // getSales(){
-  //   this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-  //   this.ontimizeService.query({"reservation_state": 3, "year_": 2023}, ['total_sales','name_location'], 'locationsBooking').subscribe(
-  //     res => {
-  //       if (res && res.data.length && res.code === 0) {
-  //         // this.adaptResult(res.data);
-  //         this.graphData = res.data;
-  //         console.log(res);
-  //       }
-  //     },
-  //     err => console.log(err),
-  //     () => this.cd.detectChanges()
-  //   );
-  //   this.chartParameters = new DiscreteBarChartConfiguration();
-  //   this.chartParameters.xAxis = "key";
-  //   this.chartParameters.yAxis = ["values"];
-  //   this.chartParameters.color = ['#4649A6', '#ffcc33', '#e84b2c', '#006bdb', '#41bf78'];
-  // }
-  // adaptResult(data: any) {
-  //   this.graphData = [];
-  //   if (data && data.length) {
-  //     let values = this.processValues(data);
-  //     let keys = this.processKeys(data);
-  //     keys.forEach((item: any, items: number) => {
-  //       const linea: object[] = [{'key': item, 'values': values[items]}];
-  //      this.graphData.push(linea[0]);
-  //     });
-      
-  //     let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
-  //     this.discretebar.setDataArray(dataAdapter.adaptResult(this.graphData));
-  //   }
-  // }
-  // processKeys(data: any) {
-  //   let keys = [];
-  //   data.forEach((item: any) => {
-  //     keys.push(item.name_location);
-  //   });
-  //   return keys;
-  // }
-  // processValues(data: any) {
-  //   let values = [];
-  //   data.forEach((item: any) => {
-  //   values.push(item.total_sales); 
-  //   });
-  //   return values;
-  // } 
   ngOnInit() {
   }
 

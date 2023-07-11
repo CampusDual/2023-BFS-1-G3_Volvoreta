@@ -3,8 +3,6 @@
     <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
       visible-columns="name" read-only="yes"></o-combo>
     <div><h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'sales_per_month' | oTranslate}}</h3></div>
-    
     <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Sells" x-data-type="text" [data]="graphDataS" [chart-parameters]="chartParameters" fxFlex></o-chart>
     <o-chart #lineChartBasic type="line" x-label="Time" y-label="Amount (€)" service="bookings" entity="sellBooking" x-axis="n_month" y-axis="total_sales" [chart-parameters]="chartParameters1" x-data-type="text"></o-chart>
-
-  </o-form>
+</o-form>

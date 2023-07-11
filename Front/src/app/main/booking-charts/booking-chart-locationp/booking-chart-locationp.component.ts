@@ -20,10 +20,8 @@ export class BookingChartLocationpComponent implements OnInit {
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
     this.chartParameters1 = new PieChartConfiguration();
-    // this.chartParameters1.cornerRadius = 20;
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
-
   }
  
   ngOnInit() {

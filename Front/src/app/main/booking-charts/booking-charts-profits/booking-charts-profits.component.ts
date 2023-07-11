@@ -11,28 +11,30 @@ import { FnTranslator } from 'src/app/utils/fnTranslator';
 export class BookingChartsProfitsComponent implements OnInit {
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
-  chartParameters1: LineChartConfiguration;
+  protected chartParameters1: LineChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataP: Array<Object>;
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
-             
-              this.chartParameters1 = new LineChartConfiguration();
-              this.chartParameters1.isArea = [true];
-              this.chartParameters1.interactive = false;
-              this.chartParameters1.showLegend = false;
-              this.chartParameters1.useInteractiveGuideline = false;
+
+    this.chartParameters1 = new LineChartConfiguration();
+    this.chartParameters1.isArea = [true];
+    this.chartParameters1.interactive = false;
+    this.chartParameters1.showLegend = false;
+    this.chartParameters1.useInteractiveGuideline = false;
+
     this.graphDataP = [];
     this.getProfits();
   }
+
   getProfits(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
     this.ontimizeService.query({}, ['profits','month_','n_month','year_'], 'sellBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
-          this.adaptResult(res.data);
+          this.adaptResult(res.data, this.graphDataP);
         }
       },
       err => console.log(err),
@@ -45,17 +47,17 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters.color = ['#1464a5','#4649A6','#41bf78','#363636','#006bdb'];
   }
 
-  adaptResult(data: any) {
+  adaptResult(data: any, graphData: any[]) {
     if (data && data.length) {
       let values = this.processValues(data);
       let keys = this.processKeys(data);
       // chart data
       keys.forEach((item: any, items: number) => {
         const linea: object[] = [{'key': item, 'values': values[items]}]; console.log(linea)
-        this.graphDataP.push(linea[0]);
+        graphData.push(linea[0]);
       });
       let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
-      this.discretebar.setDataArray(dataAdapter.adaptResult(this.graphDataP));
+      this.discretebar.setDataArray(dataAdapter.adaptResult(graphData));
     }
   }
   processKeys(data: any) {

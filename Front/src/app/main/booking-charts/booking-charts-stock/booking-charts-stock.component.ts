@@ -13,7 +13,6 @@ export class BookingChartsStockComponent implements OnInit {
   
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-  // protected criteriaValue = 50;
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
