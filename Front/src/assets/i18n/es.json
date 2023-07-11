@@ -100,5 +100,7 @@
   "CHARTS-STOCK": "Rotación de stock",
   "stock_rotation": "Rotación de stock",
   "CHARTS-USERS": "Reservas no recogidas",
-  "not_picked_up_bookings": "Número de reservas no retiradas"
+  "not_picked_up_bookings": "Número de reservas no retiradas",
+  "users_not_picked_up": "Número de usuarios que no han recogido sus reservas",
+  "users_over": "Usuarios que más reservas han dejado por recoger"
 }

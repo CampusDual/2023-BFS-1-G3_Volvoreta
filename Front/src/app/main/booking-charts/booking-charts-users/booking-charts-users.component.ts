@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { FnTranslator } from 'src/app/utils/fnTranslator';
 
 @Component({
   selector: 'app-booking-charts-users',
@@ -81,6 +82,7 @@ export class BookingChartsUsersComponent implements OnInit {
     }
   }
   processValues(data: any, graphData: any[]) {
+    // let fntranslator =  new FnTranslator();
     let values = [];
     let minorValue = 0;
     let majorValue = 0;
@@ -93,13 +95,14 @@ export class BookingChartsUsersComponent implements OnInit {
       }
     });
 
+    // let over = fntranslator.translateOU("over");
+    // let under = fntranslator.translateOU("under");
     let lowerCrit = {
-      'x': 'Under',
+      'x': "Under",
       'y': minorValue
     }
-
     let upperCrit = {
-      'x': 'Over',
+      'x': "Over",
       'y': majorValue
     }
 
@@ -108,7 +111,7 @@ export class BookingChartsUsersComponent implements OnInit {
     return values;
   }
   processKeyValues(graphData: any[]) {
-    let values = []; console.log(graphData)
+    let values = [];
     graphData.forEach((item: any, index: number) => {
       let user = {
         'x': item.id_user + '; ' + (item.name).charAt(0) + '. ' + item.surname1,

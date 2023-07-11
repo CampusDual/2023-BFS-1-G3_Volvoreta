@@ -6,5 +6,8 @@
     
     <!-- <o-combo attr="year_" fxFlex="80" service="bookings" entity="sellBooking" keys="year_" columns="year_;year_"
     visible-columns="year_" value-column="year_" translate="yes" class="input-padding" null-selection="no"></o-combo> -->
-    <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Total_sales" x-data-type="text" [data]="graphDataS" [chart-parameters]="chartParameters" fxFlex></o-chart>
+    <!-- <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Total_sales" x-data-type="text" [data]="graphDataS" [chart-parameters]="chartParameters" fxFlex></o-chart> -->
+
+    <o-chart type="pie" layout-fill  service="bookings" entity="locationsBooking" x-axis="name_location" y-axis="total_sales" [chart-parameters]="chartParameters1"></o-chart>
+
   </o-form>

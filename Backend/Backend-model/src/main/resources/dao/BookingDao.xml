@@ -137,6 +137,7 @@
                             ${mainschema}.bookings tb
                         LEFT JOIN ${mainschema}.products tp ON tb.id_product = tp.id
                         LEFT JOIN ${mainschema}.locations tl ON tl.id_location = tp.id_locations
+                        WHERE reservation_state = 3 and EXTRACT(YEAR FROM collection_completed) = 2023
                         GROUP BY EXTRACT(YEAR FROM collection_completed), reservation_state, name_location) t
                     #WHERE#
 			        ORDER BY name_location
@@ -193,11 +194,11 @@
                         #COLUMNS#
                     FROM
 	                    (SELECT COUNT(id_user) not_picked_up, year_, reservation_state, id_user, name, surname1
-                    FROM (
-                        SELECT EXTRACT(YEAR FROM end_date) year_ , reservation_state, id_user, name, surname1
-                         FROM bookings b
-                         LEFT JOIN tuser tu ON b.id_user = tu.user_
-                    ) bu
+                            FROM (
+                                SELECT EXTRACT(YEAR FROM end_date) year_ , reservation_state, id_user, name, surname1
+                                 FROM bookings b
+                                 LEFT JOIN tuser tu ON b.id_user = tu.user_
+                            ) bu
                     GROUP BY year_, reservation_state, id_user, name, surname1) t
                     #WHERE#
 			        ORDER BY t.surname1
