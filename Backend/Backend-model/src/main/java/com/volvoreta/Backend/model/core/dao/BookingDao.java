@@ -34,5 +34,6 @@ public class BookingDao extends OntimizeJdbcDaoSupport {
     public static final String LOCATION_NAME_PRODUCT = "name_location";
     public static final String TOTAL_SALES = "total_sales";
     public static final String MONTH_ = "month_";
+    public static final String N_MONTH = "n_month";
     public static final String YEAR_ = "year_";
 }

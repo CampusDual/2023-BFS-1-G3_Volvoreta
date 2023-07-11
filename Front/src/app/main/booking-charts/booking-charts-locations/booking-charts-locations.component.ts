@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
-import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent, PieChartConfiguration } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, DonutChartConfiguration, OChartComponent, PieChartConfiguration } from 'ontimize-web-ngx-charts';
 import { FnTranslator } from 'src/app/utils/fnTranslator';
 
 @Component({
@@ -12,19 +12,20 @@ export class BookingChartsLocationsComponent implements OnInit {
 
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
-  chartParameters1: PieChartConfiguration;
-  public chartParameters: DiscreteBarChartConfiguration;
+  protected chartParameters1: DonutChartConfiguration;
+  // public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-  // protected criteriaValue = 50;
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
-              this.chartParameters1 = new PieChartConfiguration();
+              this.chartParameters1 = new DonutChartConfiguration();
+              this.chartParameters1.showLabels = false;
+              this.chartParameters1.donutRatio = 0.5;
               // this.chartParameters1.cornerRadius = 20;
               this.chartParameters1.legendPosition = "bottom";
               this.chartParameters1.labelType = "value";
-    this.graphData = [];
+    // this.graphData = [];
     // this.getSales();
   }
 

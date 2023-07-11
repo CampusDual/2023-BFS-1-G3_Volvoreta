@@ -88,6 +88,7 @@
                 <Column>total_sales</Column>
                 <Column>profits</Column>
                 <Column>month_</Column>
+                <Column>n_month</Column>
                 <Column>year_</Column>
                 <Column>reservation_state</Column>
             </ValidColumns>
@@ -98,16 +99,19 @@
                     FROM
                         (SELECT
                             reservation_state,
-                            COUNT(EXTRACT(MONTH FROM collection_completed)) total_sales,
-                            EXTRACT(MONTH FROM collection_completed) month_,
+                            COUNT(TO_CHAR(collection_completed, 'Month')) total_sales,
+                            EXTRACT(MONTH FROM collection_completed) as n_month,
+                            TO_CHAR(collection_completed, 'Month') month_,
                             EXTRACT(YEAR FROM collection_completed) year_,
                             SUM(total_price)  profits
                         FROM
                             ${mainschema}.bookings
+                        WHERE reservation_state = 3 AND EXTRACT(YEAR FROM collection_completed) = 2023
                         GROUP BY EXTRACT(YEAR FROM collection_completed),
-                        EXTRACT(MONTH FROM collection_completed), reservation_state) t
+                        TO_CHAR(collection_completed, 'Month'), EXTRACT(MONTH FROM collection_completed), reservation_state
+                        ) t
                     #WHERE#
-			        ORDER BY t.month_
+			        ORDER BY t. n_month
                 ]]>
             </Sentence>
         </Query>

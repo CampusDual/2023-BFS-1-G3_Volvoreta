@@ -6,9 +6,9 @@ export class FnTranslator {
 
     }
 
-    translateMonth(month_: number): string {
+    translateMonth(n_month: number): string {
         if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
-            switch (month_){
+            switch (n_month){
                 case 1:
                     return "Ene";
                 case 2:
@@ -35,8 +35,7 @@ export class FnTranslator {
                     return "Dic";
               }
         }else{
-            console.log("ingles")
-            switch (month_){
+            switch (n_month){
                 case 1:
                     return "Jan";
                 case 2:
