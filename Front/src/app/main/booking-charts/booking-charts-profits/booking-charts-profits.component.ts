@@ -24,7 +24,7 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters1.interactive = false;
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
-
+    
     this.graphDataP = [];
     this.getProfits();
   }
@@ -34,7 +34,7 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.ontimizeService.query({}, ['profits','month_','n_month','year_'], 'sellBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
-          this.adaptResult(res.data, this.graphDataP);
+          this.adaptResult(res.data);
         }
       },
       err => console.log(err),
@@ -47,17 +47,17 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters.color = ['#1464a5','#4649A6','#41bf78','#363636','#006bdb'];
   }
 
-  adaptResult(data: any, graphData: any[]) {
+  adaptResult(data: any) {
     if (data && data.length) {
       let values = this.processValues(data);
       let keys = this.processKeys(data);
       // chart data
       keys.forEach((item: any, items: number) => {
         const linea: object[] = [{'key': item, 'values': values[items]}]; console.log(linea)
-        graphData.push(linea[0]);
+        this.graphDataP.push(linea[0]);
       });
       let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
-      this.discretebar.setDataArray(dataAdapter.adaptResult(graphData));
+      this.discretebar.setDataArray(dataAdapter.adaptResult(this.graphDataP));
     }
   }
   processKeys(data: any) {

@@ -11,7 +11,7 @@ import { FnTranslator } from 'src/app/utils/fnTranslator';
 export class BookingChartsSellsComponent implements OnInit {
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
-  chartParameters1: LineChartConfiguration;
+  protected chartParameters1: LineChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataS: Array<Object>;
   

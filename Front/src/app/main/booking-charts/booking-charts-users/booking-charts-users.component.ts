@@ -34,13 +34,14 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.height = 130;
     this.chartParameters.showLegend = false;
+    this.chartParameters.color = ['#E4333C', '#000000'];
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
     this.chartParameters2 = new DiscreteBarChartConfiguration();
     this.chartParameters2.height = 500;
     this.chartParameters2.xAxis = "key";
     this.chartParameters2.yAxis = ["values"];
-    this.chartParameters2.color = ['#4649A6', '#006bdb', '#363636', '#1464a5','#41bf78'];
+    this.chartParameters2.color = ['#4649A6', '#ffcc33', '#e84b2c', '#006bdb', '#41bf78'];
     this.chartParameters2.x1Axis.orient = "bottom";
     this.chartParameters2.x1Axis.rotateLabels = 270;
   }
@@ -102,8 +103,8 @@ export class BookingChartsUsersComponent implements OnInit {
       'y': majorValue
     }
 
-    values.push(lowerCrit);
     values.push(upperCrit);
+    values.push(lowerCrit);
     return values;
   }
   processKeyValues(graphData: any[]) {

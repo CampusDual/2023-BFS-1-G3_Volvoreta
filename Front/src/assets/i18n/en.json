@@ -70,6 +70,7 @@
   "collection_completed": "Date",
   "reservation_state": "State",
   "id": "Reference",
+  "product_id": "Reference",
   "booking_information": "Booking information",
   "name_reservation_state": "State",
   "confirmed": "Confirmed",

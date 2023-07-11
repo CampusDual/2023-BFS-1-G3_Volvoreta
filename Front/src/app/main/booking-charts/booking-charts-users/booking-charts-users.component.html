@@ -4,19 +4,16 @@
       <h2>{{'charts'| oTranslate}}</h2>
       <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
         visible-columns="name" read-only="yes"></o-combo>
-    </div>
-    <div fxLayout="column">
-      <h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_bookings' | oTranslate}}</h3>
+        <h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_bookings' | oTranslate}}</h3>
     </div>
     <div fxLayoutAlign="space-between center">
-      <h4>{{ 'users_not_picked_up' | oTranslate }}: {{ total_not_picked_up }} </h4>
-    </div>
-    <div fxLayoutAlign="space-between center">
-      <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }} </p>
+      <div fxLayout="column">
+        <h4>{{ 'users_not_picked_up' | oTranslate }}: {{ total_not_picked_up }} </h4>
+        <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }} </p>
+      </div>
+      <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
     </div>
   </div>
-  <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
-  
   <div fxLayout="column">
     <div fxLayout="column">
       <h4>{{ 'users_over' | oTranslate }}: </h4>

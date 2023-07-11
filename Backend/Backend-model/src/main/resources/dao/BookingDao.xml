@@ -154,8 +154,9 @@
             </AmbiguousColumns>
             <ValidColumns>
                 <Column>units</Column>
-                <Column>product</Column>
+                <Column>product_id</Column>
                 <Column>name</Column>
+                <Column>price</Column>
                 <Column>year_</Column>
                 <Column>reservation_state</Column>
             </ValidColumns>
@@ -164,17 +165,22 @@
                     SELECT
                         #COLUMNS#
                     FROM
-	                    (select  sum(units) units, product, name , EXTRACT(YEAR FROM collection_completed) year_, reservation_state
-	                FROM
-	                (
-	                select distinct(id_product) product,*
- 		    FROM
-		    (
-                select collection_completed, id_product, name, reservation_state, units from bookings b
-                LEFT JOIN products p on b.id_product = p.id
-                ) bp
-                ) tbp
-                    GROUP BY  product, year_, name, reservation_state) t
+	                    (select
+	                        sum(units) units, product_id, name, price, EXTRACT(YEAR FROM collection_completed) year_, reservation_state
+                        FROM
+                            (select
+                                    distinct(id_product) product_id,*
+                                FROM
+                                (
+                                    select
+                                        collection_completed, id_product, name, price, reservation_state, units
+                                    FROM bookings b
+                                    LEFT JOIN products p on b.id_product = p.id
+                                ) bp
+                            ) tbp
+                        WHERE reservation_state = 3 AND EXTRACT(YEAR FROM collection_completed) = 2023
+                        GROUP BY  product_id, year_, name, price, reservation_state
+                        ) t
                     #WHERE#
 			ORDER BY t.name
                 ]]>
