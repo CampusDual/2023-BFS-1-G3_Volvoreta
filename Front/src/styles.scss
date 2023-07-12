@@ -133,6 +133,22 @@ input:not([type]):disabled, input[type="color"]:disabled, input[type="date"]:dis
 .o-app-sidenav-menugroup-items-container ul {
 	background: #E4333C47;
 }
+.o-card-menu-item .o-card-menu-item-content .o-card-menu-item-image-container img {
+	width: 30% !important;
+  height: 30%;
+  max-width: 30%;
+	max-height: 30%;
+}
+.o-card-menu-item .o-card-menu-item-title {
+	color: #000000;
+	font-size: 20px;
+}
+.o-card-menu-item .mat-button {
+	color: #303030;
+}
+.o-card-menu-item .mat-button {
+	background: #e4333c3f;
+}
 /*Fin estilos IMATIA*/
 /* Inicio CardProduct */
 

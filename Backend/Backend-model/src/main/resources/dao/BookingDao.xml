@@ -204,13 +204,16 @@
                     SELECT
                         #COLUMNS#
                     FROM
-	                    (SELECT COUNT(id_user) not_picked_up, year_, reservation_state, id_user, name, surname1
-                            FROM (
-                                SELECT EXTRACT(YEAR FROM end_date) year_ , reservation_state, id_user, name, surname1
-                                 FROM bookings b
-                                 LEFT JOIN tuser tu ON b.id_user = tu.user_
-                            ) bu
-                    GROUP BY year_, reservation_state, id_user, name, surname1) t
+	                    (SELECT
+	                        COUNT(id_user) not_picked_up, year_, reservation_state, id_user, name, surname1
+                        FROM (
+                            SELECT
+                                EXTRACT(YEAR FROM end_date) year_ , reservation_state, id_user, name, surname1
+                            FROM bookings b
+                            LEFT JOIN tuser tu ON b.id_user = tu.user_
+                        ) bu
+                        WHERE reservation_state = 4 AND year_ = 2023
+                        GROUP BY year_, reservation_state, id_user, name, surname1) t
                     #WHERE#
 			        ORDER BY t.surname1
                 ]]>

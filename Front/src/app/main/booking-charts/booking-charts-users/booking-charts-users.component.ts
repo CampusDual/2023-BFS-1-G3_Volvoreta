@@ -34,20 +34,20 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.height = 130;
     this.chartParameters.showLegend = false;
-    this.chartParameters.color = ['#E4333C', '#000000'];
+    this.chartParameters.color = ['#E4333C', '#4b4b4b'];
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
     this.chartParameters2 = new DiscreteBarChartConfiguration();
     this.chartParameters2.height = 500;
     this.chartParameters2.xAxis = "key";
     this.chartParameters2.yAxis = ["values"];
-    this.chartParameters2.color = ['#4649A6', '#ffcc33', '#e84b2c', '#006bdb', '#41bf78'];
+    this.chartParameters2.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters2.x1Axis.orient = "bottom";
     this.chartParameters2.x1Axis.rotateLabels = 270;
   }
   getCount(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({"reservation_state": 4, "year_": 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
+    this.ontimizeService.query({}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.total_not_picked_up = res.data.length;

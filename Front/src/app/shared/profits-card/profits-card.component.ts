@@ -13,6 +13,7 @@ export class ProfitsCardComponent implements OnInit {
   constructor() { 
     this.chartParameters1 = new LineChartConfiguration();
     this.chartParameters1.isArea = [true];
+    this.chartParameters1.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters1.interactive = false;
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;

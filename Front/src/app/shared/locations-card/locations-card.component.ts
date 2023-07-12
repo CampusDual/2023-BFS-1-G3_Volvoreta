@@ -11,11 +11,12 @@ export class LocationsCardComponent implements OnInit {
   protected chartParameters1: DonutChartConfiguration;
   constructor() {
     this.chartParameters1 = new DonutChartConfiguration();
+    this.chartParameters1.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters1.showLabels = false;
     this.chartParameters1.donutRatio = 0.5;
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
-    this.chartParameters1.height = 200;
+    this.chartParameters1.height = 178;
     this.chartParameters1.showTooltip = true;
     this.chartParameters1.showLeyend = false;
    }

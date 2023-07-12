@@ -18,8 +18,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
       { id: 'chart-profits', name: 'CHARTS-PROFITS-YEAR', route: '/main/booking-charts/chart-profits', icon: 'show_chart', image: 'assets/images/total-sales-volume.svg', component: ProfitsCardComponent},
       { id: 'chart-locations', name: 'CHARTS-LOCATIONS-YEAR', route: '/main/booking-charts/chart-locations', icon: 'donut_small', image: 'assets/images/location-location.svg', component: LocationsCardComponent},
       { id: 'chart-locationp', name: 'CHARTS-LOCATIONP-YEAR', route: '/main/booking-charts/chart-locationp', icon: 'pie_chart', image: 'assets/images/location-location.svg', component: LocationpCardComponent},
-      { id: 'chart-stock', name: 'CHARTS-STOCK', route: '/main/booking-charts/chart-stock', icon: 'stacked_bar_chart', image: 'assets/images/stock-20.svg', component: StockCardComponent},
-      { id: 'chart-users', name: 'CHARTS-USERS', route: '/main/booking-charts/chart-users', icon: 'stacked_bar_chart', image: 'assets/images/yy_users.svg', component: UsersCardComponent},
+      { id: 'chart-stock', name: 'CHARTS-STOCK', route: '/main/booking-charts/chart-stock', icon: 'stacked_bar_chart', image: 'assets/images/product-purchase-1.svg', component: StockCardComponent},
+      { id: 'chart-users', name: 'CHARTS-USERS', route: '/main/booking-charts/chart-users', icon: 'stacked_bar_chart', image: 'assets/images/stock-20.svg', component: UsersCardComponent},
     ]
   },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' },

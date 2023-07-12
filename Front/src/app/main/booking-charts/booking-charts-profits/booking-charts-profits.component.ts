@@ -24,6 +24,8 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters1.interactive = false;
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
+    this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
+    
     
     this.graphDataP = [];
     this.getProfits();
@@ -44,7 +46,7 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters.height = 130;
     this.chartParameters.xAxis = "key";
     this.chartParameters.yAxis = ["values"];
-    this.chartParameters.color = ['#1464a5','#4649A6','#41bf78','#363636','#006bdb'];
+    this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
   }
 
   adaptResult(data: any) {

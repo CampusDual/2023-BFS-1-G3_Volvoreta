@@ -20,6 +20,7 @@ export class BookingChartsLocationsComponent implements OnInit {
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
     this.chartParameters1 = new DonutChartConfiguration();
+    this.chartParameters1.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters1.showLabels = true;
     this.chartParameters1.donutRatio = 0.5;
     this.chartParameters1.legendPosition = "bottom";
