@@ -105,5 +105,6 @@
   "users_not_picked_up": "Number of users who have not collected their reservations",
   "scaling_criteria": "Scale criteria",
   "users_over": "Users who have left more reservations to collect",
-  "units_sales": "Units sales" 
+  "units_sales": "Units sold",
+  "stockd": "Available units"
 }
