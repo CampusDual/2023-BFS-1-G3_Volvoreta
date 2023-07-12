@@ -12,10 +12,11 @@
         <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }}, {{ 'criteria' | oTranslate }}.</p>
       </div>
       <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
-      <div fxLayout="column">
-        <p>{{'legend1' | oTranslate}}</p>
-        <p>{{'legend2' | oTranslate}}</p>
-      </div>
+      
+    </div>
+    <div fxLayoutAlign="space-between center">
+      <p><b>{{'over' | oTranslate}}</b>: {{'legend1' | oTranslate}}.</p>
+      <p><b>{{'under' | oTranslate}}</b>: {{'legend1' | oTranslate}}.</p>
     </div>
   </div>
   <div fxLayout="column">

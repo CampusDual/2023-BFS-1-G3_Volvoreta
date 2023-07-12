@@ -1,4 +1,4 @@
 <span class="card-title">{{ 'CUSTOMER_TYPE' | oTranslate }}</span>
 
-<o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData"
+<o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" service="bookings" entity="locationsBooking"
  [chart-parameters]="chartParameters" fxFlex class="users-card-chart"></o-chart>

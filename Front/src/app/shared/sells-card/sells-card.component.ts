@@ -16,6 +16,8 @@ export class SellsCardComponent implements OnInit {
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
     this.chartParameters1.height = 200;
+    this.chartParameters1.showXAxis = false;
+    this.chartParameters1.showYAxis = false;
   }
 
   ngOnInit() {

@@ -12,7 +12,7 @@ export class BookingChartsUsersComponent implements OnInit {
   @ViewChild('discretebar1',{static:true}) protected discretebar1: OChartComponent;
   @ViewChild('discretebar2',{static:true}) protected discretebar2: OChartComponent;
 
-  total_not_picked_up: any;
+  protected total_not_picked_up: any;
   public chartParameters: DiscreteBarChartConfiguration;
   public chartParameters2: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;

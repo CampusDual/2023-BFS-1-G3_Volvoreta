@@ -16,6 +16,8 @@ export class LocationsCardComponent implements OnInit {
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
     this.chartParameters1.height = 200;
+    this.chartParameters1.showTooltip = true;
+    this.chartParameters1.showLeyend = false;
    }
 
   ngOnInit() {

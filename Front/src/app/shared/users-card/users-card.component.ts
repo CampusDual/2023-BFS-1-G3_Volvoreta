@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
+import { OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 
 @Component({
@@ -10,8 +11,12 @@ export class UsersCardComponent implements OnInit {
 
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
+  protected criteriaValue = 2;
 
-  constructor() { 
+  constructor(
+    private ontimizeService: OntimizeService,
+    private cd: ChangeDetectorRef, 
+    public injector: Injector) { 
     this.graphData = [];
 
     this.chartParameters = new DiscreteBarChartConfiguration();
@@ -26,49 +31,38 @@ export class UsersCardComponent implements OnInit {
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
     this.ontimizeService.query({"reservation_state": 4, "year_": 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
       res => {
-        if (res && res.data.length && res.code === 0) {
-          this.adaptResult(res.data, 1);
+        if (res && res.data.length && res.code === 0) { console.log(res.data)
+          this.adaptResult(res.data);
         }
       },
       err => console.log(err),
       () => this.cd.detectChanges()
     );
   }
-  adaptResult(data: any, numero: number) {
+  adaptResult(data: any) {console.log(data)
     if (data && data.length) {
-      if(numero === 1){
-        let values = this.processValues(data, this.auxGraph);
-        // chart data
-        this.graphData = [
-          {
-            'key': 'Discrete serie',
-            'values': values
-          }
-        ];
-      }else if(numero === 2 && this.auxGraph.length > 0){
-        let values = this.processKeyValues(this.auxGraph);
-        this.graphDataU = [
-          {
-            'key': 'Users',
-            'values': values
-          }
-        ];
-      }
-      
+      let values = this.processValues(data);
+      // chart data
+      this.graphData = [
+        {
+          'key': 'Discrete serie',
+          'values': values
+        }
+      ];console.log(this.graphData)
     }
   }
-  processValues(data: any, graphData: any[]) {
+  processValues(data: any) {console.log(data)
     let values = [];
     let minorValue = 0;
     let majorValue = 0;
-    data.forEach((item: any, index: number) => {
+    data.forEach((item: any) => {
       if (item['not_picked_up'] >= this.criteriaValue){
         majorValue++;
-        graphData.push(item);
       }else{
         minorValue++;
       }
     });
+
     let lowerCrit = {
       'x': "Under",
       'y': minorValue
@@ -79,18 +73,7 @@ export class UsersCardComponent implements OnInit {
     }
 
     values.push(upperCrit);
-    values.push(lowerCrit);
-    return values;
-  }
-  processKeyValues(graphData: any[]) {
-    let values = [];
-    graphData.forEach((item: any, index: number) => {
-      let user = {
-        'x': item.id_user + '; ' + (item.name).charAt(0) + '. ' + item.surname1,
-        'y': item.not_picked_up
-      }
-      values.push(user);
-    });
+    values.push(lowerCrit);console.log(values)
     return values;
   }
 
