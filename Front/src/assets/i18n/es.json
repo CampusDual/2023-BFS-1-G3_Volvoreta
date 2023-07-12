@@ -104,5 +104,6 @@
   "not_picked_up_bookings": "Número de reservas no retiradas",
   "users_not_picked_up": "Número de usuarios que no han recogido sus reservas",
   "scaling_criteria": "Critero de Baremación",
-  "users_over": "Usuarios que más reservas han dejado por recoger"  
+  "users_over": "Usuarios que más reservas han dejado por recoger",
+  "units_sales": "Unidades vendidas" 
 }

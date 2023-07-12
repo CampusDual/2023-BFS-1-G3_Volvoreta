@@ -153,7 +153,8 @@
                 <AmbiguousColumn name="id" prefix="tb" />
             </AmbiguousColumns>
             <ValidColumns>
-                <Column>units</Column>
+                <Column>units_sales</Column>
+                <Column>stockd</Column>
                 <Column>product_id</Column>
                 <Column>name</Column>
                 <Column>price</Column>
@@ -166,20 +167,20 @@
                         #COLUMNS#
                     FROM
 	                    (select
-	                        sum(units) units, product_id, name, price, EXTRACT(YEAR FROM collection_completed) year_, reservation_state
+	                        sum(units) units_sales, stockd, product_id, name, price, EXTRACT(YEAR FROM collection_completed) year_, reservation_state
                         FROM
                             (select
                                     distinct(id_product) product_id,*
                                 FROM
                                 (
                                     select
-                                        collection_completed, id_product, name, price, reservation_state, units
+                                        collection_completed, id_product, name, price, reservation_state, units, stock stockd
                                     FROM bookings b
                                     LEFT JOIN products p on b.id_product = p.id
                                 ) bp
                             ) tbp
                         WHERE reservation_state = 3 AND EXTRACT(YEAR FROM collection_completed) = 2023
-                        GROUP BY  product_id, year_, name, price, reservation_state
+                        GROUP BY  product_id, year_, name, price, reservation_state, stockd
                         ) t
                     #WHERE#
 			ORDER BY t.name
