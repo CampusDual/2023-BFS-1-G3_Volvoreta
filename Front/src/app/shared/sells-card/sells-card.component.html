@@ -1,0 +1,7 @@
+<span class="card-title">{{ 'CUSTOMER_TYPE' | oTranslate }}</span>
+<!-- <o-chart type="multiBarHorizontalChart" x-label="Time" y-label="Amount (€)" service="bookings" entity="sellBooking"
+  x-axis="n_month" y-axis="total_sales" [chart-parameters]="chartParameters1" class="customers-card-chart" height="100px"></o-chart> -->
+
+  <o-chart #lineChartBasic type="line" x-label="Time" y-label="Amount (€)" service="bookings"
+   entity="sellBooking" x-axis="n_month" y-axis="total_sales" [chart-parameters]="chartParameters1" x-data-type="text"
+   class="sells-card-chart"></o-chart>

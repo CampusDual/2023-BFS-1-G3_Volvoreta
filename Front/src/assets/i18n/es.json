@@ -103,8 +103,11 @@
   "CHARTS-USERS": "Reservas no recogidas",
   "not_picked_up_bookings": "Número de reservas no retiradas",
   "users_not_picked_up": "Número de usuarios que no han recogido sus reservas",
-  "scaling_criteria": "Critero de Baremación",
+  "scaling_criteria": "Baremación",
   "users_over": "Usuarios que más reservas han dejado por recoger",
   "units_sales": "Unidades vendidas",
-  "stockd": "Unidades disponibles" 
+  "stockd": "Unidades disponibles",
+  "criteria" : "o más reservas no recogidas",
+  "legend1": "Over: Número de usuarios que igualan o superan el criterio",
+  "legend2": "Under: Número de usuarios que no alcanzan el baremo"
 }

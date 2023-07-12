@@ -9,9 +9,13 @@
     <div fxLayoutAlign="space-between center">
       <div fxLayout="column">
         <h4>{{ 'users_not_picked_up' | oTranslate }}: {{ total_not_picked_up }} </h4>
-        <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }} </p>
+        <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }}, {{ 'criteria' | oTranslate }}.</p>
       </div>
       <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex></o-chart>
+      <div fxLayout="column">
+        <p>{{'legend1' | oTranslate}}</p>
+        <p>{{'legend2' | oTranslate}}</p>
+      </div>
     </div>
   </div>
   <div fxLayout="column">

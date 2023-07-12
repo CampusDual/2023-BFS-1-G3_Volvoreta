@@ -1,0 +1,5 @@
+<span class="card-title">{{ 'CUSTOMER_TYPE' | oTranslate }}</span>
+
+<o-chart type="pie" layout-fill  service="bookings" entity="locationsBooking" x-axis="name_location" 
+y-axis="profits" [chart-parameters]="chartParameters1" class="locationp-card-chart"></o-chart>
+

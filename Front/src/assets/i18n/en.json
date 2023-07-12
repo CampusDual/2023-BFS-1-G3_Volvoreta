@@ -106,5 +106,8 @@
   "scaling_criteria": "Scale criteria",
   "users_over": "Users who have left more reservations to collect",
   "units_sales": "Units sold",
-  "stockd": "Available units"
+  "stockd": "Available units",
+  "criteria": "or more bookings not collected",
+  "legend1": "Over: Number of users matching or exceeding the criteria",
+  "legend2": "Under: Number of users who do not reach the scale"
 }
