@@ -8,16 +8,18 @@ export class ReserveService {
 
   data: Reserve[];
 
-  constructor(private ontimizeService: OntimizeService){
-
-    }
-    reserve(reserve: Reserve): Observable<OResponse>{
-        this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-        return this.ontimizeService.insert(reserve, 'booking');
-    }
-
-    getReserveDate(id: number):Observable<OResponse>{
+  constructor(private ontimizeService: OntimizeService){ }
+  reserve(reserve: Reserve): Observable<OResponse>{
       this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-      return this.ontimizeService.query({'id': id}, ['end_date'], 'booking');
+      return this.ontimizeService.insert(reserve, 'booking');
+  }
+
+  getReserveDate(id: number):Observable<OResponse>{
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
+    return this.ontimizeService.query({'id': id}, ['end_date'], 'booking');
+  }
+  setYearConsultation(year_: number):Observable<OResponse>{
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
+    return this.ontimizeService.query({'year_': year_}, [''], 'yearBooking');
   }
 }

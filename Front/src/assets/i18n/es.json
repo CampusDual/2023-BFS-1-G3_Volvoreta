@@ -108,8 +108,8 @@
   "units_sales": "Unidades vendidas",
   "stockd": "Unidades disponibles",
   "criteria" : "o más reservas no recogidas",
-  "legend1": "Over: Número de usuarios que igualan o superan el criterio",
-  "legend2": "Under: Número de usuarios que no alcanzan el baremo",
+  "legend1": "Número de usuarios que igualan o superan el criterio",
+  "legend2": "Número de usuarios que no alcanzan el baremo",
   "over": "Over",
   "under": "Under"
 }

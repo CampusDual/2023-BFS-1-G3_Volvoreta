@@ -106,7 +106,7 @@
                             SUM(total_price)  profits
                         FROM
                             ${mainschema}.bookings
-                        WHERE reservation_state = 3 AND EXTRACT(YEAR FROM collection_completed) = 2023
+                        WHERE reservation_state = 3
                         GROUP BY EXTRACT(YEAR FROM collection_completed),
                         TO_CHAR(collection_completed, 'Month'), EXTRACT(MONTH FROM collection_completed), reservation_state
                         ) t
@@ -141,7 +141,7 @@
                             ${mainschema}.bookings tb
                         LEFT JOIN ${mainschema}.products tp ON tb.id_product = tp.id
                         LEFT JOIN ${mainschema}.locations tl ON tl.id_location = tp.id_locations
-                        WHERE reservation_state = 3 and EXTRACT(YEAR FROM collection_completed) = 2023
+                        WHERE reservation_state = 3
                         GROUP BY EXTRACT(YEAR FROM collection_completed), reservation_state, name_location) t
                     #WHERE#
 			        ORDER BY name_location
@@ -179,11 +179,11 @@
                                     LEFT JOIN products p on b.id_product = p.id
                                 ) bp
                             ) tbp
-                        WHERE reservation_state = 3 AND EXTRACT(YEAR FROM collection_completed) = 2023
+                        WHERE reservation_state = 3
                         GROUP BY  product_id, year_, name, price, reservation_state, stockd
                         ) t
                     #WHERE#
-			ORDER BY t.name
+			        ORDER BY t.name
                 ]]>
             </Sentence>
         </Query>

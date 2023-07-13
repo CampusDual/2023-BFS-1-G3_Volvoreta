@@ -31,7 +31,7 @@ export class BookingChartsSellsComponent implements OnInit {
 
   getSalles(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({}, ['total_sales','month_','n_month','year_'], 'sellBooking').subscribe(
+    this.ontimizeService.query({'year_': 2023}, ['total_sales','month_','n_month','year_'], 'sellBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.adaptResult(res.data, this.graphDataS);

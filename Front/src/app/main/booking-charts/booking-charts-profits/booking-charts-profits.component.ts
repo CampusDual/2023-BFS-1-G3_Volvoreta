@@ -33,7 +33,7 @@ export class BookingChartsProfitsComponent implements OnInit {
 
   getProfits(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({}, ['profits','month_','n_month','year_'], 'sellBooking').subscribe(
+    this.ontimizeService.query({'year_': 2023}, ['profits','month_','n_month','year_'], 'sellBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.adaptResult(res.data);

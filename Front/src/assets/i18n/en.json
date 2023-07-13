@@ -108,8 +108,8 @@
   "units_sales": "Units sold",
   "stockd": "Available units",
   "criteria": "or more bookings not collected",
-  "legend1": "Over: Number of users matching or exceeding the criteria",
-  "legend2": "Under: Number of users who do not reach the scale",
+  "legend1": "Number of users matching or exceeding the criteria",
+  "legend2": "Number of users who do not reach the scale",
   "over": "Over",
   "under": "Under"
 }

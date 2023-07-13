@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DataAdapterUtils, DiscreteBarChartConfiguration, MultiBarHorizontalChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { ReserveService } from 'src/app/services/reserve.service';
 
 @Component({
   selector: 'app-booking-charts-stock',
@@ -15,9 +16,16 @@ export class BookingChartsStockComponent implements OnInit {
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
   
-  constructor(private ontimizeService: OntimizeService, 
-            private cd: ChangeDetectorRef, 
-            public injector: Injector) { 
+  constructor(
+      private cd: ChangeDetectorRef, 
+      public injector: Injector, 
+      private setYearConsultation: ReserveService
+    ) { 
+    
+    this.setYearConsultation.setYearConsultation(2023).subscribe(
+      err => console.log(err),
+      () => this.cd.detectChanges()
+    ); 
     this.chartParameters1 = new MultiBarHorizontalChartConfiguration();
     this.chartParameters1.margin.left = 200;
     this.chartParameters1.color = ['#E4333C', '#4b4b4b'];

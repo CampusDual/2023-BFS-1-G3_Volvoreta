@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
 import { MultiBarHorizontalChartConfiguration } from 'ontimize-web-ngx-charts';
+import { ReserveService } from 'src/app/services/reserve.service';
 
 @Component({
   selector: 'app-stock-card',
@@ -9,7 +10,17 @@ import { MultiBarHorizontalChartConfiguration } from 'ontimize-web-ngx-charts';
 export class StockCardComponent implements OnInit {
 
   protected chartParameters1: MultiBarHorizontalChartConfiguration;
-  constructor() {
+
+  constructor(
+    private cd: ChangeDetectorRef, 
+    public injector: Injector, 
+    private setYearConsultation: ReserveService
+    ) { 
+    
+    this.setYearConsultation.setYearConsultation(2023).subscribe(
+      err => console.log(err),
+      () => this.cd.detectChanges()
+    );
     this.chartParameters1 = new MultiBarHorizontalChartConfiguration();
     this.chartParameters1.margin.left = 20;
     this.chartParameters1.color = ['#E4333C', '#4b4b4b'];

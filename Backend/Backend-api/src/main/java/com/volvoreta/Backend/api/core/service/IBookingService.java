@@ -8,9 +8,9 @@ import java.util.Map;
 public interface IBookingService {
 
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult sellBookingQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult locationsBookingQuery(Map<?, ?> keyMap, List<?> attrList);
-    public EntityResult stockBookingQuery(Map<?, ?> keyMap, List<?> attrList);
+    public EntityResult sellBookingQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult locationsBookingQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult stockBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public void yearBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList);

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
 import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
+import { ReserveService } from 'src/app/services/reserve.service';
 
 @Component({
   selector: 'app-locationp-card',
@@ -9,7 +10,16 @@ import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
 export class LocationpCardComponent implements OnInit {
 
   chartParameters1: PieChartConfiguration;
-  constructor() { 
+  constructor(
+      private cd: ChangeDetectorRef, 
+      public injector: Injector, 
+      private setYearConsultation: ReserveService
+    ) { 
+    
+    this.setYearConsultation.setYearConsultation(2023).subscribe(
+      err => console.log(err),
+      () => this.cd.detectChanges()
+    ); 
     this.chartParameters1 = new PieChartConfiguration();
     this.chartParameters1.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters1.showLabels = false;

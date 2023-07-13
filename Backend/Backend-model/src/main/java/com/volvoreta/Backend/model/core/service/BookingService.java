@@ -40,27 +40,23 @@ public class BookingService implements IBookingService {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
     }
     @Override
-    public EntityResult sellBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(bookingDao, keyMap, attrList, "sellBookingQuery");
+    public EntityResult sellBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "sellBookingQuery");
     }
 
     @Override
-    public EntityResult locationsBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(bookingDao, keyMap, attrList, "locationsBookingQuery");
+    public EntityResult locationsBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "locationsBookingQuery");
     }
 
     @Override
-    public EntityResult stockBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
-        return this.daoHelper.query(bookingDao, keyMap, attrList, "stockBookingQuery");
+    public EntityResult stockBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "stockBookingQuery");
     }
 
     @Override
     public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
-        if(this.years != null){
-            keyMap.put("year_", getYears());
-            setYears(null);
-        }
-        return this.daoHelper.query(bookingDao, keyMap, attrList, "usersBookingQuery");
+        return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "usersBookingQuery");
     }
 
     @Override
@@ -71,6 +67,13 @@ public class BookingService implements IBookingService {
 
     }
 
+    private Map<String, Object> isYears(Map<String, Object> keyMap){
+        if(this.years != null){
+            keyMap.put("year_", getYears());
+            setYears(null);
+        }
+        return keyMap;
+    }
     @Override
     public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
