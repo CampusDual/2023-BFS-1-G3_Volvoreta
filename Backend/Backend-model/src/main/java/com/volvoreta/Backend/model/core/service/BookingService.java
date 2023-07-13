@@ -25,6 +25,16 @@ public class BookingService implements IBookingService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+    private Integer years;
+
+    public Integer getYears() {
+        return years;
+    }
+
+    public void setYears(Integer years) {
+        this.years = years;
+    }
+
     @Override
     public EntityResult bookingQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList);
@@ -45,8 +55,20 @@ public class BookingService implements IBookingService {
     }
 
     @Override
-    public EntityResult usersBookingQuery(Map<?, ?> keyMap, List<?> attrList) {
+    public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(this.years != null){
+            keyMap.put("year_", getYears());
+            setYears(null);
+        }
         return this.daoHelper.query(bookingDao, keyMap, attrList, "usersBookingQuery");
+    }
+
+    @Override
+    public void yearBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(keyMap.containsKey("year_")){
+            setYears((Integer) keyMap.get("year_"));
+        }
+
     }
 
     @Override

@@ -47,7 +47,7 @@ export class BookingChartsUsersComponent implements OnInit {
   }
   getCount(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
+    this.ontimizeService.query({'year_': 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
       res => {
         if (res && res.data.length && res.code === 0) {
           this.total_not_picked_up = res.data.length;
