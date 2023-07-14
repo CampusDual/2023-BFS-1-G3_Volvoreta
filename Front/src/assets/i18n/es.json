@@ -110,6 +110,6 @@
   "criteria" : "o más reservas no recogidas",
   "legend1": "Número de usuarios que igualan o superan el criterio",
   "legend2": "Número de usuarios que no alcanzan el baremo",
-  "over": "Over",
-  "under": "Under"
+  "over": "Igual o superior",
+  "under": "Inferior"
 }

@@ -1,5 +1,6 @@
 package com.volvoreta.Backend.model.core.service;
 
+import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -57,6 +58,14 @@ public class BookingService implements IBookingService {
     @Override
     public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "usersBookingQuery");
+    }
+    @Override
+    public EntityResult userslimitBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(getYears() != null){
+            keyMap.put("year_", getYears());
+            setYears((null));
+        }
+        return this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
     }
 
     @Override

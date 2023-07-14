@@ -14,10 +14,19 @@ export class BookingChartsProfitsComponent implements OnInit {
   protected chartParameters1: LineChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataP: Array<Object>;
-  
+  protected labelX: string;
+  protected labelY: string;
+
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
+    if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
+      this.labelX = "Meses";
+      this.labelY = "Importe (€)";
+    } else{
+      this.labelX = "Month";
+      this.labelY = "Amount (€)";
+    }
 
     this.chartParameters1 = new LineChartConfiguration();
     this.chartParameters1.isArea = [true];
@@ -25,7 +34,8 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
     this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
-    
+    this.chartParameters1.x1Axis.axisLabel = this.labelX;
+    this.chartParameters1.y1Axis.axisLabel = this.labelY;
     
     this.graphDataP = [];
     this.getProfits();
@@ -47,6 +57,7 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters.xAxis = "key";
     this.chartParameters.yAxis = ["values"];
     this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters1.y1Axis.axisLabel = this.labelY;
   }
 
   adaptResult(data: any) {

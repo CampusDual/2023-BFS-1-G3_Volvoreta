@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
 import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
-import { FnTranslator } from 'src/app/utils/fnTranslator';
 
 @Component({
   selector: 'app-booking-charts-users',
@@ -86,6 +85,8 @@ export class BookingChartsUsersComponent implements OnInit {
     let values = [];
     let minorValue = 0;
     let majorValue = 0;
+    let over = "";
+    let under = "";
     data.forEach((item: any, index: number) => {
       if (item['not_picked_up'] >= this.criteriaValue){
         majorValue++;
@@ -94,13 +95,20 @@ export class BookingChartsUsersComponent implements OnInit {
         minorValue++;
       }
     });
+    if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
+      over = "Igual o superior";
+      under = "Inferior";
+    }else{
+      over = "Over";
+      under = "Under";
+    }
     let lowerCrit = {
-      'x': "Under",
+      'x': under,
       'y': minorValue
     }
     let upperCrit = {
-      'x': "Over",
-      'y': majorValue
+      'x': over,
+      'y':  majorValue
     }
 
     values.push(upperCrit);
@@ -111,7 +119,7 @@ export class BookingChartsUsersComponent implements OnInit {
     let values = [];
     graphData.forEach((item: any, index: number) => {
       let user = {
-        'x': item.id_user + '; ' + (item.name).charAt(0) + '. ' + item.surname1,
+        'x': item.name + (item.surname1).charAt(0) + '. ' ,
         'y': item.not_picked_up
       }
       values.push(user);

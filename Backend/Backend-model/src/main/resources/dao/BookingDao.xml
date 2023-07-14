@@ -213,9 +213,9 @@
                             LEFT JOIN tuser tu ON b.id_user = tu.user_
                         ) bu
                         WHERE reservation_state = 4
-                        GROUP BY year_, reservation_state, id_user, name, surname1) t
+                        GROUP BY year_, reservation_state, id_user, name, surname1
+                        ORDER BY surname1) t
                     #WHERE#
-			        ORDER BY t.surname1
                 ]]>
             </Sentence>
         </Query>

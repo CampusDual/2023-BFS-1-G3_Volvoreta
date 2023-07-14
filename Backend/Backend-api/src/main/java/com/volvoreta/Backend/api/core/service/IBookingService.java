@@ -13,6 +13,7 @@ public interface IBookingService {
     public EntityResult stockBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public void yearBookingQuery(Map<String, Object> keyMap, List<String> attrList);
+    public EntityResult userslimitBookingQuery(Map<String, Object> keyMap, List<String> attrList);
     public EntityResult gBookingQuery(Map<?, ?> keyMap, List<?> attrList);
     public EntityResult myBookingQuery(Map<String, Object> keyMap, List<?> attrList);
     public EntityResult reserveStockQuery(Map<?, ?> keyMap, List<?> attrList);

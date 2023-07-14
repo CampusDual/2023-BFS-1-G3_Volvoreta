@@ -14,17 +14,28 @@ export class BookingChartsSellsComponent implements OnInit {
   protected chartParameters1: LineChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataS: Array<Object>;
+  protected labelX: string;
+  protected labelY: string;
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
             public injector: Injector) { 
-
+    if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
+      this.labelX = "Meses";
+      this.labelY = "Unidades";
+    } else{
+      this.labelX = "Month";
+      this.labelY = "Units";
+    }
     this.chartParameters1 = new LineChartConfiguration();
     this.chartParameters1.isArea = [true];
     this.chartParameters1.interactive = false;
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
     this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
+    this.chartParameters1.x1Axis.axisLabel = this.labelX;
+    this.chartParameters1.y1Axis.axisLabel = this.labelY;
+
     this.graphDataS = [];
     this.getSalles();
   }
@@ -44,7 +55,8 @@ export class BookingChartsSellsComponent implements OnInit {
     this.chartParameters.height = 130;
     this.chartParameters.xAxis = "key";
     this.chartParameters.yAxis = ["values"];
-    this.chartParameters1.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters1.y1Axis.axisLabel = this.labelY;
   }
   adaptResult(data: any, graphData: any[]) {
     graphData = [];
@@ -52,8 +64,8 @@ export class BookingChartsSellsComponent implements OnInit {
       let values = this.processValues(data);
       let keys = this.processKeys(data);
       keys.forEach((item: any, items: number) => {
-        const linea: object[] = [{'key': item, 'values': values[items]}];
-        graphData.push(linea[0]);
+        const line: object[] = [{'key': item, 'values': values[items]}];
+        graphData.push(line[0]);
       });
       let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
       this.discretebar.setDataArray(dataAdapter.adaptResult(graphData));
@@ -62,7 +74,7 @@ export class BookingChartsSellsComponent implements OnInit {
   processKeys(data: any) {
     let translateMonth = new FnTranslator();
     let keys = [];
-    data.forEach((item: any) => {
+    data.forEach((item: any) => {console.log()
       keys.push(translateMonth.translateMonth(item.n_month));
     });
     return keys;
