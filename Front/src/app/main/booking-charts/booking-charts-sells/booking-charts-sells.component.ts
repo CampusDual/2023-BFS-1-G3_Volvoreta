@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-charts-sells.component.css']
 })
 export class BookingChartsSellsComponent implements OnInit {
+  @ViewChild('lineChart',{static:true}) protected lineChart: OChartComponent;
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
   protected chartParameters1: LineChartConfiguration;

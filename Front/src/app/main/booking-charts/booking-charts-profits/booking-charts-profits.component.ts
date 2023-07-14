@@ -36,6 +36,7 @@ export class BookingChartsProfitsComponent implements OnInit {
     this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
     this.chartParameters1.x1Axis.axisLabel = this.labelX;
     this.chartParameters1.y1Axis.axisLabel = this.labelY;
+    // this.chartParameters1.xAxis = 'timeDateD';
     
     this.graphDataP = [];
     this.getProfits();
