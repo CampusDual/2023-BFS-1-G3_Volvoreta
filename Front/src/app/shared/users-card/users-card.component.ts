@@ -38,8 +38,8 @@ export class UsersCardComponent implements OnInit {
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.height = 200;
     this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
-    this.chartParameters.x1Axis.orient = "bottom";
-    this.chartParameters.x1Axis.rotateLabels = 270;
+    // this.chartParameters.x1Axis.orient = "bottom";
+    // this.chartParameters.x1Axis.rotateLabels = 270;
     this.chartParameters.showLegend = false;
     this.chartParameters.showYAxis = false;
     this.chartParameters.showXAxis = false;
