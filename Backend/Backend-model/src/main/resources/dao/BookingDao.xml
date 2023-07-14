@@ -91,27 +91,48 @@
                 <Column>n_month</Column>
                 <Column>year_</Column>
                 <Column>reservation_state</Column>
+                <Column>timeDateD</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT
-                        #COLUMNS#
+                SELECT
+                    #COLUMNS#
+                FROM
+                    (SELECT
+                        to_date(timeDate, 'YYYY/MM/DD') timeDateD, *
                     FROM
                         (SELECT
-                            reservation_state,
-                            COUNT(TO_CHAR(collection_completed, 'Month')) total_sales,
-                            EXTRACT(MONTH FROM collection_completed) as n_month,
-                            TO_CHAR(collection_completed, 'Month') month_,
-                            EXTRACT(YEAR FROM collection_completed) year_,
-                            SUM(total_price)  profits
+                            CASE WHEN n_month = 1 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 2 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 3 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 4 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 5 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 6 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 7 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 8 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 9 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 10 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 11 THEN CONCAT(year_, '-', n_month, '-28')
+                            WHEN n_month = 12 then CONCAT(year_, '-', n_month, '-28')
+                            END timeDate, *
                         FROM
-                            ${mainschema}.bookings
-                        WHERE reservation_state = 3
-                        GROUP BY EXTRACT(YEAR FROM collection_completed),
-                        TO_CHAR(collection_completed, 'Month'), EXTRACT(MONTH FROM collection_completed), reservation_state
+                            (SELECT
+                                reservation_state,
+                                COUNT(TO_CHAR(collection_completed, 'Month')) total_sales,
+                                EXTRACT(MONTH FROM collection_completed) as n_month,
+                                TO_CHAR(collection_completed, 'Month') month_,
+                                EXTRACT(YEAR FROM collection_completed) year_,
+                                SUM(total_price)  profits
+                        FROM
+                                ${mainschema}.bookings
+                            WHERE reservation_state = 3
+                            GROUP BY EXTRACT(YEAR FROM collection_completed),
+                            TO_CHAR(collection_completed, 'Month'), EXTRACT(MONTH FROM collection_completed), reservation_state
+                            ) b
+                            ORDER BY b. n_month
+                        ) d
                         ) t
                     #WHERE#
-			        ORDER BY t. n_month
                 ]]>
             </Sentence>
         </Query>

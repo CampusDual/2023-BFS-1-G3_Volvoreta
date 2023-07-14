@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
 import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
 import { FnTranslator } from 'src/app/utils/fnTranslator';
+import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-charts-sells',
@@ -19,7 +21,9 @@ export class BookingChartsSellsComponent implements OnInit {
   
   constructor(private ontimizeService: OntimizeService, 
             private cd: ChangeDetectorRef, 
-            public injector: Injector) { 
+            public injector: Injector,
+            private translateService: OTranslateService, private d3LocaleService:D3LocaleService, private router: Router) { 
+    this.translateService.onLanguageChanged.subscribe(() => this.reloadComponent());
     if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
       this.labelX = "Meses";
       this.labelY = "Unidades";
@@ -27,6 +31,26 @@ export class BookingChartsSellsComponent implements OnInit {
       this.labelX = "Month";
       this.labelY = "Units";
     }
+    
+   
+
+    this.graphDataS = [];
+    this.getSalles();
+  }
+
+  private configureLanguage(){
+    const d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
+    this.configureDiscreteBarChart(d3Locale);
+  }
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url]);
+  }
+
+  private configureDiscreteBarChart(locale: any): void {
+
     this.chartParameters1 = new LineChartConfiguration();
     this.chartParameters1.isArea = [true];
     this.chartParameters1.interactive = false;
@@ -35,15 +59,16 @@ export class BookingChartsSellsComponent implements OnInit {
     this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
     this.chartParameters1.x1Axis.axisLabel = this.labelX;
     this.chartParameters1.y1Axis.axisLabel = this.labelY;
-
-    this.graphDataS = [];
-    this.getSalles();
+    // this.chartParameters1.xAxis = "date";
+    // this.chartParameters1.yAxis = ["value"];
+    this.chartParameters1.xDataType = d => locale.timeFormat('%b')(new Date(d));
   }
 
   getSalles(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
-    this.ontimizeService.query({'year_': 2023}, ['total_sales','month_','n_month','year_'], 'sellBooking').subscribe(
-      res => {
+    this.ontimizeService.query({'year_': 2023}, ['total_sales','month_','n_month','year_', 'timeDateD'], 'sellBooking').subscribe(
+      res => {console.log(typeof(res.data[0].timeDateD));
+        console.log(res.data[0].timeDateD)
         if (res && res.data.length && res.code === 0) {
           this.adaptResult(res.data, this.graphDataS);
         }
@@ -67,6 +92,7 @@ export class BookingChartsSellsComponent implements OnInit {
         const line: object[] = [{'key': item, 'values': values[items]}];
         graphData.push(line[0]);
       });
+      this.configureLanguage();
       let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
       this.discretebar.setDataArray(dataAdapter.adaptResult(graphData));
     }
@@ -74,8 +100,13 @@ export class BookingChartsSellsComponent implements OnInit {
   processKeys(data: any) {
     let translateMonth = new FnTranslator();
     let keys = [];
-    data.forEach((item: any) => {console.log()
-      keys.push(translateMonth.translateMonth(item.n_month));
+    data.forEach((item: any) => {
+
+      // let n_month = new Date(item.year_, item.n_month - 1, 28);
+      // console.log(n_month);
+      // keys.push(n_month);
+
+      keys.push(translateMonth.translateMonth(item.timeDateD));
     });
     return keys;
   }
