@@ -1,3 +1,4 @@
+
 export class D3Locales {
 
     public static EN = {

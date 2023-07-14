@@ -1,6 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OntimizeService } from 'ontimize-web-ngx';
-import { DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
+import { Router } from '@angular/router';
+import { OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-booking-charts-users',
@@ -23,26 +26,15 @@ export class BookingChartsUsersComponent implements OnInit {
   constructor(
     private ontimizeService: OntimizeService,
     private cd: ChangeDetectorRef, 
-    public injector: Injector
+    public injector: Injector,
+    private translateService: OTranslateService,
+    private d3LocaleService:D3LocaleService, 
+      private router: Router
   ) {
     this.graphData = [];
     this.graphDataU = [];
     this.auxGraph = [];
     this.getCount();
-
-    this.chartParameters = new DiscreteBarChartConfiguration();
-    this.chartParameters.height = 130;
-    this.chartParameters.showLegend = false;
-    this.chartParameters.color = ['#E4333C', '#4b4b4b'];
-    this.chartParameters.y1Axis.showMaxMin = false;
-    this.chartParameters.x1Axis.showMaxMin = false;
-    this.chartParameters2 = new DiscreteBarChartConfiguration();
-    this.chartParameters2.height = 500;
-    this.chartParameters2.xAxis = "key";
-    this.chartParameters2.yAxis = ["values"];
-    this.chartParameters2.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
-    this.chartParameters2.x1Axis.orient = "bottom";
-    this.chartParameters2.x1Axis.rotateLabels = 270;
   }
   getCount(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
@@ -59,6 +51,7 @@ export class BookingChartsUsersComponent implements OnInit {
     );
   }
   adaptResult(data: any, numero: number) {
+    let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
     if (data && data.length) {
       if(numero === 1){
         let values = this.processValues(data, this.auxGraph);
@@ -69,6 +62,7 @@ export class BookingChartsUsersComponent implements OnInit {
             'values': values
           }
         ];
+        this.discretebar1.setDataArray(dataAdapter.adaptResult(this.graphData));
       }else if(numero === 2 && this.auxGraph.length > 0){
         let values = this.processKeyValues(this.auxGraph);
         this.graphDataU = [
@@ -77,8 +71,8 @@ export class BookingChartsUsersComponent implements OnInit {
             'values': values
           }
         ];
+        this.discretebar2.setDataArray(dataAdapter.adaptResult(this.graphDataU));
       }
-      
     }
   }
   processValues(data: any, graphData: any[]) {
@@ -119,14 +113,49 @@ export class BookingChartsUsersComponent implements OnInit {
     let values = [];
     graphData.forEach((item: any, index: number) => {
       let user = {
-        'x': item.name + (item.surname1).charAt(0) + '. ' ,
+        'x': item.name + ' ' + (item.surname1).charAt(0) + '.' ,
         'y': item.not_picked_up
       }
       values.push(user);
     });
     return values;
   }
+  private configureLanguage(){
+    const d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
+    this.configureDiscreteBarChart(d3Locale);
+    this.configureDiscreteBarChartU(d3Locale);
+  }
+  private configureDiscreteBarChart(locale: any): void {
+    this.chartParameters = new DiscreteBarChartConfiguration();
+    this.chartParameters.height = 130;
+    this.chartParameters.showLegend = false;
+    this.chartParameters.color = ['#E4333C', '#4b4b4b'];
+    this.chartParameters.y1Axis.showMaxMin = false;
+    this.chartParameters.x1Axis.showMaxMin = false;
+    this.chartParameters.yDataType = d => locale.numberFormat("###.##")(d);
+  }
+  private configureDiscreteBarChartU(locale: any): void{
+    this.chartParameters2 = new DiscreteBarChartConfiguration();
+    this.chartParameters2.height = 500;
+    this.chartParameters2.xAxis = "key";
+    this.chartParameters2.yAxis = ["values"];
+    this.chartParameters2.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters2.x1Axis.orient = "bottom";
+    this.chartParameters2.x1Axis.rotateLabels = 270;
+    this.chartParameters2.yDataType = d => locale.numberFormat("###.##")(d);
+  }
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url]);
+  }
+  
   ngOnInit() {
+    this.configureLanguage();
+    let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
+    this.discretebar1.setDataArray(dataAdapter.adaptResult(this.graphData));
+    this.discretebar2.setDataArray(dataAdapter.adaptResult(this.graphDataU));
   }
 }
 
