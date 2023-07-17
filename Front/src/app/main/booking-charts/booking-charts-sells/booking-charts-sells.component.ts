@@ -10,14 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-charts-sells.component.css']
 })
 export class BookingChartsSellsComponent implements OnInit {
-  @ViewChild('stackedAreaChart',{static:true}) protected stackedAreaChart: OChartComponent;
+  // @ViewChild('stackedAreaChart',{static:true}) protected stackedAreaChart: OChartComponent;
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
   protected chartParameters1: StackedAreaChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataS: Array<Object>;
-  protected labelX: string;
-  protected labelY: string;
+  
   
   constructor(private ontimizeService: OntimizeService, 
       private cd: ChangeDetectorRef, 
@@ -84,7 +83,7 @@ export class BookingChartsSellsComponent implements OnInit {
     this.chartParameters.yAxis = ["values"];
     this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters.y1Axis.axisLabel = this.translateService.get("units");
-	  this.chartParameters.y1Axis.axisLabelDistance = 50;
+	  this.chartParameters.margin.left= 100;
     this.chartParameters.xDataType = d => locale.timeFormat('%b')(new Date(d));
     this.chartParameters.yDataType = d => locale.numberFormat("###.#")(d); 
   }

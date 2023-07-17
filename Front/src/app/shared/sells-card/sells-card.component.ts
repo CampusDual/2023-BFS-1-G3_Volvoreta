@@ -35,7 +35,6 @@ export class SellsCardComponent implements OnInit {
     this.chartParameters.useInteractiveGuideline = false;
     this.chartParameters.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
     this.chartParameters.height = 200;  
-    this.chartParameters.y1Axis.axisLabelDistance = 50; 
     this.chartParameters.y1Axis.axisLabel = this.translateService.get("units");
     this.chartParameters.showControls = false; 
     this.chartParameters.showXAxis = false; 

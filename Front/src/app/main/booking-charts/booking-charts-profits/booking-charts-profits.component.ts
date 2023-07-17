@@ -10,14 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-charts-profits.component.css']
 })
 export class BookingChartsProfitsComponent implements OnInit {
-  @ViewChild('stackedAreaChart',{static:true}) protected stackedAreaChart: OChartComponent;
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
   protected chartParameters1: StackedAreaChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataP: Array<Object>;
-  protected labelX: string;
-  protected labelY: string;
+  
 
   constructor(private ontimizeService: OntimizeService, 
       private cd: ChangeDetectorRef, 

@@ -79,8 +79,8 @@ export class BookingChartsUsersComponent implements OnInit {
     let values = [];
     let minorValue = 0;
     let majorValue = 0;
-    let over = "";
-    let under = "";
+    let over = this.translateService.get('over');
+    let under = this.translateService.get('under');
     data.forEach((item: any, index: number) => {
       if (item['not_picked_up'] >= this.criteriaValue){
         majorValue++;
@@ -89,13 +89,7 @@ export class BookingChartsUsersComponent implements OnInit {
         minorValue++;
       }
     });
-    if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
-      over = "Igual o superior";
-      under = "Inferior";
-    }else{
-      over = "Over";
-      under = "Under";
-    }
+
     let lowerCrit = {
       'x': under,
       'y': minorValue
@@ -132,6 +126,7 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters.color = ['#E4333C', '#4b4b4b'];
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
+    this.chartParameters.y1Axis.axisLabel = this.translateService.get('units');
     this.chartParameters.yDataType = d => locale.numberFormat("###.##")(d);
   }
   private configureDiscreteBarChartU(locale: any): void{
@@ -140,6 +135,7 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters2.xAxis = "key";
     this.chartParameters2.yAxis = ["values"];
     this.chartParameters2.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters2.y1Axis.axisLabel = this.translateService.get('units');
     this.chartParameters2.x1Axis.orient = "bottom";
     this.chartParameters2.x1Axis.rotateLabels = 270;
     this.chartParameters2.yDataType = d => locale.numberFormat("###.##")(d);
