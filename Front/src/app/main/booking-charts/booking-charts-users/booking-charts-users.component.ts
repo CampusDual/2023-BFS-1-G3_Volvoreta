@@ -127,6 +127,7 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters.y1Axis.showMaxMin = false;
     this.chartParameters.x1Axis.showMaxMin = false;
     this.chartParameters.y1Axis.axisLabel = this.translateService.get('units');
+    this.chartParameters.y1Axis.axisLabelDistance = -15;
     this.chartParameters.yDataType = d => locale.numberFormat("###.##")(d);
   }
   private configureDiscreteBarChartU(locale: any): void{
@@ -137,6 +138,7 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters2.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
     this.chartParameters2.y1Axis.axisLabel = this.translateService.get('units');
     this.chartParameters2.x1Axis.orient = "bottom";
+    this.chartParameters.y1Axis.axisLabelDistance = -15;
     this.chartParameters2.x1Axis.rotateLabels = 270;
     this.chartParameters2.yDataType = d => locale.numberFormat("###.##")(d);
   }

@@ -47,7 +47,16 @@ public class BookingService implements IBookingService {
 
     @Override
     public EntityResult locationsBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
-        return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "locationsBookingQuery");
+        attrList.add("name_location");
+        EntityResult eRResult = this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "locationsBookingQuery");
+        List<String> lista = new ArrayList<>();
+        for(int i =0; i < eRResult.calculateRecordNumber(); i++){
+            String name_user = (String) eRResult.getRecordValues(i).get("name_location") + "; unidades:";
+            lista.add(name_user);
+
+        }
+        eRResult.put("name_location_units", lista);
+        return eRResult;
     }
 
     @Override
@@ -58,14 +67,23 @@ public class BookingService implements IBookingService {
     @Override
     public EntityResult usersBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "usersBookingQuery");
-    }
+   }
     @Override
     public EntityResult userslimitBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         if(getYears() != null){
             keyMap.put("year_", getYears());
             setYears((null));
         }
-        return this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
+        attrList.add("name");
+        EntityResult eRName = this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
+        List<String> lista = new ArrayList<>();
+        for(int i =0; i < eRName.calculateRecordNumber(); i++){
+            String name_user = (String) eRName.getRecordValues(i).get("name") + "; unidades:";
+            lista.add(name_user);
+
+        }
+        eRName.put("name_user", lista);
+        return eRName;
     }
 
     @Override
