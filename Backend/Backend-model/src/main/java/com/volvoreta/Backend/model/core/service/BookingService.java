@@ -49,13 +49,7 @@ public class BookingService implements IBookingService {
     public EntityResult locationsBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         attrList.add("name_location");
         EntityResult eRResult = this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "locationsBookingQuery");
-        List<String> lista = new ArrayList<>();
-        for(int i =0; i < eRResult.calculateRecordNumber(); i++){
-            String name_user = (String) eRResult.getRecordValues(i).get("name_location") + "; unidades:";
-            lista.add(name_user);
-
-        }
-        eRResult.put("name_location_units", lista);
+        eRResult.put("name_location_units", CustomColumn(eRResult, "name_location", ". Total sales:"));
         return eRResult;
     }
 
@@ -75,17 +69,19 @@ public class BookingService implements IBookingService {
             setYears((null));
         }
         attrList.add("name");
-        EntityResult eRName = this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
-        List<String> lista = new ArrayList<>();
-        for(int i =0; i < eRName.calculateRecordNumber(); i++){
-            String name_user = (String) eRName.getRecordValues(i).get("name") + "; unidades:";
-            lista.add(name_user);
+        EntityResult eRResult = this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
+        eRResult.put("name_user", CustomColumn(eRResult, "name", ". Bookings not picked up:"));
+        return eRResult;
+    }
+    private List<String> CustomColumn(EntityResult eRResult, String nameColumn, String sms){
+        List<String> list = new ArrayList<>();
+        for(int i =0; i < eRResult.calculateRecordNumber(); i++){
+            String name_user = (String) eRResult.getRecordValues(i).get(nameColumn) + sms;
+            list.add(name_user);
 
         }
-        eRName.put("name_user", lista);
-        return eRName;
+        return list;
     }
-
     @Override
     public void yearBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         if(keyMap.containsKey("year_")){
