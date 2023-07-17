@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
 import { ReserveService } from 'src/app/services/reserve.service';
 import { D3LocaleService } from '../d3-locale/d3Locale.service';
 import { OTranslateService } from 'ontimize-web-ngx';
@@ -12,7 +12,7 @@ import { OTranslateService } from 'ontimize-web-ngx';
 })
 export class ProfitsCardComponent implements OnInit {
 
-  public chartParameters: DiscreteBarChartConfiguration;
+  protected chartParameters: StackedAreaChartConfiguration;
   
   constructor(
       private cd: ChangeDetectorRef, 
@@ -31,19 +31,21 @@ export class ProfitsCardComponent implements OnInit {
   }
   private configureLanguage(){
     const d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
-    this.configureDiscreteBarChart(d3Locale);
+    this.configureChart(d3Locale);
   }
-  private configureDiscreteBarChart(locale: any): void {
-    console.log(locale);
-    this.chartParameters = new DiscreteBarChartConfiguration();
-    this.chartParameters.height = 200;
-    this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+  private configureChart(locale: any): void{
+    this.chartParameters = new StackedAreaChartConfiguration();
+    this.chartParameters.interactive = false;
     this.chartParameters.showLegend = false;
-    this.chartParameters.showYAxis = false;
-    this.chartParameters.showXAxis = false;
-    this.chartParameters.showValues = false;
+    this.chartParameters.useInteractiveGuideline = false;
+    this.chartParameters.color = ['#4b4b4b','#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
+    this.chartParameters.height = 200;  
+    this.chartParameters.y1Axis.axisLabelDistance = 50; 
+    this.chartParameters.showControls = false; 
+    this.chartParameters.showXAxis = false; 
+    this.chartParameters.showYAxis = false; 
     this.chartParameters.xDataType = d => locale.timeFormat('%b')(new Date(d));
-    this.chartParameters.yDataType = d => locale.numberFormat("###.00#")(d);
+    this.chartParameters.yDataType = d => locale.numberFormat("###.#")(d);
   }
   reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

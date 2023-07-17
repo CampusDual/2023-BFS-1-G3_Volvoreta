@@ -43,7 +43,8 @@ export class BookingChartLocationpComponent implements OnInit {
     this.chartParameters1.color = ['#4b4b4b', '#e4333c', '#47a0e9', '#16b062', '#ff7f0e'];
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
-    this.chartParameters1.yDataType = d => locale.numberFormat("###.00#")(d);
+    this.chartParameters1.valueType = locale.numberFormat("$,.2f");
+    // this.chartParameters1.yDataType = d => locale.numberFormat("$,.2f")(d);
   }
   reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

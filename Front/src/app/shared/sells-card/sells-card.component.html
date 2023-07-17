@@ -5,4 +5,5 @@
   <!-- <o-chart #lineChartBasic type="line" x-label="Time" y-label="Amount (€)" service="bookings"
    entity="sellBooking" x-axis="n_month" y-axis="total_sales" [chart-parameters]="chartParameters1" x-data-type="text"
    class="sells-card-chart"></o-chart> -->
-   <o-chart #discretebar type="discreteBar" x-label="Axis x" y-label="Profits"service="bookings" entity="sellBooking" x-axis="timeDateD" y-axis="total_sales"  x-data-type="time" [chart-parameters]="chartParameters" fxFlex></o-chart>
+   <o-chart #stackedArea type="stackedAreaChart" service="bookings" entity="sellBooking" x-axis="timeDateD" y-axis="total_sales" 
+     [chart-parameters]="chartParameters" fxFlex></o-chart>

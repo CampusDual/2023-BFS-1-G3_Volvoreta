@@ -111,5 +111,9 @@
   "legend1": "Número de usuarios que igualan o superan el criterio",
   "legend2": "Número de usuarios que no alcanzan el baremo",
   "over": "Igual o superior",
-  "under": "Inferior"
+  "under": "Inferior",
+  "total_sales": "Ventas totales, unidades:",
+  "months": "Meses",
+  "profits": "Beneficios",
+  "amount": "Importe (€)"
 }

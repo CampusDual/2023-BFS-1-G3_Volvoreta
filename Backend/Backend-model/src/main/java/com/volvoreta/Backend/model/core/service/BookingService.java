@@ -42,15 +42,7 @@ public class BookingService implements IBookingService {
     }
     @Override
     public EntityResult sellBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
-        EntityResult entityResult =  this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "sellBookingQuery");
-        EntityResult aux = entityResult.clone();
-        for(int i=0; i<aux.calculateRecordNumber(); i++){
-            Calendar monthD = Calendar.getInstance();
-            monthD.setTime(new Date(2023, 2, 1));
-            aux.getRecordValues(i).put("monthD", monthD);
-            //aux.getRecordValues(i).get("n_month");
-        }
-        return aux;
+       return this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "sellBookingQuery");
     }
 
     @Override

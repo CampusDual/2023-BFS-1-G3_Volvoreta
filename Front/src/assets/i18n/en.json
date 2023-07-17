@@ -111,5 +111,9 @@
   "legend1": "Number of users matching or exceeding the criteria",
   "legend2": "Number of users who do not reach the scale",
   "over": "Over",
-  "under": "Under"
+  "under": "Under",
+  "total_sales": "Total sales, units:",
+  "months": "Months",
+  "profits": "Profits",
+  "amount": "Amount (€)"
 }
