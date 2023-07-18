@@ -20,25 +20,29 @@ public class StateService implements IStateService {
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
+    // Realiza una consulta en la base de datos, utilizando el objeto stateDao, la clave (keyMap) y la lista de atributos (attrList).
+    // El resultado se devuelve como un objeto EntityResult.
     @Override
     public EntityResult stateQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(stateDao, keyMap, attrList);
     }
 
+
+    //Realiza una operación de inserción utilizando el método daoHelper.insert() para agregar un nuevo estado en la base de datos.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult stateInsert(Map<?, ?> attrMap) {
         return this.daoHelper.insert(stateDao, attrMap);
     }
 
+
+    //Actualiza los datos del estado utilizando el método daoHelper.update() basándose en los mapas de atributos y clave proporcionados.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult stateUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(stateDao, attrMap, keyMap);
     }
 
+    //Eliminación de estados utilizando el método daoHelper.delete() basándose en el mapa de clave proporcionado.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult stateDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.stateDao, keyMap);
     }
