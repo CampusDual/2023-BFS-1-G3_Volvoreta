@@ -4,15 +4,15 @@
       <h2>{{'charts'| oTranslate}}</h2>
       <o-combo attr="year" label="2023" [data]="2023"  value-column="name" columns="id;name" 
         visible-columns="name" read-only="yes"></o-combo>
-        <h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_bookings' | oTranslate}}</h3>
+      <h3>{{'GLOBAL-BOOKINGS' | oTranslate}}: {{'not_picked_up_bookings' | oTranslate}}</h3>
     </div>
     <div fxLayoutAlign="space-between center">
       <div fxLayout="column">
         <h4>{{ 'users_not_picked_up' | oTranslate }}: {{ total_not_picked_up }} </h4>
         <p>{{ 'scaling_criteria' | oTranslate }}: {{ criteriaValue }}, {{ 'criteria' | oTranslate }}.</p>
       </div>
-      <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" [chart-parameters]="chartParameters" fxFlex 
-        x-data-type ="text" y-data-type="number"></o-chart>
+      <o-chart  #discretebar1 type="discreteBar" x-label="Axis x" y-label="Axis Y" [data]="graphData" 
+        [chart-parameters]="chartParameters" fxFlex x-data-type ="text" y-data-type="number"></o-chart>
       
     </div>
     <div fxLayoutAlign="space-between center">

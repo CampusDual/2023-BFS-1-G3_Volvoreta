@@ -49,7 +49,7 @@ public class BookingService implements IBookingService {
     public EntityResult locationsBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         attrList.add("name_location");
         EntityResult eRResult = this.daoHelper.query(bookingDao, isYears(keyMap), attrList, "locationsBookingQuery");
-        eRResult.put("name_location_units", CustomColumn(eRResult, "name_location", ". Total sales:"));
+        eRResult.put("name_location_units", CustomColumn(eRResult, "name_location", ". U:"));
         return eRResult;
     }
 
@@ -70,7 +70,7 @@ public class BookingService implements IBookingService {
         }
         attrList.add("name");
         EntityResult eRResult = this.daoHelper.paginationQuery(bookingDao, keyMap, attrList, 7,1,new ArrayList<>(),"usersBookingQuery");
-        eRResult.put("name_user", CustomColumn(eRResult, "name", ". Bookings not picked up:"));
+        eRResult.put("name_user", CustomColumn(eRResult, "name", ". U:"));
         return eRResult;
     }
     private List<String> CustomColumn(EntityResult eRResult, String nameColumn, String sms){

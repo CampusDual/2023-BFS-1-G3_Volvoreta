@@ -11,9 +11,7 @@ import { OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./booking-charts-locations.component.css']
 })
 export class BookingChartsLocationsComponent implements OnInit {
-
-  @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
-  
+ 
   protected chartParameters1: DonutChartConfiguration;
   
   constructor(

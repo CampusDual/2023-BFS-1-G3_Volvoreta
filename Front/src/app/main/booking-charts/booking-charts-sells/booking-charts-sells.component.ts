@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
-import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration, OChartComponent, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
 import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-charts-sells.component.css']
 })
 export class BookingChartsSellsComponent implements OnInit {
-  // @ViewChild('stackedAreaChart',{static:true}) protected stackedAreaChart: OChartComponent;
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
   protected chartParameters1: StackedAreaChartConfiguration;

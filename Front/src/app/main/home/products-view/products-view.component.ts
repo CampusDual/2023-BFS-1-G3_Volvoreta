@@ -16,10 +16,32 @@ import { DialogService } from 'ontimize-web-ngx';
 })
 export class ProductsViewComponent implements OnInit {
 
-  product: Products = new Products()
+  /**
+   * Producto ha reservar
+   */
+  product: Products = new Products();
+  /**
+   * Recoge los datos del formulario de reserva
+   */
   contentView: FormGroup = new FormGroup({});
+  /**
+   * Identificador del producto a reservar
+   */
   id: number;
+  /**
+   * Ruta de la imagen del producto
+   */
   imagePath: SafeResourceUrl = "data:image/png;base64," + imageDefaulProdut
+  /**
+   * Constructor recive 6 parámetros
+   * 
+   * @param productService 
+   * @param actRoute 
+   * @param _sanitizer 
+   * @param router 
+   * @param dialog 
+   * @param dialogService 
+   */
   constructor(
     private productService: ProductService,
     private actRoute: ActivatedRoute,
@@ -30,12 +52,12 @@ export class ProductsViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Get id param
+    // Recoge el parámetro id 
     this.actRoute.params.subscribe((params: Params) => {
       this.id = Number(params['id']);
     });
 
-    // Get product by id
+    // Recoge el producto por id
     this.productService.getById(this.id).subscribe(res => {
 
       if (res.code === 0) {
@@ -48,7 +70,11 @@ export class ProductsViewComponent implements OnInit {
       }
     }, err => console.log(err));
   }
-
+  /**
+   * Método que llama a la ventana de reserva 
+   * 
+   * @param value 
+   */
   reserve(value: string) {
     let totalImport: number = Number(this.product.price) * Number(value);
     //  1. Dialogo de confirmacion de reserva, insert reserva y update de stock
@@ -59,6 +85,7 @@ export class ProductsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if(data !== "" && data){
         this.dialogService.info("summary", data);
+        //Retardo para actualizar datos y que salgan correctamente actualizados
         setTimeout(() => {
           this.turnback();
         }, 1500);
