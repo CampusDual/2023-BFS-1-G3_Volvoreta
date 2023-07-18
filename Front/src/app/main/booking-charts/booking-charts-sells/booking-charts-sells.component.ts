@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
-import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration, OChartComponent } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
 import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
 import { Router } from '@angular/router';
 
@@ -10,14 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./booking-charts-sells.component.css']
 })
 export class BookingChartsSellsComponent implements OnInit {
-  @ViewChild('lineChart',{static:true}) protected lineChart: OChartComponent;
   @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
   
-  protected chartParameters1: LineChartConfiguration;
+  protected chartParameters1: StackedAreaChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataS: Array<Object>;
-  protected labelX: string;
-  protected labelY: string;
+  
   
   constructor(private ontimizeService: OntimizeService, 
       private cd: ChangeDetectorRef, 
@@ -25,15 +23,8 @@ export class BookingChartsSellsComponent implements OnInit {
       private translateService: OTranslateService, 
       private d3LocaleService:D3LocaleService, 
       private router: Router) { 
+	  
     this.translateService.onLanguageChanged.subscribe(() => this.reloadComponent());
-    if(JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es"){
-      this.labelX = "Meses";
-      this.labelY = "Unidades";
-    } else{
-      this.labelX = "Month";
-      this.labelY = "Units";
-    }
-
     this.graphDataS = [];
     this.getSalles();
   }
@@ -51,6 +42,7 @@ export class BookingChartsSellsComponent implements OnInit {
     );
     
   }
+  
   adaptResult(data: any, graphData: any[]) {
     graphData = [];
     if (data && data.length) {
@@ -81,7 +73,7 @@ export class BookingChartsSellsComponent implements OnInit {
   private configureLanguage(){
     const d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
     this.configureDiscreteBarChart(d3Locale);
-    this.configureLineChart(d3Locale);
+    this.configureChart(d3Locale);
   }
   private configureDiscreteBarChart(locale: any): void {
     this.chartParameters = new DiscreteBarChartConfiguration();
@@ -89,21 +81,20 @@ export class BookingChartsSellsComponent implements OnInit {
     this.chartParameters.xAxis = "key";
     this.chartParameters.yAxis = ["values"];
     this.chartParameters.color = ['#4b4b4b', '#E4333C', '#47A0E9', '#16b062', '#FF7F0E'];
-    this.chartParameters.y1Axis.axisLabel = this.labelY;
-    // this.chartParameters1.x1Axis.axisLabel = this.labelX;
+    this.chartParameters.y1Axis.axisLabel = this.translateService.get("units");
+	  this.chartParameters.margin.left= 100;
     this.chartParameters.xDataType = d => locale.timeFormat('%b')(new Date(d));
     this.chartParameters.yDataType = d => locale.numberFormat("###.#")(d); 
   }
-  private configureLineChart(locale: any): void{
-    this.chartParameters1 = new LineChartConfiguration();
-    this.chartParameters1.isArea = [true];
+  private configureChart(locale: any): void{
+    this.chartParameters1 = new StackedAreaChartConfiguration();
     this.chartParameters1.interactive = false;
     this.chartParameters1.showLegend = false;
     this.chartParameters1.useInteractiveGuideline = false;
-    this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b'];
-    this.chartParameters1.x1Axis.axisLabel = this.labelX;
-    this.chartParameters1.y1Axis.axisLabel = this.labelY;    
-    // this.chartParameters1.xDataType = d => locale.timeFormat('%b')(new Date(d));
+    this.chartParameters1.color = ['#E4333C', '#47A0E9', '#16b062', '#FF7F0E','#4b4b4b']; 
+    this.chartParameters1.y1Axis.axisLabelDistance = 200; 
+    this.chartParameters1.y1Axis.axisLabel = this.translateService.get("units");
+    this.chartParameters1.showControls = true; 
     this.chartParameters1.yDataType = d => locale.numberFormat("###.#")(d);
   }
   reloadComponent() {

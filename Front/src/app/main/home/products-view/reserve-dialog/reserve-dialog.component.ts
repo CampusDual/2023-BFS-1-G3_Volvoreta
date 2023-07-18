@@ -15,7 +15,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ReserveDialogComponent implements OnInit {
   
-
+  /**
+   * Constructor, recibe seis parámetros
+   * 
+   * @param data 
+   * @param userService 
+   * @param reserveService 
+   * @param productService 
+   * @param dialogRef 
+   * @param dialogService 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { product: Products, units: string, totalImport: number },
     private userService: UserService,
@@ -27,11 +36,17 @@ export class ReserveDialogComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  /**
+   * Método para cerrar la ventana emergente de confirmación
+   * 
+   * @param msg tipo string, es el mensaje que mostrará la ventana al cerrarse
+   */
   close(msg: string) {
     this.dialogRef.close(msg);
   }
-  
+  /**
+   * Método que recoje y envía la reserva al servidor para su inserción en la base de datos
+   */
   reserveOK() {
 
     const currentUser = this.userService.getCurrentUser();
@@ -67,8 +82,12 @@ export class ReserveDialogComponent implements OnInit {
         this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + part3 +  "</b>. ");
       }
     );
-    //this.reserveService.getReserveDate()
   }
+  /**
+   * Método que pone inactivo un producto una vez que se ha reservado todo su stock real.
+   * 
+   * @param id Identificador de un producto
+   */
   updateActive(id: number){
     this.productService.getById(id).subscribe(
       ({code, data}: OResponse) => {

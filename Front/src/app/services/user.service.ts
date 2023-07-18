@@ -14,7 +14,7 @@ export class UserService {
     private urlEndpoint: string = 'http://localhost:33333/users';
     private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id});
     private wellcome: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
-    nameUser : string = this.authService.getSessionInfo().user;
+    protected nameUser : string = this.authService.getSessionInfo().user;
 
     constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService,
     private ontimizeService: OntimizeService,) { }
@@ -32,6 +32,7 @@ export class UserService {
     getWellcome():Observable<any>{
         return this.wellcome.asObservable();
     }
+
     setWellcome(wellcome: any){
         return this.wellcome.next(wellcome);
     }
@@ -39,9 +40,11 @@ export class UserService {
     getPasswordBD():Observable<PasswordInput>{
         return this.passwordBD.asObservable();
     }
+
     setPasswordBD(pass: PasswordInput) {
         this.passwordBD.next(pass);
     }
+    
     clearPasswordDB(){
         this.passwordBD.next({password: ""});
     }

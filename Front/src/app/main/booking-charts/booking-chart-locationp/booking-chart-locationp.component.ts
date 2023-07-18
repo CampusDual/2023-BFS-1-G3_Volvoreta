@@ -11,14 +11,11 @@ import { OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./booking-chart-locationp.component.css']
 })
 export class BookingChartLocationpComponent implements OnInit {
-
-  @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
-  
-  chartParameters1: PieChartConfiguration;
+ 
+  protected chartParameters1: PieChartConfiguration;
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphData: Array<Object>;
-  // protected criteriaValue = 50;
-  
+   
   constructor(
       private cd: ChangeDetectorRef, 
       public injector: Injector, 
@@ -43,7 +40,7 @@ export class BookingChartLocationpComponent implements OnInit {
     this.chartParameters1.color = ['#4b4b4b', '#e4333c', '#47a0e9', '#16b062', '#ff7f0e'];
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
-    this.chartParameters1.yDataType = d => locale.numberFormat("###.00#")(d);
+    this.chartParameters1.valueType = locale.numberFormat("$,.2f");
   }
   reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

@@ -11,9 +11,7 @@ import { OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./booking-charts-locations.component.css']
 })
 export class BookingChartsLocationsComponent implements OnInit {
-
-  @ViewChild('discretebar',{static:true}) protected discretebar: OChartComponent;
-  
+ 
   protected chartParameters1: DonutChartConfiguration;
   
   constructor(
@@ -41,7 +39,7 @@ export class BookingChartsLocationsComponent implements OnInit {
     this.chartParameters1.donutRatio = 0.5;
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
-    this.chartParameters1.yDataType = d => locale.numberFormat("###.##")(d);
+    this.chartParameters1.valueType = locale.numberFormat("###.00#");
   }
   reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

@@ -40,9 +40,9 @@ export class LocationsCardComponent implements OnInit {
     this.chartParameters1.legendPosition = "bottom";
     this.chartParameters1.labelType = "value";
     this.chartParameters1.height = 178;
-    this.chartParameters1.showTooltip = true;
+    this.chartParameters1.showTooltip = false;
     this.chartParameters1.showLeyend = false;
-    this.chartParameters1.yDataType = d => locale.numberFormat("###.##")(d);
+    this.chartParameters1.valueType = locale.numberFormat("###.00#");
   }
   reloadComponent() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

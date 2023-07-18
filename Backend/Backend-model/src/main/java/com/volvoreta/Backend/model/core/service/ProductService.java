@@ -19,32 +19,38 @@ public class ProductService implements IProductService {
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
+
+    // Realiza una consulta de productos utilizando el daoHelper.query() y devuelve un EntityResult.
+    // Recupera datos del producto según el mapa de clave y atributos proporcionados.
     @Override
     public EntityResult productQuery(Map<String, Object> keyMap, List<String> attrList) {
             return this.daoHelper.query(productDao, keyMap, attrList);
     }
 
 
+    //Modifica keyMap para agregar una condición para que el atributo ACTIVE sea verdadero,
+    //y luego realiza una operación de consulta en la entidad Product utilizando daoHelper.
     @Override
     public EntityResult activeProductQuery(Map<String, Object> keyMap, List<String> attrList) {
         keyMap.put(ProductDao.ACTIVE, true);
         return this.daoHelper.query(productDao, keyMap, attrList);
     }
 
+
+    //Realiza una operación de inserción utilizando el método daoHelper.insert() para agregar un nuevo producto.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(productDao, attrMap);
     }
 
+    //Actualiza los datos del producto utilizando el método daoHelper.update() basándose en los mapas de atributos y clave proporcionados.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         return this.daoHelper.update(productDao, attrMap, keyMap);
     }
 
+    //Eliminación de productos utilizando el método daoHelper.delete() basándose en el mapa de clave proporcionado.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult productDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.productDao, keyMap);
     }

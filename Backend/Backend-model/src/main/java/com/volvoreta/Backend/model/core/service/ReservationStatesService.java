@@ -19,28 +19,38 @@ public class ReservationStatesService implements IReservationStatesService {
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
+    //Consulta el estado de las reservas utilizando el daoHelper.query() y devuelve un EntityResult.
+    //Recupera los datos de las reservas según el mapa de clave y atributos proporcionados.
     @Override
     public EntityResult reservationStateQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(reservationStatesDao, keyMap, attrList);
     }
+
+    //Consulta el estado de las reservas del cliente utilizando el daoHelper.query() y devuelve un EntityResult.
+    //Recupera los datos de las reservas del cliente según el mapa de clave y atributos proporcionados.
     public EntityResult clientReservationStateQuery(Map<?, ?> keyMap, List<?> attrList) {
         return this.daoHelper.query(reservationStatesDao, keyMap, attrList, "clientReservationStateQuery");
     }
 
+
+    //Inserta un nuevo estado de reserva en la base de datos.
+    //Utiliza el objeto daoHelper para realizar la inserción en el ReservationStatesDao.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult reservationStateInsert(Map<?, ?> attrMap) {
         return this.daoHelper.insert(reservationStatesDao, attrMap);
     }
 
+
+    // Actualiza un estado de reserva existente en la base de datos.
+    // Utiliza el objeto daoHelper para realizar la actualización en el ReservationStatesDao.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult reservationStateUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
         return this.daoHelper.update(reservationStatesDao, attrMap, keyMap);
     }
 
+    //Elimina un estado de reserva existente de la base de datos.
+    // Utiliza el objeto daoHelper para realizar la eliminación en el ReservationStatesDao.
     @Override
-    //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult reservationStateDelete(Map<?, ?> keyMap) {
         return this.daoHelper.delete(this.reservationStatesDao, keyMap);
     }

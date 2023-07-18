@@ -99,7 +99,7 @@
   "CHARTS-LOCATIONP-YEAR": "Beneficios por ubicación",
   "profits_per_location": "Beneficios por ubicación, €",
   "CHARTS-STOCK": "Rotación de stock",
-  "stock_rotation": "Rotación de stock",
+  "stock_rotation": "Rotación de stock; los más vendidos",
   "CHARTS-USERS": "Reservas no recogidas",
   "not_picked_up_bookings": "Número de reservas no retiradas",
   "users_not_picked_up": "Número de usuarios que no han recogido sus reservas",
@@ -111,5 +111,11 @@
   "legend1": "Número de usuarios que igualan o superan el criterio",
   "legend2": "Número de usuarios que no alcanzan el baremo",
   "over": "Igual o superior",
-  "under": "Inferior"
+  "under": "Inferior",
+  "total_sales": "Ventas totales, unidades:",
+  "months": "Meses",
+  "profits": "Beneficios",
+  "amount": "Importe (€)",
+  ". Bookings not picked up:": ".Reservas no recogidas:",
+  ". Total sales:": "Ventas totales"
 }

@@ -99,7 +99,7 @@
   "CHARTS-LOCATIONP-YEAR": "Profits per location",
   "profits_per_location": "Profits per location, €",
   "CHARTS-STOCK": "Stock rotation",
-  "stock_rotation": "Stock rotation",
+  "stock_rotation": "Stock rotation; best sellers",
   "CHARTS-USERS": "Bookings not picked up",
   "not_picked_up_bookings": "Number of bookings not picked up",
   "users_not_picked_up": "Number of users who have not collected their reservations",
@@ -111,5 +111,11 @@
   "legend1": "Number of users matching or exceeding the criteria",
   "legend2": "Number of users who do not reach the scale",
   "over": "Over",
-  "under": "Under"
+  "under": "Under",
+  "total_sales": "Total sales, units:",
+  "months": "Months",
+  "profits": "Profits",
+  "amount": "Amount (€)",
+  ". Bookings not picked up:": ". Bookings not picked up:",
+  ". Total sales:": ". Total sales:"
 }

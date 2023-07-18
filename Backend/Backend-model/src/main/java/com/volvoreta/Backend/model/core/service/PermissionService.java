@@ -14,7 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Clase para otorgar permisos a los distintos tipos de usuarios, users, mantenimiento y seguridad.
+ */
 @Service("PermissionService")
 @Lazy
 public class PermissionService implements IPermissionService {
@@ -79,12 +81,6 @@ public class PermissionService implements IPermissionService {
 			map.put("permission", PermissionService.PLANNER_PERMISSION_DEFAULT);
 		}
 
-//		if (!role.equals("security")) {
-//			map.put("permission", PermissionService.PLANNER_PERMISSION_SECURITY);
-//		}
-//		else if (!role.equals("maintenance")){
-//			map.put("permission", PermissionService.PLANNER_PERMISSION_MAINTENANCE);
-//		}
 		e.addRecord(map);
 		return e;
 	}
