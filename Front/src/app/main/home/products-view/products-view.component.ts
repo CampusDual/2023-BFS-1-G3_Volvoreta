@@ -7,7 +7,8 @@ import { imageDefaulProdut } from 'src/app/utils/constants';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ReserveDialogComponent } from './reserve-dialog/reserve-dialog.component';
-import { DialogService } from 'ontimize-web-ngx';
+import { DialogService, OTranslateService } from 'ontimize-web-ngx';
+import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
 
 @Component({
   selector: 'app-products-view',
@@ -48,7 +49,7 @@ export class ProductsViewComponent implements OnInit {
     private _sanitizer: DomSanitizer,
     private router: Router,
     public dialog: MatDialog,
-    protected dialogService: DialogService,
+    protected dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -77,9 +78,12 @@ export class ProductsViewComponent implements OnInit {
    */
   reserve(value: string) {
     let totalImport: number = Number(this.product.price) * Number(value);
+    let totalImportDecimal: number = Number(totalImport.toFixed(2));
+    
     //  1. Dialogo de confirmacion de reserva, insert reserva y update de stock
     const dialogRef = this.dialog.open(ReserveDialogComponent, 
-      { data: { product: this.product, units: value, totalImport: totalImport } });
+      { data: { product: this.product, units: value, totalImport: totalImportDecimal } 
+    });
 
     // 2. OK -> Dialog de confirmacion de reserva OK
     dialogRef.afterClosed().subscribe((data) => {
