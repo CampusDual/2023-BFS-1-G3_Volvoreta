@@ -25,7 +25,6 @@ export const routes: Routes = [
             oPermission: {
               permissionId: 'users-permissions',
               restrictedPermissionsRedirect: '/main/home',
-              // restrictedPermissionsRedirect: '403',
             }
           } 
       },
@@ -34,7 +33,6 @@ export const routes: Routes = [
             oPermission: {
               permissionId: 'products-permissions',
               restrictedPermissionsRedirect: '/main/home',
-              // restrictedPermissionsRedirect: '403',
             }
           } 
       },
@@ -44,7 +42,6 @@ export const routes: Routes = [
           oPermission: {
             permissionId: 'global-bookings-permissions',
             restrictedPermissionsRedirect: '/main/home',
-            // restrictedPermissionsRedirect: '403',
           }
         } 
       },
@@ -53,7 +50,6 @@ export const routes: Routes = [
           oPermission: {
             permissionId: 'booking-charts-permissions',
             restrictedPermissionsRedirect: '/main/home',
-            // restrictedPermissionsRedirect: '403',
           }
         } 
       },

@@ -14,12 +14,27 @@ export class BookingChartsUsersComponent implements OnInit {
   @ViewChild('discretebar1',{static:true}) protected discretebar1: OChartComponent;
   @ViewChild('discretebar2',{static:true}) protected discretebar2: OChartComponent;
 
-  protected total_not_picked_up: any;
   public chartParameters: DiscreteBarChartConfiguration;
   public chartParameters2: DiscreteBarChartConfiguration;
+  /**
+   * Variable que establece el número de reservas no recogidas de un usuario
+   */
+  protected total_not_picked_up: any;
+  /**
+   * Array de objetos que recoje los datos de la primera gráfica
+   */
   protected graphData: Array<Object>;
+  /**
+   * Array de objetos que recoje los datos de los usuarios de la segunda gráfica, 
+   */
   protected graphDataU: Array<Object>;
+  /**
+   * Array auxiliar para construir los arrays de datos
+   */
   private auxGraph: Array<Object>;
+  /**
+   * Constante de tipo number, establece el valor de baremación
+   */
   protected criteriaValue = 2;
 
 
@@ -34,8 +49,12 @@ export class BookingChartsUsersComponent implements OnInit {
     this.graphData = [];
     this.graphDataU = [];
     this.auxGraph = [];
+    
     this.getCount();
   }
+  /**
+   * Método void que hace la petición de datos al servicio
+   */
   getCount(){
     this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('bookings'));
     this.ontimizeService.query({'year_': 2023}, ['id_user','name', 'surname1', 'not_picked_up','year_'], 'usersBooking').subscribe(
@@ -50,6 +69,12 @@ export class BookingChartsUsersComponent implements OnInit {
       () => this.cd.detectChanges()
     );
   }
+  /**
+   * Método void que construye los arrays de datos
+   * 
+   * @param data tipo objeto, es la respuesta obtenida del servidor
+   * @param numero tipo number, indica que array se debe construir
+   */
   adaptResult(data: any, numero: number) {
     let dataAdapter = DataAdapterUtils.createDataAdapter(this.chartParameters);
     if (data && data.length) {
@@ -75,6 +100,13 @@ export class BookingChartsUsersComponent implements OnInit {
       }
     }
   }
+  /**
+   * Método para procesar los valores devueltos por el servidor
+   * 
+   * @param data Array de objetos que trae los valores a procesar
+   * @param graphData Array de objetos que recogerá los valores procesados
+   * @returns nuevo array con los valores procesados
+   */
   processValues(data: any, graphData: any[]) {
     let values = [];
     let minorValue = 0;
@@ -89,11 +121,12 @@ export class BookingChartsUsersComponent implements OnInit {
         minorValue++;
       }
     });
-
+    //Valores por debajo del criterio de baremación
     let lowerCrit = {
       'x': under,
       'y': minorValue
     }
+    //Valores iguales o por encima del baremo
     let upperCrit = {
       'x': over,
       'y':  majorValue
@@ -103,6 +136,12 @@ export class BookingChartsUsersComponent implements OnInit {
     values.push(lowerCrit);
     return values;
   }
+  /**
+   * Método para procesar las claves necesarias para la construcción de la gráfica
+   * 
+   * @param graphData Array de objetos con las claves a procesar
+   * @returns Nuevo array con las claves procesadas
+   */
   processKeyValues(graphData: any[]) {
     let values = [];
     graphData.forEach((item: any, index: number) => {
@@ -114,11 +153,13 @@ export class BookingChartsUsersComponent implements OnInit {
     });
     return values;
   }
+
   private configureLanguage(){
     const d3Locale = this.d3LocaleService.getD3LocaleConfiguration();
     this.configureDiscreteBarChart(d3Locale);
     this.configureDiscreteBarChartU(d3Locale);
   }
+  
   private configureDiscreteBarChart(locale: any): void {
     this.chartParameters = new DiscreteBarChartConfiguration();
     this.chartParameters.height = 130;
@@ -130,6 +171,7 @@ export class BookingChartsUsersComponent implements OnInit {
     this.chartParameters.y1Axis.axisLabelDistance = -15;
     this.chartParameters.yDataType = d => locale.numberFormat("###.##")(d);
   }
+ 
   private configureDiscreteBarChartU(locale: any): void{
     this.chartParameters2 = new DiscreteBarChartConfiguration();
     this.chartParameters2.height = 500;

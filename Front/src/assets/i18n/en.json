@@ -115,5 +115,7 @@
   "total_sales": "Total sales, units:",
   "months": "Months",
   "profits": "Profits",
-  "amount": "Amount (€)"
+  "amount": "Amount (€)",
+  ". Bookings not picked up:": ". Bookings not picked up:",
+  ". Total sales:": ". Total sales:"
 }

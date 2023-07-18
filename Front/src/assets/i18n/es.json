@@ -115,5 +115,7 @@
   "total_sales": "Ventas totales, unidades:",
   "months": "Meses",
   "profits": "Beneficios",
-  "amount": "Importe (€)"
+  "amount": "Importe (€)",
+  ". Bookings not picked up:": ".Reservas no recogidas:",
+  ". Total sales:": "Ventas totales"
 }

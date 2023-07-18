@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { OTranslateService, OntimizeService } from 'ontimize-web-ngx';
-import { DataAdapterUtils, DiscreteBarChartConfiguration, LineChartConfiguration, OChartComponent, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
+import { DataAdapterUtils, DiscreteBarChartConfiguration, OChartComponent, StackedAreaChartConfiguration } from 'ontimize-web-ngx-charts';
 import { D3LocaleService } from 'src/app/shared/d3-locale/d3Locale.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,6 @@ export class BookingChartsProfitsComponent implements OnInit {
   public chartParameters: DiscreteBarChartConfiguration;
   protected graphDataP: Array<Object>;
   
-
   constructor(private ontimizeService: OntimizeService, 
       private cd: ChangeDetectorRef, 
       public injector: Injector,
@@ -48,7 +47,6 @@ export class BookingChartsProfitsComponent implements OnInit {
     if (data && data.length) {
       let values = this.processValues(data);
       let keys = this.processKeys(data);
-      // chart data
       keys.forEach((item: any, items: number) => {
         const linea: object[] = [{'key': item, 'values': values[items]}];
         this.graphDataP.push(linea[0]);
