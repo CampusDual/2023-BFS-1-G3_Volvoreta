@@ -38,6 +38,7 @@ export class BookingChartsStockComponent implements OnInit {
     this.chartParameters1 = new MultiBarHorizontalChartConfiguration();
     this.chartParameters1.margin.left = 200;
     this.chartParameters1.color = ['#E4333C', '#4b4b4b'];
+    this.chartParameters1.valueType = locale.numberFormat("###.##");
     this.chartParameters1.yDataType = d => locale.numberFormat("###.##")(d);
   }
   reloadComponent() {
