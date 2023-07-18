@@ -18,41 +18,41 @@ export class ProductsNewComponent implements OnInit {
     HASNEGATIVE: "* Debes introducir un número positivo"
   }
 
+  //Funciones de validación:
   constructor() {
+    //1º. Verificar que el campo tenga al menos un número entero y positivo
     this.validatorsArray.push(OValidators.patternValidator(/[1-9]/, 'hasNumber'));
-    this.validatorsArray.push(this.stockValidator)
-    this.validatorsArray.push(this.priceValidator)
+    this.validatorsArray.push(this.stockValidator);
+    this.validatorsArray.push(this.priceValidator);
   }
 
   ngOnInit() {
-
-    console.log(this.today.getDate())
-
+    console.log(this.today.getDate());
   }
 
   defaultId(event) {
     this.selectC.setValue(2);
   }
 
+  //Establecer la fecha como valor predeterminado en el campo del formulario
   defaultDate() {
+    let today: Date = new Date();
+    console.log("event");
+    console.log(today.getDate());
 
-    let today: Date = new Date()
-    console.log("event")
-    console.log(today.getDate())
-
-    this.inputDate.setData(today.getDate())
+    this.inputDate.setData(today.getDate());
 
     this.inputDate.setValue(today.getDate());
   }
 
-  // Funcion custom para personalizar la validacion
+  // Función custom para personalizar la validación
+  //Verifica que el campo "stock" no contenga caracteres especiales
   stockValidator(control: FormControl): ValidationErrors {
-
     if (!control.value) return
 
-    let itemsNotIncludes = ['.', ',', 'e', '-']
+    let itemsNotIncludes = ['.', ',', 'e', '-'];
 
-    let auxArr: string[] = control.value.toString().split("")
+    let auxArr: string[] = control.value.toString().split("");
 
     for (let item = 0; item < auxArr.length; item++) {
 
@@ -63,12 +63,12 @@ export class ProductsNewComponent implements OnInit {
     }
   }
 
-  // Funcion custom para personalizar la validacion
+  // Función custom para personalizar la validación
+  //Verifica si el campo "price" contiene un número negativo
   priceValidator(control: FormControl): ValidationErrors {
-
     if (!control.value) return
 
-    console.log(control.value.toString().includes('-'))
+    console.log(control.value.toString().includes('-'));
 
     if (control.value.toString().includes('-')) {
       return { 'hasNegative': true, };

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OComboComponent, ODateInputComponent, OFormComponent } from 'ontimize-web-ngx';
+import { OComboComponent, OFormComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bookings-detail',
@@ -10,7 +10,6 @@ export class BookingsDetailComponent implements OnInit {
   @ViewChild("rState", { static: true }) rState: OComboComponent;
   @ViewChild("cCollected", { static: true }) cCollected: OComboComponent;
   @ViewChild("detailBooking", { static: true }) detailBooking: OFormComponent;
-  //@ViewChild("picked", { static: true }) picked: ODateInputComponent;
 
   enabled: boolean;
   collected: any;
@@ -22,17 +21,10 @@ export class BookingsDetailComponent implements OnInit {
 
   ngOnInit() { }
   
+  //Método que se llama cuando ocurre un evento que desencadena un cambio en el estado de la reserva.
   enable(event){
     const { type } = event
     
-    //console.log(event)
-    // console.log(event.type)
-    // console.log(newValue)
-    // console.log(oldValue)
-    // console.log(this.rState.getValue())
-    // console.log(this.rState.getSelectedItems())
-    // console.log(this.rState.getSelectedRecord())
-
     if(Number(this.rState.getValue()) == 2 && type == 1){
       this.enabled = false;
       document.getElementById("collected").setAttribute("style", "display:none");
@@ -48,7 +40,5 @@ export class BookingsDetailComponent implements OnInit {
       
     }
     
-    // this.enabled = (Number(this.rState.getValue()) == 2 && type == 1) ? false : true;
-
   }
 }

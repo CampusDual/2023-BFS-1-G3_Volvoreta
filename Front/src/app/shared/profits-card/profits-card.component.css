@@ -5,9 +5,5 @@
   
     .profits-card-chart .nvd3 .nv-axis line  {
       display: none;
-  
-      /* .nvd3.nv-multibarHorizontal .nv-groups text {
-        font-size: 24px;
-      } */
     }
   }

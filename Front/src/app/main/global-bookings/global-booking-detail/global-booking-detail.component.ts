@@ -10,22 +10,20 @@ import { OComboComponent, OFormComponent } from 'ontimize-web-ngx';
 export class GlobalBookingDetailComponent implements OnInit {
   @ViewChild("gState", { static: true }) gState: OComboComponent;
   @ViewChild("detailGlobalBooking", { static: true }) detailGlobalBooking: OFormComponent;
-  //@ViewChild("picked", { static: true }) picked: ODateInputComponent;
 
   enabled: boolean;
   
-
   constructor() {
     this.enabled = false;
   }
 
-
   ngOnInit() {
   }
 
+  //Método que se llama cuando ocurre un evento que desencadena un cambio en el estado de la reserva global.
   delivered(event){
     const { type } = event
-    
+  
     if(Number(this.gState.getValue()) == 2 && type == 1){
       this.enabled = false;
     } else if(Number(this.gState.getValue()) == 3 && type == 1){
@@ -38,9 +36,6 @@ export class GlobalBookingDetailComponent implements OnInit {
         document.getElementById("gPicked").setAttribute("style", "display:none");
       }      
     }
-    
-    // this.enabled = (Number(this.rState.getValue()) == 2 && type == 1) ? false : true;
-
   }
 
 }
