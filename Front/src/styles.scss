@@ -147,7 +147,9 @@ input:not([type]):disabled, input[type="color"]:disabled, input[type="date"]:dis
 	color: #303030;
 }
 .o-card-menu-item .mat-button {
-	background: #e4333c3f;
+	// background: #e4333c3f;
+  background: #E4333C;
+  color: #ffffff;
 }
 // [layout-padding], [layout-padding] > [flex], [layout-padding] > [flex-gt-sm], [layout-padding] > [flex-md], [layout-padding] > [flex-lt-lg] {
 // 	padding: 50px !important;

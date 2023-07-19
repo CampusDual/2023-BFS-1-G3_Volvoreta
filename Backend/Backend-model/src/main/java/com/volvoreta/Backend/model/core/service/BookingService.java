@@ -214,6 +214,14 @@ public class BookingService implements IBookingService {
      */
     @Override
     public EntityResult bookingInsert(Map<String, Object> attrMap) {
+        Map<String, Object> keyMap = Collections.singletonMap("id", attrMap.get("id_product"));
+        EntityResult entityResult = this.daoHelper.query(productDao, keyMap, new ArrayList<String>(Arrays.asList("active")));
+        if(otherQuerys(entityResult) != null){
+            return entityResult;
+        }
+        if(entityResult.getRecordValues(0).get("active").equals(false)){
+            return entityResult;
+        }
         Calendar endDate = Calendar.getInstance();
         endDate.setTimeInMillis((long) attrMap.get("end_date"));
         Timestamp timestamp = new Timestamp(endDate.getTime().getTime());

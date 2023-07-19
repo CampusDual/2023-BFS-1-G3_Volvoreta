@@ -60,26 +60,42 @@ export class ReserveDialogComponent implements OnInit {
     
 
     this.reserveService.reserve(currentReserve).subscribe(
-      ({ code }: OResponse) => {
+      res => {console.log(res); 
+        // console.log((res.data[0]).hasOwnProperty('active'));
+        console.log(Array.isArray(res.data));
         let part1: string = "";
         let part2: string = "";
         let part3: string = "";
-        if (code !== 0) {
-          this.dialogService.error("reservation error", "error when making the reservation");
+        if (res.code !== 0) {
+          if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
+            part1 = "No ha sido posible realizar la reserva. ";
+          } else {
+            part1 = "It was not possible to make the reservation";
+          }
+          this.close(part1);
           return
         }
-        
-        if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
-          part1 = "Has reservado ";
-          part2 = "Pasa a recoger tu pedido antes del ";
-          part3 = + day + "-" + month_ + "-" + year_;
+        if(Array.isArray(res.data)){
+          if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
+            part1 = "No ha sido posible realizar la reserva. ";
+          } else {
+            part1 = "It was not possible to make the reservation";
+          }
+          this.close(part1);
+          return
         } else {
-          part1 = "You have reserved ";
-          part2 = "Pick up your order before ";
-          part3 = + year_ + "-" + month_ + "-" + day;
+          if (JSON.parse(localStorage.getItem("com.ontimize.web.volvoreta"))['lang'] == "es") {
+            part1 = "Has reservado ";
+            part2 = "Pasa a recoger tu pedido antes del ";
+            part3 = + day + "-" + month_ + "-" + year_;
+          } else {
+            part1 = "You have reserved ";
+            part2 = "Pick up your order before ";
+            part3 = + year_ + "-" + month_ + "-" + day;
+          }
+          this.updateActive(product.id);
+          this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + part3 +  "</b>. ");
         }
-        this.updateActive(product.id);
-        this.close(part1 + units + " <b>" + product.name + "</b>. " + part2 + " <b>" + part3 +  "</b>. ");
       }
     );
   }
