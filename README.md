@@ -1,3 +1,8 @@
+# 2023-BFS-1-G3
+* Cecía Varela
+* Juan Carlos Fontán
+* Virginia García
+
 # Getting Started
 
 ## First init and after modify any DTO or Entity
