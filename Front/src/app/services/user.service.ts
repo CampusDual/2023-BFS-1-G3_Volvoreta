@@ -8,49 +8,49 @@ import { OResponse } from '../models/response';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    
-    private passwordBD: BehaviorSubject<PasswordInput> = new BehaviorSubject<PasswordInput>({password:""});
+
+    private passwordBD: BehaviorSubject<PasswordInput> = new BehaviorSubject<PasswordInput>({ password: "" });
     private id = this.authService.getSessionInfo().id;
-    private urlEndpoint: string = 'http://localhost:33333/users';
-    private httpHeader = new HttpHeaders({'Content-Type': 'application/json','Authorization':"Bearer " + this.id});
+    private urlEndpoint: string = 'http://0.0.0.0:33333/users';
+    private httpHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + this.id });
     private wellcome: BehaviorSubject<Observable<any>> = new BehaviorSubject<Observable<any>>(null);
-    protected nameUser : string = this.authService.getSessionInfo().user;
+    protected nameUser: string = this.authService.getSessionInfo().user;
 
     constructor(private http: HttpClient, @Inject(AuthService) private authService: AuthService,
-    private ontimizeService: OntimizeService,) { }
+        private ontimizeService: OntimizeService,) { }
 
     getCurrentUser(): string {
         return this.authService.getSessionInfo().user;
     }
 
-    getUser():Observable<OResponse>{
+    getUser(): Observable<OResponse> {
         this.nameUser = this.authService.getSessionInfo().user;
         this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('users'));
-        return this.ontimizeService.query({'user_': this.nameUser}, ['user_', 'name', 'surname1', 'rolename'], 'user');
+        return this.ontimizeService.query({ 'user_': this.nameUser }, ['user_', 'name', 'surname1', 'rolename'], 'user');
     }
 
-    getWellcome():Observable<any>{
+    getWellcome(): Observable<any> {
         return this.wellcome.asObservable();
     }
 
-    setWellcome(wellcome: any){
+    setWellcome(wellcome: any) {
         return this.wellcome.next(wellcome);
     }
-    
-    getPasswordBD():Observable<PasswordInput>{
+
+    getPasswordBD(): Observable<PasswordInput> {
         return this.passwordBD.asObservable();
     }
 
     setPasswordBD(pass: PasswordInput) {
         this.passwordBD.next(pass);
     }
-    
-    clearPasswordDB(){
-        this.passwordBD.next({password: ""});
+
+    clearPasswordDB() {
+        this.passwordBD.next({ password: "" });
     }
-    
+
     genPass(user_: string) {
-        return this.http.post(this.urlEndpoint.concat('/genPass'), user_,{headers:this.httpHeader})
+        return this.http.post(this.urlEndpoint.concat('/genPass'), user_, { headers: this.httpHeader })
     }
-    
+
 }

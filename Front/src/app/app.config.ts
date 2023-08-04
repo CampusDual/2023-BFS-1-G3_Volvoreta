@@ -5,7 +5,7 @@ import { SERVICE_CONFIG } from './shared/app.services.config';
 
 export const CONFIG: Config = {
   // The base path of the URL used by app services.
-  apiEndpoint: 'http://localhost:33333',
+  apiEndpoint: 'http://localhost:30070',
 
   // Application identifier. Is the unique package identifier of the app.
   // It is used when storing or managing temporal data related with the app.
@@ -25,11 +25,11 @@ export const CONFIG: Config = {
   // Configuration parameters of application services.
   servicesConfiguration: SERVICE_CONFIG,
 
-  permissionsConfiguration:{
+  permissionsConfiguration: {
     service: 'permissions'
   },
 
-  permissionsServiceType:  'OntimizeEEPermissions',
+  permissionsServiceType: 'OntimizeEEPermissions',
 
   appMenuConfiguration: MENU_CONFIG,
 
